@@ -1,0 +1,345 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Daanyaal Parvaize, Kreetika Mohanta, Keerti Belmane$
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: BA25-02-Time-Series/report/Contents/en/Database.tex
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{KDD-Analysis of the Atlantic Storms Dataset (1975--2021)}
+This chapter provides a comprehensive analysis of the \texttt{storms.csv} dataset, which contains meteorological data for Atlantic tropical cyclones from 1975 to 2021. The dataset, sourced from the National Oceanic and Atmospheric Administration (NOAA), is analyzed for its features, data types, quality, quantity, fairness and bias, database structure, properties, outliers, anomalies, and origin.
+
+\section{Origin}
+The \texttt{storms.csv} dataset is sourced from the National Oceanic and Atmospheric Administration (NOAA), specifically derived from the Atlantic Hurricane Database (HURDAT2), maintained by the National Hurricane Center (NHC). This database compiles detailed records of tropical and subtropical cyclones in the Atlantic basin, including their positions, intensities, and classifications, based on observations from satellites, aircraft reconnaissance, and other meteorological tools. The dataset covers storms from 1975 to 2021, reflecting improvements in data collection over time, such as enhanced satellite imagery and storm size measurements.
+
+\section{Features}
+The dataset includes the following 13 features, capturing various meteorological attributes of Atlantic storms:
+\begin{itemize}
+	\item \textbf{name}: The name of the storm, such as Amy or Blanche.
+	\item \textbf{year}: The year the storm occurred, such as 1975 or 2021.
+	\item \textbf{month}: The month of the observation, ranging from 1 to 12.
+	\item \textbf{day}: The day of the month, ranging from 1 to 31.
+	\item \textbf{hour}: The hour of the observation, recorded at 0, 6, 12, or 18, in 6-hour intervals.
+	\item \textbf{lat}: Latitude of the storm’s center, in degrees, positive for the Northern Hemisphere and negative for the Southern.
+	\item \textbf{long}: Longitude of the storm’s center, in degrees, negative for the Western Hemisphere.
+	\item \textbf{status}: Storm classification, such as tropical depression, tropical storm, hurricane, extratropical, subtropical storm, or other low.
+	\item \textbf{category}: Saffir-Simpson hurricane category, ranging from 1 to 5 for hurricanes, or NA for non-hurricanes.
+	\item \textbf{wind speed}: Maximum sustained wind speed, in knots.
+	\item \textbf{pressure}: Minimum central pressure, in millibars.
+	\item \textbf{tropicalstorm force diameter}: Diameter of tropical storm-force winds, in nautical miles, with NA or 0 if not applicable.
+	\item \textbf{hurricane force diameter}: Diameter of hurricane-force winds, in nautical miles, with NA or 0 if not applicable.
+\end{itemize}
+
+\section{Data Types}
+The data types for each feature are as follows:
+\begin{itemize}
+	\item \textbf{name}: Categorical, represented as a string.
+	\item \textbf{year}: Integer, numeric.
+	\item \textbf{month}: Integer, numeric, ranging from 1 to 12.
+	\item \textbf{day}: Integer, numeric, ranging from 1 to 31.
+	\item \textbf{hour}: Integer, numeric, with values 0, 6, 12, or 18.
+	\item \textbf{lat}: Float, numeric, continuous.
+	\item \textbf{long}: Float, numeric, continuous.
+	\item \textbf{status}: Categorical, represented as a string, such as tropical depression or hurricane.
+	\item \textbf{category}: Categorical, represented as a string, with values 1 to 5 or NA.
+	\item \textbf{wind speed}: Integer, numeric, in knots.
+	\item \textbf{pressure}: Integer, numeric, in millibars.
+	\item \textbf{tropicalstorm force diameter}: Integer, numeric, in nautical miles, including NA or 0.
+	\item \textbf{hurricane force diameter}: Integer, numeric, in nautical miles, including NA or 0.
+\end{itemize}
+
+\section{Quality}
+\subsection{Completeness}
+Most fields, including name, year, month, day, hour, latitude, longitude, status, wind speed, and pressure, are complete across all entries. The category field contains NA values for non-hurricane storms, as expected. However, tropical storm-force diameter and hurricane-force diameter have frequent NA or 0 values, particularly in earlier years, such as 1975, due to limited data collection capabilities.
+
+\subsection{Accuracy}
+Latitude and longitude values are consistent with geographic ranges, from \SI{-90}{\degree} to \SI{90}{\degree} for latitude and \SI{-180}{\degree} to \SI{180}{\degree} for longitude. Wind speeds, ranging from \SI{15}{\knot} to \SI{135}{\knot}, and pressures, ranging from \SI{927}{\milli\bar} to \SI{1015}{\milli\bar}, align with meteorological expectations. Some storms, such as Amy in 1975, show repeated pressure values, such as \SI{1013}{\milli\bar}, suggesting coarse measurements or data imputation in historical records.
+
+\subsection{Consistency}
+The status and category fields align logically, with hurricanes corresponding to categories 1 to 5. Timestamps are consistent, with observations recorded at 6-hour intervals. Transitions between storm statuses, such as from hurricane to tropical storm, correspond to expected changes in wind speed and pressure.
+
+\subsection{Missing Values}
+The primary missing data occurs in tropical storm-force diameter and hurricane-force diameter, especially in 1975--1976, reflecting technological limitations in early storm size measurements. Core fields, including name, year, latitude, longitude, wind speed, and pressure, have no missing values.
+
+\section{Quantity}
+The dataset contains 19,066 records, covering Atlantic storms from 1975 to 2021, spanning 46 years. It includes multiple storms, such as Amy with 31 entries and Blanche with 20 entries, with observations typically every 6 hours. The dataset encompasses various storm types, including tropical depression, tropical storm, hurricane, extratropical, subtropical storm, and other low, providing a robust sample for analysis.
+
+\section{Fairness and Bias}
+This section evaluates fairness and bias in the \texttt{storms.csv} dataset, focusing on its inherent limitations and the potential biases introduced or mitigated by the data augmentation pipeline. The analysis considers geographic, temporal, and selection biases in the raw dataset, as well as biases resulting from synthetic data generation, imputation, and feature selection, ensuring a comprehensive assessment for wind speed forecasting models.
+
+\subsection{Geographic Bias}
+The dataset is restricted to the Atlantic basin, covering storms from approximately \SI{7}{\degree}N to \SI{58}{\degree}N and \SI{-99}{\degree}W to \SI{-20}{\degree}W. This excludes tropical cyclones in other regions, such as the Pacific or Indian Oceans, limiting the generalizability of models trained on this data to Atlantic-specific patterns. This is a scope limitation rather than a bias, as the dataset is sourced from NOAA’s HURDAT2, which focuses on Atlantic storms. The augmentation pipeline does not alter this geographic focus, as it processes only the provided wind speed data without incorporating external datasets. Analysts must recognize this limitation when applying models to non-Atlantic contexts.
+
+\subsection{Temporal Bias}
+Historical data from earlier years, such as 1975--1976, lacks storm size measurements due to less advanced observational technologies, such as limited satellite coverage. This could bias analyses of storm size trends, as later years benefit from improved measurements. However, since the forecasting models use only wind speed, this bias is irrelevant. The augmentation pipeline fills gaps in wind speed data by using values from preceding or following observations, ensuring continuity. This approach assumes smooth transitions, which may introduce minor bias if gaps occur during rapid weather changes, such as storm intensification.
+
+\subsection{Selection Bias}
+The dataset includes only named storms or significant systems tracked by NOAA, potentially excluding weaker or short-lived systems that did not meet classification thresholds. This selection bias may skew models toward more intense cyclones, underrepresenting milder events. The augmentation pipeline does not address this, as it processes the provided data without adding new systems. Furthermore, the pipeline’s focus on wind speed alone ignores other attributes, such as pressure or storm status, simplifying cyclone dynamics and potentially biasing predictions by omitting factors that influence wind speed.
+
+\subsection{Synthetic Data Bias}
+When the dataset is insufficient, such as having fewer than 10 records, or unavailable, the pipeline generates artificial wind speed data. For example, a 60-day dataset is created with wind speeds following a periodic pattern centered around 50 knots, with variations of up to 15 knots and random fluctuations. This artificial data allows model training to proceed but introduces bias, as it may not capture the complex variability of real cyclones, such as rapid intensification or extratropical transitions. Models trained on artificial data may perform poorly on real data, particularly for extreme events. This bias is mitigated by prioritizing actual data when available, but analysts must exercise caution when interpreting results from artificial datasets.
+
+\subsection{Normalization Bias}
+For deep learning models, the pipeline scales wind speed values to a range between 0 and 1 to stabilize training. While this improves model performance, it may compress extreme wind speeds, such as Sam’s \SI{135}{\knot}, potentially biasing predictions toward average values. The scaling is reversible, but small numerical errors could affect forecast accuracy for outliers. This bias is a necessary trade-off for effective model training.
+
+\subsection{Fairness Considerations}
+The dataset does not involve human subjects or sensitive attributes, such as race or gender, so social fairness concerns are inapplicable. However, meteorological fairness is relevant, as biased models could affect disaster preparedness in Atlantic regions. The pipeline mitigates some biases by ensuring data continuity and standardization, but the use of artificial data and focus on wind speed alone introduces new risks. Analysts must account for technological improvements over time when interpreting trends, as enhanced detection in later years may inflate perceived storm intensity. The pipeline’s error handling and user feedback, such as through a web interface, promote transparency, allowing users to identify and address potential biases during data processing. To enhance fairness, future work could include additional attributes, such as pressure, or external datasets to better represent cyclone diversity.
+
+\section{One Database}
+The \texttt{storms.csv} dataset is a single, cohesive database, likely sourced from NOAA’s HURDAT2. It provides consistent fields across 1975--2021, making it suitable for time-series analysis, storm tracking, and climatological studies of Atlantic tropical cyclones.
+
+\section{Properties}
+\begin{itemize}
+	\item \textbf{Structure}: Tabular, with each row representing a storm observation at 6-hour intervals.
+	\item \textbf{Size}: 19,066 rows $\times$ 13 columns.
+	\item \textbf{Temporal Coverage}: 1975--2021, with observations at 00Z, 06Z, 12Z, and 18Z daily.
+	\item \textbf{Geographic Coverage}: Atlantic Ocean, approximately \SI{7}{\degree}N to \SI{58}{\degree}N and \SI{-99}{\degree}W to \SI{-20}{\degree}W.
+	\item \textbf{Granularity}: High temporal resolution, with 6-hour intervals.
+	\item \textbf{Key Metrics}:
+	\begin{itemize}
+		\item Wind speed: \SI{15}{\knot} to \SI{135}{\knot}, indicating storm intensity.
+		\item Pressure: \SI{927}{\milli\bar} to \SI{1015}{\milli\bar}, where lower pressure indicates stronger storms.
+		\item Storm size: Tropical storm-force and hurricane-force diameters, often missing in early years (1975--1976) due to limited measurement capabilities.
+	\end{itemize}
+	\item \textbf{Applications}: Storm tracking, intensity analysis, climatological trends, and impact studies.
+\end{itemize}
+
+\section{Outliers}
+\subsection{Wind Speed}
+The maximum wind speed is \SI{135}{\knot}, recorded for Sam on 2021-09-26, plausible for a Category 4 hurricane. Low wind speeds, such as \SI{15}{\knot} for Nicholas on 2021-09-17, are reasonable for weak or dissipating systems. No extreme outliers are evident.
+
+\subsection{Pressure}
+The lowest pressure is \SI{927}{\milli\bar}, recorded for Sam on 2021-09-26, typical for a strong hurricane. High pressures, such as \SI{1015}{\milli\bar} for Dottie on 1976-08-21, are consistent with weak tropical depressions.
+
+\subsection{Latitude and Longitude}
+Extreme values, such as \SI{58.1}{\degree}N for Gladys on 1975-10-03 and \SI{-20.6}{\degree}W for Larry on 2021-08-31, reflect northern storm tracks or extratropical transitions, within expected ranges.
+
+\subsection{Storm Size}
+Tropical storm-force diameter reaches \SI{780}{\nauticalmile} for Wanda on 2021-10-28, plausible for large extratropical systems. Hurricane-force diameter reaches \SI{120}{\nauticalmile} for Larry on 2021-09-10, reasonable for strong hurricanes.
+
+\subsection{Potential Outliers}
+Constant pressure values, such as Amy at \SI{1013}{\milli\bar} for multiple entries, may indicate coarse historical measurements. Large changes in wind speed or pressure, such as Ida’s pressure drop from \SI{999}{\milli\bar} to \SI{944}{\milli\bar} in 6 hours on 2021-08-29, reflect rapid intensification, which is meteorologically possible.
+
+\section{Anomalies}
+This section examines anomalies in the \texttt{storms.csv} dataset, including data entry issues, meteorological anomalies, inconsistent classifications, and historical data gaps. Additionally, it discusses how the data augmentation pipeline mitigates these anomalies to ensure robust model training.
+
+\subsection{Data Entry Issues}
+The dataset is truncated at Wanda on 2021-11-08, with the final entry incomplete, showing only ``36.8...''. This suggests a parsing or file truncation error, potentially affecting the last observation’s integrity. The augmentation pipeline indirectly addresses this by sorting and cleaning the data, ensuring only complete rows are processed. Additionally, frequent missing or zero values in storm size measurements for 1975--1976 indicate historical data limitations. Since the models focus on wind speed, these fields are excluded from processing, avoiding their impact on training.
+
+\subsection{Meteorological Anomalies}
+Rapid intensification events, such as Sam’s wind speed increasing from \SI{60}{\knot} to \SI{135}{\knot} in approximately \SI{36}{\hour} from 2021-09-24 to 2021-09-26, are notable but meteorologically plausible for major hurricanes. Similarly, quick status transitions, such as Eloise dropping from Category 3 to tropical storm in \SI{6}{\hour} on 2021-09-23, may reflect land interaction or environmental changes. The augmentation pipeline preserves these events by retaining the original wind speed values, ensuring models learn from realistic meteorological patterns. Filling minor gaps in wind speed data with preceding or following values smooths the data without altering significant trends.
+
+\subsection{Inconsistent Status}
+Some storms, such as Odette on 2021-09-17, exhibit abrupt transitions from ``other low'' to ``tropical storm'', potentially indicating classification changes or data gaps. The augmentation pipeline does not modify storm status, as it focuses on wind speed for forecasting. However, by standardizing the dataset and ensuring chronological ordering, the pipeline facilitates consistent time-series analysis, reducing the impact of such anomalies on model performance.
+
+\subsection{Historical Data Gaps}
+The absence of storm size measurements in early years, such as 1975--1976, reflects limitations in historical observational technology. Since the forecasting models rely solely on wind speed, these gaps do not affect training. For cases where wind speed data is insufficient, the pipeline generates artificial data, ensuring model training can proceed. This artificial augmentation, while not historically accurate, provides a fallback mechanism to maintain pipeline functionality.
+
+\subsection{Mitigation Through Augmentation}
+The augmentation pipeline effectively mitigates several anomalies by cleaning and standardizing the dataset, filling missing wind speed values, and generating artificial data when necessary. Error handling ensures robust processing, raising alerts for critical issues, such as missing columns, and providing user feedback through a web interface. These measures enhance the dataset’s reliability, enabling accurate forecasting of wind speeds despite the identified anomalies.
+
+\section{Augmentation}
+
+Data augmentation in the context of the \texttt{storms.csv} dataset refers to the processes applied to enhance the dataset’s usability for training machine learning models to forecast wind speeds of Atlantic tropical cyclones. Beyond addressing missing values and errors, augmentation includes data cleaning, standardization, imputation, and synthetic data generation to ensure robustness and compatibility with modeling requirements. The augmentation pipeline is detailed below, highlighting how it improves the dataset’s quality and utility for predictive modeling.
+
+\subsection{Handling Missing Values}
+
+The dataset exhibits missing values in wind speed, which the pipeline fills by forward-filling and backward-filling missing entries to maintain continuity in the time series, critical for forecasting models. This is implemented in the \texttt{load\_storm\_data()} function in \texttt{model\_utils.py}:
+
+\begin{framed}
+	\begin{lstlisting}
+		df['wind_speed'] = pd.to_numeric(df['wind_speed'], errors='coerce').ffill().bfill()
+	\end{lstlisting}
+\end{framed}
+
+
+Additionally, in \texttt{app.py}, when the CSV is uploaded and cleaned, similar imputation is performed:
+
+\begin{framed}
+	\begin{verbatim}
+		df['wind_speed'] = df['wind_speed'].ffill().bfill()
+	\end{verbatim}
+\end{framed}
+
+
+
+
+\subsection{Data Standardization and Cleaning}
+
+The pipeline standardizes the dataset by automatically detecting and renaming the wind speed column to \texttt{'wind\_speed'} regardless of the original name. It also constructs or verifies the \texttt{date} column by combining \texttt{year}, \texttt{month}, and \texttt{day} if needed, or by detecting date-like columns. This is done in \texttt{load\_storm\_data()} in \texttt{model\_utils.py}:
+
+\begin{framed}
+	\begin{lstlisting}[breaklines=true, basicstyle=\ttfamily\small]
+		# Detect or create date column
+		if 'date' not in df.columns:
+		if all(col in df.columns for col in ['year', 'month', 'day']):
+		df['date'] = pd.to_datetime(df[['year', 'month', 'day']])
+		else:
+		date_col = next((col for col in df.columns if 'date' in col.lower() or 'time' in col.lower()), None)
+		if date_col:
+		df['date'] = fix_and_parse_dates(df[date_col])
+		else:
+		raise ValueError("CSV must contain a 'date' or 'year/month/day' columns.")
+		else:
+		df['date'] = fix_and_parse_dates(df['date'])
+		
+		# Rename wind speed column
+		wind_col = next((c for c in df.columns if 'wind' in c.lower()), None)
+		df.rename(columns={wind_col: 'wind_speed'}, inplace=True)
+	\end{lstlisting}
+\end{framed}
+
+The \texttt{fix\_and\_parse\_dates()} function in \texttt{model\_utils.py} is responsible for parsing dates robustly, handling missing or malformed date strings:
+
+
+
+ App attempts to parse date, adding current year if missing:
+\begin{framed}
+	\begin{verbatim}
+		def fix_and_parse_dates(date_series):
+	
+		
+	\end{verbatim}
+\end{framed}
+
+
+Sorting by date is done as well to maintain chronological order:
+
+\lstset{breaklines=true}
+\begin{framed}
+	\begin{lstlisting}[basicstyle=\ttfamily\small]
+		df = df.sort_values('date').reset_index(drop=True)
+	\end{lstlisting}
+\end{framed}
+
+
+
+
+\subsection{Synthetic Data Generation}
+
+If the dataset file is missing or contains fewer than 10 records, the pipeline generates synthetic fallback data with dates and wind speeds, ensuring that the model can still be trained or tested. This is implemented in \texttt{load\_storm\_data()} in \texttt{model\_utils.py}:
+
+\lstset{breaklines=true}
+\begin{framed}
+	\begin{lstlisting}[basicstyle=\ttfamily\small]
+		if not os.path.exists(file_path):
+		dates = pd.date_range(start='2023-01-01', end='2023-03-01')
+		wind = np.random.normal(50, 15, len(dates))
+		df = pd.DataFrame({'date': dates, 'wind_speed': np.maximum(wind, 0)})
+		df.to_csv(file_path, index=False)
+		return df
+		
+		if len(data) < 10:
+		raise ValueError("ARIMA requires at least 10 records.")
+	\end{lstlisting}
+\end{framed}
+
+
+This fallback mechanism enables pipeline robustness.
+
+\subsection{Normalization for Deep Learning}
+
+For LSTM models, the pipeline scales wind speed values to the \([0,1]\) range using \texttt{MinMaxScaler} from \texttt{sklearn.preprocessing}, which improves training stability. This occurs in \texttt{developer.py} during training:
+
+\lstset{breaklines=true}
+\begin{framed}
+	\begin{lstlisting}[basicstyle=\ttfamily\small]
+		values = train_data['wind_speed'].values.reshape(-1, 1)
+		scaler = MinMaxScaler(feature_range=(0, 1))
+		scaled_values = scaler.fit_transform(values)
+	\end{lstlisting}
+\end{framed}
+
+
+The scaler object is saved alongside the model for inverse transformation during prediction:
+
+\lstset{breaklines=true}
+\begin{framed}
+	\begin{lstlisting}[basicstyle=\ttfamily\small]
+		def save_lstm_model(model, scaler, model_path='models/lstm_model.h5', scaler_path='models/lstm_scaler.pkl'):
+		...
+		with open(scaler_path, 'wb') as f:
+		pickle.dump(scaler, f)
+	\end{lstlisting}
+\end{framed}
+
+
+Inverse transform is applied in the prediction step in \texttt{app.py}:
+
+
+\lstset{
+	breaklines=true,
+	breakatwhitespace=true,
+	basicstyle=\ttfamily\footnotesize
+}
+
+\begin{framed}
+	\begin{lstlisting}[language=Python]
+		forecast = scaler.inverse_transform(
+		np.array(predictions).reshape(-1, 1)
+		).flatten()
+	\end{lstlisting}
+\end{framed}
+
+
+
+
+
+
+\subsection{Sequence Creation for Deep Learning}
+
+The LSTM model training requires transforming the wind speed series into sequences of fixed length to capture temporal dependencies. This sequence creation is done in \texttt{developer.py}:
+
+\lstset{breaklines=true}
+\begin{framed}
+	\begin{lstlisting}[basicstyle=\ttfamily\small]
+		X, y = [], []
+		for i in range(sequence_length, len(scaled_values)):
+		X.append(scaled_values[i-sequence_length:i, 0])
+		y.append(scaled_values[i, 0])
+		X, y = np.array(X), np.array(y)
+		X = np.reshape(X, (X.shape[0], X.shape[1], 1))
+	\end{lstlisting}
+\end{framed}
+
+These sequences are then used for model fitting.
+
+\subsection{Error Handling and Robustness}
+
+Throughout the pipeline, robust error handling ensures that missing or malformed data, missing columns, or parsing failures are caught early and reported via exceptions or Streamlit UI error messages. For example, in \texttt{app.py}:
+
+\lstset{breaklines=true}
+\begin{framed}
+	\begin{lstlisting}[basicstyle=\ttfamily\small]
+		if wind_col is None:
+		st.error("Missing wind speed column! Please upload a CSV with a column containing 'wind' in its name.")
+		st.stop()
+		
+		if date_col is None:
+		st.error("Missing date column! Please upload a CSV with a 'date' column or 'year', 'month', 'day' columns.")
+		st.stop()
+	\end{lstlisting}
+\end{framed}
+
+
+
+Similarly, exceptions during date parsing and model loading are caught and displayed to users.
+
+\subsection{Summary of Augmentation}
+
+The augmentation pipeline implemented in the code:
+
+\begin{itemize}
+	\item Handles missing wind speed values by forward and backward filling.
+	\item Standardizes and cleans data by renaming columns and constructing dates.
+	\item Generates synthetic fallback datasets when data is missing or insufficient.
+	\item Applies Min-Max scaling for deep learning model stability.
+	\item Creates sequential input data for LSTM models.
+	\item Implements thorough error handling with informative messages.
+\end{itemize}
+
+These steps ensure the \texttt{storms.csv} dataset is transformed into a reliable, model-ready format for forecasting hurricane wind speeds while maintaining simplicity and robustness.

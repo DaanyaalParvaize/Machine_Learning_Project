@@ -1,0 +1,330 @@
+\acswitchoff 
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Contents}{i}{chapter*.1}%
+\contentsline {chapter}{List of Figures}{ix}{chapter*.2}%
+\contentsline {chapter}{List of Tables}{x}{chapter*.3}%
+\contentsline {chapter}{ List of Listings}{xi}{chapter*.4}%
+\contentsline {chapter}{Acronyms}{xi}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Problem Description: Hurricane Wind Speed Prediction Using Time Series Models}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Background}{2}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Problem Statement}{2}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Literature Overview}{2}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Challenges}{3}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Proposed Solution}{3}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}Model Selection Guide}{4}{subsection.1.1.6}%
+\contentsline {subsection}{\numberline {1.1.7}Advantages}{5}{subsection.1.1.7}%
+\contentsline {subsection}{\numberline {1.1.8}Report Structure}{5}{subsection.1.1.8}%
+\contentsline {chapter}{\numberline {2}Domain Knowledge}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Application}{8}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Problem}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Complex Natural Factors}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Imperfect Data}{8}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Track vs. Intensity Prediction}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Rapid Intensification Events}{9}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}ARIMA Limitations}{9}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}Data Acquisition}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Data Quantity}{10}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Data Quality}{10}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Missing Values}{10}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Formatting Issues}{10}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Data Relevance}{11}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Outliers}{11}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Anomalies}{12}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Summary}{12}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Important Modules}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Pandas}{13}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Pandas Overview}{13}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Pandas Functionality}{13}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Installing Pandas}{14}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Example: Using Pandas}{15}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Example -- Manual}{16}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Example -- Code}{16}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Example -- Files}{17}{subsection.3.1.7}%
+\contentsline {subsection}{\numberline {3.1.8}Further Reading}{17}{subsection.3.1.8}%
+\contentsline {section}{\numberline {3.2}Statsmodels}{17}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Introduction}{17}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Description}{18}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Installation}{18}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Example -- Description}{20}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Example -- Manual}{20}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Example -- Code}{21}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Example -- Files}{21}{subsection.3.2.7}%
+\contentsline {subsection}{\numberline {3.2.8}Further Reading}{22}{subsection.3.2.8}%
+\contentsline {section}{\numberline {3.3}TensorFlow}{22}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Introduction}{22}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Description}{22}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Installation}{23}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Example -- Description}{25}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Example -- Manual}{25}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Example -- Code}{26}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}Example -- Files}{26}{subsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.3.8}Further Reading}{27}{subsection.3.3.8}%
+\contentsline {section}{\numberline {3.4}NumPy}{27}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Introduction}{27}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Description}{27}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Installation}{27}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Example - Description}{29}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Example - Manual}{29}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.4.6}Example - Code}{30}{subsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.4.7}Example - Files}{30}{subsection.3.4.7}%
+\contentsline {subsection}{\numberline {3.4.8}Further Reading}{30}{subsection.3.4.8}%
+\contentsline {section}{\numberline {3.5}Matplotlib}{31}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Introduction}{31}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Description}{31}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Installation}{31}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Example -- Description}{33}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Example -- Manual}{33}{subsection.3.5.5}%
+\contentsline {subsection}{\numberline {3.5.6}Example -- Code}{33}{subsection.3.5.6}%
+\contentsline {subsection}{\numberline {3.5.7}Example -- Files}{34}{subsection.3.5.7}%
+\contentsline {subsection}{\numberline {3.5.8}Further Reading}{35}{subsection.3.5.8}%
+\contentsline {section}{\numberline {3.6}Scikit-learn}{35}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Introduction}{35}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Description}{35}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Installation}{36}{subsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.6.4}Example -- Description}{38}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Example -- Manual}{38}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.6}Example -- Code}{39}{subsection.3.6.6}%
+\contentsline {subsection}{\numberline {3.6.7}Example -- Files}{39}{subsection.3.6.7}%
+\contentsline {subsection}{\numberline {3.6.8}Further Reading}{40}{subsection.3.6.8}%
+\contentsline {chapter}{\numberline {4}Data Mining}{41}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Stage Data Mining}{41}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}ARIMA Model}{41}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}LSTM Model}{42}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Implementation Alignment}{42}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Algorithm Description}{42}{subsection.4.1.4}%
+\contentsline {subsubsection}{\nonumberline ARIMA (AutoRegressive Integrated Moving Average)}{42}{subsubsection*.10}%
+\contentsline {subsubsection}{\nonumberline LSTM (Long Short-Term Memory)}{43}{subsubsection*.12}%
+\contentsline {subsection}{\numberline {4.1.5}Applications}{43}{subsection.4.1.5}%
+\contentsline {subsubsection}{\nonumberline ARIMA Applications}{43}{subsubsection*.14}%
+\contentsline {subsubsection}{\nonumberline LSTM Applications}{44}{subsubsection*.16}%
+\contentsline {subsection}{\numberline {4.1.6}Relevance}{44}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Hyperparameters}{44}{subsection.4.1.7}%
+\contentsline {subsubsection}{\nonumberline ARIMA Hyperparameters}{45}{subsubsection*.18}%
+\contentsline {subsubsection}{\nonumberline LSTM Hyperparameters}{45}{subsubsection*.20}%
+\contentsline {subsection}{\numberline {4.1.8}Data and Computation Requirements}{45}{subsection.4.1.8}%
+\contentsline {subsubsection}{\nonumberline Data Requirements}{45}{subsubsection*.22}%
+\contentsline {subsubsection}{\nonumberline Computation Requirements}{46}{subsubsection*.24}%
+\contentsline {subsection}{\numberline {4.1.9}Input and Output}{46}{subsection.4.1.9}%
+\contentsline {subsection}{\numberline {4.1.10}Input}{46}{subsection.4.1.10}%
+\contentsline {subsubsection}{\nonumberline ARIMA Input}{46}{subsubsection*.26}%
+\contentsline {subsubsection}{\nonumberline LSTM Input}{47}{subsubsection*.28}%
+\contentsline {subsection}{\numberline {4.1.11}Output}{47}{subsection.4.1.11}%
+\contentsline {subsubsection}{\nonumberline ARIMA Output}{47}{subsubsection*.30}%
+\contentsline {subsubsection}{\nonumberline LSTM Output}{47}{subsubsection*.32}%
+\contentsline {subsection}{\numberline {4.1.12}Example Using Python Code}{48}{subsection.4.1.12}%
+\contentsline {subsection}{\numberline {4.1.13}Further Readings}{50}{subsection.4.1.13}%
+\contentsline {chapter}{\numberline {5}Development Environment}{51}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Python Version}{51}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Description}{51}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Installation}{51}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Configuration}{52}{section.5.4}%
+\contentsline {section}{\numberline {5.5}First Steps}{54}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Hello World Program}{54}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Methodolgy}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Standards}{55}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}CRISP-DM}{55}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}KDD Process}{56}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}ML Pipeline}{57}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Other Methodologies}{59}{subsection.6.1.4}%
+\contentsline {subsection}{\numberline {6.1.5}Justification}{60}{subsection.6.1.5}%
+\contentsline {chapter}{\numberline {7}Documentation developer}{61}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Structure}{61}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Size}{63}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Format}{63}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Anomalies}{63}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Important Columns}{63}{subsection.7.4.1}%
+\contentsline {section}{\numberline {7.5}Origin}{64}{section.7.5}%
+\contentsline {chapter}{\numberline {8}KDD-Analysis of the Atlantic Storms Dataset (1975--2021)}{65}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Origin}{65}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Features}{65}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Data Types}{66}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Quality}{67}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Completeness}{67}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Accuracy}{67}{subsection.8.4.2}%
+\contentsline {subsection}{\numberline {8.4.3}Consistency}{67}{subsection.8.4.3}%
+\contentsline {subsection}{\numberline {8.4.4}Missing Values}{67}{subsection.8.4.4}%
+\contentsline {section}{\numberline {8.5}Quantity}{68}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Fairness and Bias}{68}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Geographic Bias}{68}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Temporal Bias}{68}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Selection Bias}{69}{subsection.8.6.3}%
+\contentsline {subsection}{\numberline {8.6.4}Synthetic Data Bias}{69}{subsection.8.6.4}%
+\contentsline {subsection}{\numberline {8.6.5}Normalization Bias}{69}{subsection.8.6.5}%
+\contentsline {subsection}{\numberline {8.6.6}Fairness Considerations}{69}{subsection.8.6.6}%
+\contentsline {section}{\numberline {8.7}One Database}{70}{section.8.7}%
+\contentsline {section}{\numberline {8.8}Properties}{70}{section.8.8}%
+\contentsline {section}{\numberline {8.9}Outliers}{71}{section.8.9}%
+\contentsline {subsection}{\numberline {8.9.1}Wind Speed}{71}{subsection.8.9.1}%
+\contentsline {subsection}{\numberline {8.9.2}Pressure}{71}{subsection.8.9.2}%
+\contentsline {subsection}{\numberline {8.9.3}Latitude and Longitude}{71}{subsection.8.9.3}%
+\contentsline {subsection}{\numberline {8.9.4}Storm Size}{71}{subsection.8.9.4}%
+\contentsline {subsection}{\numberline {8.9.5}Potential Outliers}{71}{subsection.8.9.5}%
+\contentsline {section}{\numberline {8.10}Anomalies}{71}{section.8.10}%
+\contentsline {subsection}{\numberline {8.10.1}Data Entry Issues}{72}{subsection.8.10.1}%
+\contentsline {subsection}{\numberline {8.10.2}Meteorological Anomalies}{72}{subsection.8.10.2}%
+\contentsline {subsection}{\numberline {8.10.3}Inconsistent Status}{72}{subsection.8.10.3}%
+\contentsline {subsection}{\numberline {8.10.4}Historical Data Gaps}{72}{subsection.8.10.4}%
+\contentsline {subsection}{\numberline {8.10.5}Mitigation Through Augmentation}{73}{subsection.8.10.5}%
+\contentsline {section}{\numberline {8.11}Augmentation}{73}{section.8.11}%
+\contentsline {subsection}{\numberline {8.11.1}Handling Missing Values}{73}{subsection.8.11.1}%
+\contentsline {subsection}{\numberline {8.11.2}Data Standardization and Cleaning}{74}{subsection.8.11.2}%
+\contentsline {subsection}{\numberline {8.11.3}Synthetic Data Generation}{75}{subsection.8.11.3}%
+\contentsline {subsection}{\numberline {8.11.4}Normalization for Deep Learning}{75}{subsection.8.11.4}%
+\contentsline {subsection}{\numberline {8.11.5}Sequence Creation for Deep Learning}{76}{subsection.8.11.5}%
+\contentsline {subsection}{\numberline {8.11.6}Error Handling and Robustness}{76}{subsection.8.11.6}%
+\contentsline {subsection}{\numberline {8.11.7}Summary of Augmentation}{77}{subsection.8.11.7}%
+\contentsline {chapter}{\numberline {9}Data Transformation and Data Mining}{78}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Data Transformation}{78}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Data Loading and Cleaning}{78}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Data Scaling}{78}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Sequence Creation}{78}{subsection.9.1.3}%
+\contentsline {section}{\numberline {9.2}Data Mining}{78}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}ARIMA Model}{79}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}LSTM Model}{79}{subsection.9.2.2}%
+\contentsline {section}{\numberline {9.3}Application to the Project}{79}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Hyperparameters}{79}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}ARIMA Hyperparameters}{79}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}LSTM Hyperparameters}{79}{subsection.9.4.2}%
+\contentsline {section}{\numberline {9.5}Input}{80}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Training}{80}{section.9.6}%
+\contentsline {subsection}{\numberline {9.6.1}ARIMA Training}{80}{subsection.9.6.1}%
+\contentsline {subsection}{\numberline {9.6.2}LSTM Training}{80}{subsection.9.6.2}%
+\contentsline {section}{\numberline {9.7}Interpretation}{80}{section.9.7}%
+\contentsline {subsection}{\numberline {9.7.1}ARIMA Forecasts}{80}{subsection.9.7.1}%
+\contentsline {subsection}{\numberline {9.7.2}LSTM Forecasts}{80}{subsection.9.7.2}%
+\contentsline {section}{\numberline {9.8}Output}{81}{section.9.8}%
+\contentsline {section}{\numberline {9.9}Visualization of Output}{81}{section.9.9}%
+\contentsline {subsection}{\numberline {9.9.1}Diagram-Visualization Of Output}{81}{subsection.9.9.1}%
+\contentsline {chapter}{\numberline {10}Survey Note: Detailed Analysis of Data Transformation and Data Mining Application}{83}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Data Transformation Analysis}{83}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Loading and Cleaning}{83}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Scaling and Sequence Creation}{83}{subsection.10.1.2}%
+\contentsline {section}{\numberline {10.2}Data Mining Analysis}{83}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Linear Pattern Extraction via ARIMA}{83}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Non-linear Dynamics with LSTM}{84}{subsection.10.2.2}%
+\contentsline {section}{\numberline {10.3}Application Overview}{84}{section.10.3}%
+\contentsline {chapter}{\numberline {11}Developer Documentation}{85}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Introduction}{85}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Development Idea and Objectives}{85}{section.11.2}%
+\contentsline {section}{\numberline {11.3}System Architecture and Flowcharts}{86}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Overall Pipeline Flowchart}{88}{subsection.11.3.1}%
+\contentsline {paragraph}{\nonumberline Start to Configuration Validation}{89}{paragraph*.51}%
+\contentsline {paragraph}{\nonumberline Data Loading and Validation}{89}{paragraph*.53}%
+\contentsline {paragraph}{\nonumberline Synthetic Data Generation as Fallback}{89}{paragraph*.55}%
+\contentsline {paragraph}{\nonumberline Model Selection and Training}{89}{paragraph*.57}%
+\contentsline {paragraph}{\nonumberline Result Saving and Visualization}{89}{paragraph*.59}%
+\contentsline {paragraph}{\nonumberline End of Pipeline}{90}{paragraph*.61}%
+\contentsline {subsection}{\numberline {11.3.2}ARIMA and LSTM Training Flowcharts with Explanations}{90}{subsection.11.3.2}%
+\contentsline {section}{\numberline {11.4}Notation and Terminology}{94}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Completeness of the Implementation}{95}{section.11.5}%
+\contentsline {paragraph}{\nonumberline Data Robustness}{95}{paragraph*.63}%
+\contentsline {paragraph}{\nonumberline Parameter Validation}{95}{paragraph*.65}%
+\contentsline {paragraph}{\nonumberline Modular Code Base}{95}{paragraph*.67}%
+\contentsline {paragraph}{\nonumberline Output Artifacts}{95}{paragraph*.69}%
+\contentsline {paragraph}{\nonumberline Logging and Error Handling}{96}{paragraph*.71}%
+\contentsline {paragraph}{\nonumberline Configurability}{96}{paragraph*.73}%
+\contentsline {section}{\numberline {11.6}Machine Learning Pipeline Details}{96}{section.11.6}%
+\contentsline {subsection}{\numberline {11.6.1}ML Pipeline Overview-Diagram}{99}{subsection.11.6.1}%
+\contentsline {section}{\numberline {11.7}Program Readability and Coding Practices}{100}{section.11.7}%
+\contentsline {subsection}{\numberline {11.7.1}Project Structure and Modularization Explained}{100}{subsection.11.7.1}%
+\contentsline {subsection}{\numberline {11.7.2}Why Modularization Matters (Simple Explanation)}{100}{subsection.11.7.2}%
+\contentsline {subsection}{\numberline {11.7.3}Visualizing the Project Structure}{101}{subsection.11.7.3}%
+\contentsline {subsection}{\numberline {11.7.4}Parameter Handling}{101}{subsection.11.7.4}%
+\contentsline {subsection}{\numberline {11.7.5}Error Handling and Messaging}{103}{subsection.11.7.5}%
+\contentsline {section}{\numberline {11.8}Future Work and Improvements}{104}{section.11.8}%
+\contentsline {subsection}{\numberline {11.8.1}Project File Structure: \texttt {hurricane\_predictor\_ready}}{105}{subsection.11.8.1}%
+\contentsline {chapter}{\numberline {12}Development to Deployment}{107}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Overview}{107}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Tools Used in Development to Deployment}{107}{subsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.1.2}Data Structure Files}{108}{subsection.12.1.2}%
+\contentsline {subsection}{\numberline {12.1.3}Data Flow and File Structure}{108}{subsection.12.1.3}%
+\contentsline {subsection}{\numberline {12.1.4}TikZ Diagram of Workflow}{109}{subsection.12.1.4}%
+\contentsline {subsection}{\numberline {12.1.5}Supported File Formats}{109}{subsection.12.1.5}%
+\contentsline {subsection}{\numberline {12.1.6}Python Code Snippets}{110}{subsection.12.1.6}%
+\contentsline {chapter}{\numberline {13}Evaluation and Reflection}{111}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Evaluation}{111}{section.13.1}%
+\contentsline {subsubsection}{\nonumberline Concept}{111}{subsubsection*.83}%
+\contentsline {subsubsection}{\nonumberline Application}{111}{subsubsection*.85}%
+\contentsline {subsubsection}{\nonumberline Results}{111}{subsubsection*.87}%
+\contentsline {subsection}{\numberline {13.1.1}Validation}{112}{subsection.13.1.1}%
+\contentsline {subsubsection}{\nonumberline General}{112}{subsubsection*.89}%
+\contentsline {subsubsection}{\nonumberline Validation Concepts}{112}{subsubsection*.91}%
+\contentsline {subsection}{\numberline {13.1.2}Conclusion}{112}{subsection.13.1.2}%
+\contentsline {subsubsection}{\nonumberline Summary and Self-Critical Reflection}{112}{subsubsection*.93}%
+\contentsline {subsubsection}{\nonumberline Unanswered Points}{112}{subsubsection*.95}%
+\contentsline {subsubsection}{\nonumberline Next Steps}{113}{subsubsection*.97}%
+\contentsline {chapter}{\numberline {14}Monitoring and Robustness}{114}{chapter.14}%
+\contentsline {subsection}{\numberline {14.0.1}Idea}{114}{subsection.14.0.1}%
+\contentsline {subsection}{\numberline {14.0.2}Alignment with PANKTI}{114}{subsection.14.0.2}%
+\contentsline {subsection}{\numberline {14.0.3}Monitoring Plan}{115}{subsection.14.0.3}%
+\contentsline {subsection}{\numberline {14.0.4}Getting New Data}{116}{subsection.14.0.4}%
+\contentsline {subsection}{\numberline {14.0.5}Evaluation Checks}{116}{subsection.14.0.5}%
+\contentsline {subsection}{\numberline {14.0.6}Code: Functions}{117}{subsection.14.0.6}%
+\contentsline {subsubsection}{\nonumberline Functions used}{118}{subsubsection*.101}%
+\contentsline {subsubsection}{\nonumberline Why are they being used?}{118}{subsubsection*.103}%
+\contentsline {subsection}{\numberline {14.0.7}Code: Test}{119}{subsection.14.0.7}%
+\contentsline {subsection}{\numberline {14.0.8}Privacy}{121}{subsection.14.0.8}%
+\contentsline {subsection}{\numberline {14.0.9}Robustness Features}{121}{subsection.14.0.9}%
+\contentsline {subsection}{\numberline {14.0.10}End-to-End User Process}{121}{subsection.14.0.10}%
+\contentsline {chapter}{\numberline {15}Deployment}{122}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Application Description}{122}{section.15.1}%
+\contentsline {subsection}{\numberline {15.1.1}Structure}{122}{subsection.15.1.1}%
+\contentsline {subsection}{\numberline {15.1.2}Idea}{123}{subsection.15.1.2}%
+\contentsline {subsection}{\numberline {15.1.3}Application Flow Chart}{124}{subsection.15.1.3}%
+\contentsline {subsection}{\numberline {15.1.4}Machine Learning Pipeline (Deployment View)}{124}{subsection.15.1.4}%
+\contentsline {subsection}{\numberline {15.1.5}Machine Learning Pipeline (Deployment View)}{126}{subsection.15.1.5}%
+\contentsline {section}{\numberline {15.2}Program Structure and Components}{127}{section.15.2}%
+\contentsline {subsection}{\numberline {15.2.1}Program Readability}{127}{subsection.15.2.1}%
+\contentsline {subsection}{\numberline {15.2.2}Structure and Modules}{127}{subsection.15.2.2}%
+\contentsline {subsection}{\numberline {15.2.3}Parameter Handling}{127}{subsection.15.2.3}%
+\contentsline {subsection}{\numberline {15.2.4}Error Handling}{129}{subsection.15.2.4}%
+\contentsline {subsection}{\numberline {15.2.5}Message Handling}{129}{subsection.15.2.5}%
+\contentsline {section}{\numberline {15.3}Nomenclature in Deployment}{131}{section.15.3}%
+\contentsline {subsection}{\numberline {15.3.1}Folder Names}{131}{subsection.15.3.1}%
+\contentsline {subsection}{\numberline {15.3.2}File Names}{131}{subsection.15.3.2}%
+\contentsline {subsection}{\numberline {15.3.3}Module and Function Names}{132}{subsection.15.3.3}%
+\contentsline {subsection}{\numberline {15.3.4}Key Variable Names}{132}{subsection.15.3.4}%
+\contentsline {chapter}{\numberline {16}Test For Software}{133}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Test Procedure}{133}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Test Items}{134}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Test Cases and Results}{134}{section.16.3}%
+\contentsline {section}{\numberline {16.4}Test Data}{135}{section.16.4}%
+\contentsline {section}{\numberline {16.5}Expected Results}{136}{section.16.5}%
+\contentsline {section}{\numberline {16.6}Reporting and Logging}{136}{section.16.6}%
+\contentsline {section}{\numberline {16.7}Roles and Responsibilities}{136}{section.16.7}%
+\contentsline {section}{\numberline {16.8}Schedule and Frequency}{137}{section.16.8}%
+\contentsline {section}{\numberline {16.9}Automation Guide}{137}{section.16.9}%
+\contentsline {subsection}{\numberline {16.9.1}Purpose of Automation}{137}{subsection.16.9.1}%
+\contentsline {subsection}{\numberline {16.9.2}Prerequisites}{137}{subsection.16.9.2}%
+\contentsline {subsection}{\numberline {16.9.3}Setup Instructions}{137}{subsection.16.9.3}%
+\contentsline {subsection}{\numberline {16.9.4}Running the Automated Tests}{138}{subsection.16.9.4}%
+\contentsline {subsection}{\numberline {16.9.5}Manual GUI Testing}{139}{subsection.16.9.5}%
+\contentsline {subsection}{\numberline {16.9.6}Recommended Continuous Integration}{139}{subsection.16.9.6}%
+\contentsline {subsection}{\numberline {16.9.7}Automation Flowchart}{139}{subsection.16.9.7}%
+\contentsline {chapter}{\numberline {17}Technical Foundations}{141}{chapter.17}%
+\contentsline {section}{\numberline {17.1}ARIMA Model Formulation}{141}{section.17.1}%
+\contentsline {section}{\numberline {17.2}LSTM Network Formulation}{141}{section.17.2}%
+\contentsline {section}{\numberline {17.3}Forecasting Pipeline}{142}{section.17.3}%
+\contentsline {section}{\numberline {17.4}Evaluation Metrics}{142}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}Root Mean Square Error (RMSE)}{142}{subsection.17.4.1}%
+\contentsline {subsection}{\numberline {17.4.2}Mean Absolute Error (MAE)}{142}{subsection.17.4.2}%
+\contentsline {subsection}{\numberline {17.4.3}Mean Absolute Percentage Error (MAPE)}{143}{subsection.17.4.3}%
+\contentsline {subsection}{\numberline {17.4.4}Coefficient of Determination ($R^2$ Score)}{143}{subsection.17.4.4}%
+\contentsline {section}{\numberline {17.5}Deployment Error Margin}{143}{section.17.5}%
+\contentsline {subsection}{\numberline {17.5.1}Handling Missing Data: Forward-Backward Interpolation}{143}{subsection.17.5.1}%
+\contentsline {chapter}{\numberline {18}Bill of Materials}{144}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Material List and Hardware Bill of Materials}{144}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Software Requirements and Python Libraries}{146}{section.18.2}%
+\contentsline {section}{\numberline {18.3}requirements.txt}{147}{section.18.3}%
+\contentsline {section}{\numberline {18.4}Explanation of Key Libraries}{147}{section.18.4}%
+\contentsline {chapter}{\numberline {19}Given documentation}{148}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Use of Best Practice Document}{148}{section.19.1}%
+\contentsline {section}{\numberline {19.2}Same Notation}{148}{section.19.2}%
+\contentsline {section}{\numberline {19.3}Supplements}{148}{section.19.3}%
+\contentsline {chapter}{\numberline {20}Improvements}{149}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Minor Changes}{149}{section.20.1}%
+\contentsline {subsection}{\numberline {20.1.1}List of Minor Changes}{149}{subsection.20.1.1}%
+\contentsline {section}{\numberline {20.2}Major Improvements}{149}{section.20.2}%
+\contentsline {subsection}{\numberline {20.2.1}Documentation of the Major Improvements}{149}{subsection.20.2.1}%
+\contentsline {chapter}{ Bibliography}{150}{Item.86}%

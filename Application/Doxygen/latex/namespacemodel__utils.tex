@@ -1,0 +1,102 @@
+\doxysection{model\+\_\+utils Namespace Reference}
+\hypertarget{namespacemodel__utils}{}\label{namespacemodel__utils}\index{model\_utils@{model\_utils}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a1fdedb53340f5beb5590b518c9c04fd8}{fix\+\_\+and\+\_\+parse\+\_\+dates}} (date\+\_\+series)
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a6e5ae03aa8ae8b5b1f150c17542c9542}{load\+\_\+storm\+\_\+data}} (file\+\_\+path=\textquotesingle{}data/storms.\+csv\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespacemodel__utils_afb4d0b0d6d75b4527dd0b41b36140432}{save\+\_\+arima\+\_\+model}} (model, path=\textquotesingle{}models/arima\+\_\+model.\+pkl\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a76abe1924c96a8ab64d674d88c261fe6}{save\+\_\+lstm\+\_\+model}} (model, scaler, model\+\_\+path=\textquotesingle{}models/lstm\+\_\+model.\+h5\textquotesingle{}, scaler\+\_\+path=\textquotesingle{}models/lstm\+\_\+scaler.\+pkl\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespacemodel__utils_ae4410ada9f4522f933dba7a9eed179a6}{load\+\_\+lstm\+\_\+model}} (model\+\_\+path=\textquotesingle{}models/lstm\+\_\+model.\+h5\textquotesingle{}, scaler\+\_\+path=\textquotesingle{}models/lstm\+\_\+scaler.\+pkl\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a2bfbf62aa4fce0e4f33162b8734edd54}{load\+\_\+config}} (config\+\_\+path=\mbox{\hyperlink{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6}{CONFIG\+\_\+\+PATH}})
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a3f5c0e5631fb13e79e596b52bafdf56b}{save\+\_\+config}} (config, config\+\_\+path=\mbox{\hyperlink{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6}{CONFIG\+\_\+\+PATH}}, username=None)
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a55bf7faf84ebb6a39281cc21551d5c70}{train\+\_\+arima\+\_\+model}} (data, order=(2, 1, 2))
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a02533ed68898de7f4f458eb1ac595f90}{log\+\_\+forecast\+\_\+metrics}} (model\+\_\+name, actual, predicted)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a52774970fa06aea1dbfff8f534d179fc}{SCRIPT\+\_\+\+DIR}} = os.\+path.\+dirname(os.\+path.\+abspath(\+\_\+\+\_\+file\+\_\+\+\_\+))
+\item 
+\mbox{\hyperlink{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6}{CONFIG\+\_\+\+PATH}} = os.\+path.\+join(\mbox{\hyperlink{namespacemodel__utils_a52774970fa06aea1dbfff8f534d179fc}{SCRIPT\+\_\+\+DIR}}, \textquotesingle{}config2.\+json\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemodel__utils_a1fdedb53340f5beb5590b518c9c04fd8}\index{model\_utils@{model\_utils}!fix\_and\_parse\_dates@{fix\_and\_parse\_dates}}
+\index{fix\_and\_parse\_dates@{fix\_and\_parse\_dates}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{fix\_and\_parse\_dates()}{fix\_and\_parse\_dates()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a1fdedb53340f5beb5590b518c9c04fd8} 
+model\+\_\+utils.\+fix\+\_\+and\+\_\+parse\+\_\+dates (\begin{DoxyParamCaption}\item[{}]{date\+\_\+series}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_a2bfbf62aa4fce0e4f33162b8734edd54}\index{model\_utils@{model\_utils}!load\_config@{load\_config}}
+\index{load\_config@{load\_config}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{load\_config()}{load\_config()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a2bfbf62aa4fce0e4f33162b8734edd54} 
+model\+\_\+utils.\+load\+\_\+config (\begin{DoxyParamCaption}\item[{}]{config\+\_\+path}{ = {\ttfamily \mbox{\hyperlink{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6}{CONFIG\+\_\+\+PATH}}}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_ae4410ada9f4522f933dba7a9eed179a6}\index{model\_utils@{model\_utils}!load\_lstm\_model@{load\_lstm\_model}}
+\index{load\_lstm\_model@{load\_lstm\_model}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{load\_lstm\_model()}{load\_lstm\_model()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_ae4410ada9f4522f933dba7a9eed179a6} 
+model\+\_\+utils.\+load\+\_\+lstm\+\_\+model (\begin{DoxyParamCaption}\item[{}]{model\+\_\+path}{ = {\ttfamily \textquotesingle{}models/lstm\+\_\+model.h5\textquotesingle{}}, }\item[{}]{scaler\+\_\+path}{ = {\ttfamily \textquotesingle{}models/lstm\+\_\+scaler.pkl\textquotesingle{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_a6e5ae03aa8ae8b5b1f150c17542c9542}\index{model\_utils@{model\_utils}!load\_storm\_data@{load\_storm\_data}}
+\index{load\_storm\_data@{load\_storm\_data}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{load\_storm\_data()}{load\_storm\_data()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a6e5ae03aa8ae8b5b1f150c17542c9542} 
+model\+\_\+utils.\+load\+\_\+storm\+\_\+data (\begin{DoxyParamCaption}\item[{}]{file\+\_\+path}{ = {\ttfamily \textquotesingle{}data/storms.csv\textquotesingle{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_a02533ed68898de7f4f458eb1ac595f90}\index{model\_utils@{model\_utils}!log\_forecast\_metrics@{log\_forecast\_metrics}}
+\index{log\_forecast\_metrics@{log\_forecast\_metrics}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{log\_forecast\_metrics()}{log\_forecast\_metrics()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a02533ed68898de7f4f458eb1ac595f90} 
+model\+\_\+utils.\+log\+\_\+forecast\+\_\+metrics (\begin{DoxyParamCaption}\item[{}]{model\+\_\+name}{, }\item[{}]{actual}{, }\item[{}]{predicted}{}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_afb4d0b0d6d75b4527dd0b41b36140432}\index{model\_utils@{model\_utils}!save\_arima\_model@{save\_arima\_model}}
+\index{save\_arima\_model@{save\_arima\_model}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{save\_arima\_model()}{save\_arima\_model()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_afb4d0b0d6d75b4527dd0b41b36140432} 
+model\+\_\+utils.\+save\+\_\+arima\+\_\+model (\begin{DoxyParamCaption}\item[{}]{model}{, }\item[{}]{path}{ = {\ttfamily \textquotesingle{}models/arima\+\_\+model.pkl\textquotesingle{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_a3f5c0e5631fb13e79e596b52bafdf56b}\index{model\_utils@{model\_utils}!save\_config@{save\_config}}
+\index{save\_config@{save\_config}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{save\_config()}{save\_config()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a3f5c0e5631fb13e79e596b52bafdf56b} 
+model\+\_\+utils.\+save\+\_\+config (\begin{DoxyParamCaption}\item[{}]{config}{, }\item[{}]{config\+\_\+path}{ = {\ttfamily \mbox{\hyperlink{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6}{CONFIG\+\_\+\+PATH}}}, }\item[{}]{username}{ = {\ttfamily None}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_a76abe1924c96a8ab64d674d88c261fe6}\index{model\_utils@{model\_utils}!save\_lstm\_model@{save\_lstm\_model}}
+\index{save\_lstm\_model@{save\_lstm\_model}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{save\_lstm\_model()}{save\_lstm\_model()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a76abe1924c96a8ab64d674d88c261fe6} 
+model\+\_\+utils.\+save\+\_\+lstm\+\_\+model (\begin{DoxyParamCaption}\item[{}]{model}{, }\item[{}]{scaler}{, }\item[{}]{model\+\_\+path}{ = {\ttfamily \textquotesingle{}models/lstm\+\_\+model.h5\textquotesingle{}}, }\item[{}]{scaler\+\_\+path}{ = {\ttfamily \textquotesingle{}models/lstm\+\_\+scaler.pkl\textquotesingle{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{namespacemodel__utils_a55bf7faf84ebb6a39281cc21551d5c70}\index{model\_utils@{model\_utils}!train\_arima\_model@{train\_arima\_model}}
+\index{train\_arima\_model@{train\_arima\_model}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{train\_arima\_model()}{train\_arima\_model()}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a55bf7faf84ebb6a39281cc21551d5c70} 
+model\+\_\+utils.\+train\+\_\+arima\+\_\+model (\begin{DoxyParamCaption}\item[{}]{data}{, }\item[{}]{order}{ = {\ttfamily (2,~1,~2)}}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6}\index{model\_utils@{model\_utils}!CONFIG\_PATH@{CONFIG\_PATH}}
+\index{CONFIG\_PATH@{CONFIG\_PATH}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_PATH}{CONFIG\_PATH}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a77482889545061a8e345aa9bf9f023f6} 
+model\+\_\+utils.\+CONFIG\+\_\+\+PATH = os.\+path.\+join(\mbox{\hyperlink{namespacemodel__utils_a52774970fa06aea1dbfff8f534d179fc}{SCRIPT\+\_\+\+DIR}}, \textquotesingle{}config2.\+json\textquotesingle{})}
+
+\Hypertarget{namespacemodel__utils_a52774970fa06aea1dbfff8f534d179fc}\index{model\_utils@{model\_utils}!SCRIPT\_DIR@{SCRIPT\_DIR}}
+\index{SCRIPT\_DIR@{SCRIPT\_DIR}!model\_utils@{model\_utils}}
+\doxysubsubsection{\texorpdfstring{SCRIPT\_DIR}{SCRIPT\_DIR}}
+{\footnotesize\ttfamily \label{namespacemodel__utils_a52774970fa06aea1dbfff8f534d179fc} 
+model\+\_\+utils.\+SCRIPT\+\_\+\+DIR = os.\+path.\+dirname(os.\+path.\+abspath(\+\_\+\+\_\+file\+\_\+\+\_\+))}
+

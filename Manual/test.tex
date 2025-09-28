@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Hurricane Intensity Prediction using ARIMA Model}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\tableofcontents
+	
+	\section{Introduction}
+	\subsection{Background on hurricane prediction}
+	Hurricanes are among the most devastating natural disasters, causing significant economic and social impacts. Accurate prediction of hurricane intensity is crucial for effective disaster preparedness and response.
+	
+	\subsection{Importance of accurate intensity forecasting}
+	Accurate intensity forecasts enable timely evacuation orders, resource allocation, and infrastructure protection measures. Improving these forecasts can significantly reduce damage and save lives.
+	
+	\subsection{Overview of ARIMA modeling approach}
+	ARIMA models are widely used for time series forecasting due to their ability to capture temporal dependencies in data. This project employs ARIMA to predict hurricane intensity based on historical storm data.
+	
+	\section{Data Overview}
+	\subsection{Dataset description and source}
+	The dataset used in this project contains historical data of Atlantic hurricanes from 1975 to 2021, including wind speed, pressure, location, and time information. The data was obtained from [Kaggle Dataset](https://www.kaggle.com/datasets/utkarshx27/noaa-atlantic-hurricane-database).
+	
+	\subsection{Key variables and their significance}
+	\begin{itemize}
+		\item \textbf{Wind}: Maximum sustained wind speed in knots (target variable).
+		\item \textbf{Pressure}: Air pressure at the storm's center in millibars.
+		\item \textbf{Lat/Long}: Geographic coordinates of the storm.
+		\item \textbf{Datetime}: Combined year, month, day, and hour for time series analysis.
+	\end{itemize}
+	
+	\subsection{Data quality assessment}
+	The dataset contains missing values in several columns. Columns with more than 90\% missing values, such as 'category' and 'hurricane\_force\_diameter', were removed. Remaining missing values in 'tropicalstorm\_force\_diameter' were filled with 0.
+	
+	\section{Methodology}
+	\subsection{ARIMA model explanation}
+	ARIMA (Autoregressive Integrated Moving Average) models are used to forecast time series data by capturing its autocorrelations. The model is denoted as ARIMA(p, d, q), where:
+	\begin{itemize}
+		\item p: Order of autoregression (AR)
+		\item d: Degree of differencing (I)
+		\item q: Order of moving average (MA)
+	\end{itemize}
+	
+	\subsection{Data preprocessing steps}
+	\begin{enumerate}
+		\item Remove irrelevant columns: 'Unnamed: 0', 'category', 'hurricane\_force\_diameter'.
+		\item Fill missing values: Replace NaN values in 'tropicalstorm\_force\_diameter' with 0.
+		\item Create datetime column: Combine year, month, day, and hour into a datetime object.
+		\item Data Scaling: Scale features to a uniform range
+	\end{enumerate}
+	
+	\subsection{Model parameter tuning}
+	The parameters (p, d, q) of the ARIMA model were tuned using grid search and AIC (Akaike Information Criterion) to find the best-fitting model.
+	
+	\section{Exploratory Data Analysis}
+	\subsection{Time series decomposition}
+	Time series decomposition was performed to separate the data into trend, seasonality, and residual components.
+	
+	\subsection{Pressure-wind correlation analysis}
+	Correlation analysis was conducted to understand the relationship between air pressure and wind speed, which is critical for hurricane intensity prediction.
+	
+	\subsection{Temporal patterns in hurricane development}
+	Analysis of temporal patterns in hurricane development was performed to identify recurring trends and cycles in storm behavior.
+	
+	\section{Model Development}
+	\subsection{ARIMA implementation}
+	The ARIMA model was implemented using Python's statsmodels library.
+	
+	\subsection{Parameter optimization}
+	The ARIMA model parameters were optimized using techniques such as grid search to minimize the AIC.
+	
+	\subsection{Validation using walk-forward testing}
+	Walk-forward testing was used to validate the model's performance on unseen data.
+	
+	\section{Results and Evaluation}
+	\subsection{Model performance metrics (MAE/RMSE)}
+	The model performance was evaluated using Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE).
+	
+	\subsection{Residual analysis}
+	Residual analysis was performed to check the model's assumptions and identify potential areas for improvement.
+	
+	\subsection{Comparison with baseline predictions}
+	The model's performance was compared with baseline predictions to assess its effectiveness.
+	
+	\section{Discussion}
+	\subsection{Interpretation of results}
+	The results were interpreted in terms of the model's ability to predict hurricane intensity based on historical data.
+	
+	\subsection{Impact analysis of pressure changes on intensity}
+	The impact of pressure changes on hurricane intensity was analyzed to understand the key drivers of storm intensification.
+	
+	\subsection{Early warning threshold identification}
+	Early warning thresholds were identified to provide timely alerts for potential high-intensity hurricanes.
+	
+	\section{Conclusion and Future Work}
+	\subsection{Summary of findings}
+	The project successfully developed an ARIMA model for predicting hurricane intensity.
+	
+	\subsection{Limitations of the current approach}
+	Limitations include the reliance on historical data and the model's inability to account for unforeseen environmental factors.
+	
+	\subsection{Potential improvements and extensions}
+	Potential improvements include incorporating additional environmental variables, using machine learning techniques, and expanding the dataset.
+	
+	\begin{thebibliography}{9}
+		\bibitem{BoxJenkinsReinselLjung2015}
+		Box, G.E.P., Jenkins, G.M., Reinsel, G.C., and Ljung, G.M., \textit{Time Series Analysis: Forecasting and Control}. 5th ed. Hoboken, NJ: Wiley, 2015.
+		
+		\bibitem{Emanuel1987}
+		Emanuel, K.A., "The dependence of hurricane intensity on climate," \textit{Nature}, vol. 326, no. 6112, 1987, pp. 483–485.
+		
+		\bibitem{ElsnerKossinJagger2008}
+		Elsner, J.B., Kossin, J.P., and Jagger, T.H., "The increasing intensity of the strongest tropical cyclones," \textit{Nature}, vol. 455, no. 7209, 2008, pp. 92–95.
+		
+		\bibitem{HyndmanAthanasopoulos2021}
+		Hyndman, R.J., and Athanasopoulos, G., \textit{Forecasting: Principles and Practice}. 3rd ed. Melbourne: OTexts, 2021.
+		
+		\bibitem{NOAA}
+		NOAA (National Oceanic and Atmospheric Administration), "Hurricane Research Division: Frequently Asked Questions." [Online]. Available at: www.aoml.noaa.gov/hrd-faq/ (Accessed: April 7, 2025).
+		
+		\bibitem{Zhang2003}
+		Zhang, G.P., "Time series forecasting using a hybrid ARIMA and neural network model," \textit{Neurocomputing}, vol. 50, no. C, 2003, pp. 159–175.
+	\end{thebibliography}
+	
+\end{document}

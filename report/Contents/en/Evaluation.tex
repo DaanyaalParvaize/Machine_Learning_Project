@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Kreetika Mohanta$
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: BA25-02-Time-Series/report/Contents/en/Evaluation.tex
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Evaluation and Reflection}
+
+\section{Evaluation}
+
+\subsubsection{Concept}
+This project explores the predictive capabilities of two prominent time series forecasting models: \textbf{ARIMA}, a statistical approach well-suited for linear and stationary time series data, and \textbf{LSTM}, a recurrent neural network architecture that handles non-linear patterns and long-range dependencies. Research such as \cite{li2017lstm} demonstrates the effectiveness of LSTM models in capturing rapid intensification in tropical cyclones, which justifies its inclusion in this comparative framework.
+
+\subsubsection{Application}
+The architecture separates development from deployment:
+\begin{itemize}
+	\item \texttt{developer.py}: Allows developers to tune model settings (e.g., ARIMA order, LSTM architecture).
+	\item \texttt{data\_preprocessing.py}: Cleans the input dataset, handles missing values, and standardizes features.
+	\item \texttt{ARIMA\_model.py} \& \texttt{LSTM\_model.py}: Implement training and prediction functions.
+	\item \texttt{app.py}: Provides a user-friendly Streamlit interface for forecast visualization and comparison.
+\end{itemize}
+
+\subsubsection{Results}
+Using the NOAA hurricane dataset (1975–2021), we observed that:
+\begin{itemize}
+	\item \textbf{ARIMA} gave competitive short-term predictions with minimal training overhead.
+	\item \textbf{LSTM} provided more stable long-term predictions, especially during volatile periods, consistent with the advantages highlighted in \cite{li2017lstm}.
+	\item Both models outperformed a naïve baseline (last-known-value) by at least 30\% RMSE improvement.
+\end{itemize}
+
+\subsection{Validation}
+
+\subsubsection{General}
+The system underwent rigorous testing, including:
+\begin{itemize}
+	\item \textbf{Unit testing} with \texttt{pytest} for each core module.
+	\item \textbf{Walk-forward validation} to mimic realistic time series forecasting scenarios.
+	\item \textbf{Benchmarking} against persistence models to validate added predictive value.
+\end{itemize}
+
+\subsubsection{Validation Concepts}
+\begin{enumerate}
+	\item \textbf{Walk-forward cross-validation} was used to train on rolling windows and forecast future values.
+	\item \textbf{Error metrics} (RMSE and MAE) provided quantitative evaluation.
+	\item \textbf{Visual inspection} using actual vs. predicted plots helped detect overfitting or bias.
+\end{enumerate}
+
+\subsection{Conclusion}
+
+\subsubsection{Summary and Self-Critical Reflection}
+While the dual-model approach proved valuable, there were some limitations:
+\begin{itemize}
+	\item LSTM models required careful tuning of architecture and training epochs.
+	\item The current system supports only offline data uploads, not live data ingestion.
+	\item Model generalization to non-Atlantic datasets was not evaluated.
+\end{itemize}
+
+\subsubsection{Unanswered Points}
+\begin{itemize}
+	\item Would a hybrid ensemble (e.g., ARIMA + LSTM) outperform both standalone models?
+	\item How robust are the models under real-time streaming or sensor data?
+	\item Can this tool be adapted for multi-variable forecasting (e.g., pressure, rainfall)?
+\end{itemize}
+
+\subsubsection{Next Steps}
+\begin{itemize}
+	\item Connect to real-time NOAA API for live hurricane data.
+	\item Add interpretability layers for LSTM (e.g., attention mechanisms).
+	\item Include user-controlled hyperparameter tuning in the interface.
+\end{itemize}

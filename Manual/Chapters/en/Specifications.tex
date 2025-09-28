@@ -1,0 +1,132 @@
+%%%%%%%%%%%%
+%
+% $Autor: Wings $
+% $Datum: 2019-03-05 08:03:15Z $
+% $Pfad: Specifications.tex $
+% $Version: 4250 $
+% !TeX spellcheck = en_GB/de_DE
+% !TeX encoding = utf8
+% !TeX root = manual 
+% !TeX TXS-program:bibliography = txs:///biber
+%
+%%%%%%%%%%%%
+
+\chapter{Introduction}
+
+\section{Project Overview}
+This project uses the NOAA Atlantic Hurricane Dataset as the main source of training data to build predictive models for hurricane intensity forecasting. Leveraging time series modeling techniques such as ARIMA and LSTM, the project aims to provide accurate forecasts based on historical hurricane data. The implementation is designed for ease of use and can be run entirely on your local machine, with Streamlit serving as the cloud-based interface for visualization and interaction. 
+
+
+\section{Dataset Specification}
+\begin{itemize}
+\item \textbf{Name}: NOAA Atlantic Hurricane Dataset (HURDAT2)
+\item \textbf{Size}: Approximately 1.4 MB (varies with updates; covers 1851–present)
+\item \textbf{Format}: Comma-delimited text file (CSV-like structure)
+\item \textbf{Content}:
+\begin{itemize}
+	\item Storm metadata (name, year, identifier)
+	\item Six-hourly records of each storm, including:
+	\begin{itemize}
+		\item Date and UTC time
+		\item Storm status (e.g., Tropical Depression, Storm, Hurricane, etc.)
+		\item Latitude and longitude
+		\item Maximum sustained wind speed (knots)
+		\item Minimum central pressure (millibars)
+		\item Wind radii for 34, 50, and 64 knot winds in each quadrant
+		\item Radius of maximum wind (recent years)
+		\item Special markers for landfall and intensity peaks
+	\end{itemize}
+\end{itemize}
+\item \textbf{Temporal Resolution}: Six-hourly intervals (00, 06, 12, 18 UTC), with additional records for landfall or intensity changes
+\item \textbf{Coverage}: North Atlantic basin, from 1851 to present (updated annually)
+\item \textbf{Source}: Maintained by the National Hurricane Center (NHC), NOAA
+\item \textbf{Note}: This dataset is used exclusively for "ONLY" training the prediction models.
+\end{itemize}
+
+
+\section{Model Specification}
+\begin{itemize}
+	\item \textbf{ARIMA (AutoRegressive Integrated Moving Average)}: 
+	\begin{itemize}
+		\item Suitable for univariate time series forecasting.
+		\item Handles seasonality and trends.
+	\end{itemize}
+	
+	\item \textbf{LSTM (Long Short-Term Memory Networks)}:
+	\begin{itemize}
+		\item A type of recurrent neural network (RNN) for sequence prediction problems.
+		\item Effective for capturing long-term dependencies in time series data.
+	\end{itemize}
+\end{itemize}
+\clearpage
+
+\section{Software and Tools}
+\begin{itemize}
+	\item \textbf{Local Machine}: Primary environment for running the project.
+	\item \textbf{Python Version}: 3.9 (specifically required for running TensorFlow)
+	\item \textbf{Libraries Used}:
+	\begin{itemize}
+		\item \texttt{pandas} for efficient data manipulation and handling of tabular data.
+		\item \texttt{numpy} for high-performance numerical computations and array operations.
+		\item \texttt{matplotlib} for static data visualization and plotting.
+		\item \texttt{scikit-learn} for data preprocessing, feature scaling, and evaluation of machine learning models.
+		\item \texttt{tensorflow} for building, training, and evaluating LSTM-based deep learning models.
+		\item \texttt{keras} as a high-level API for simplifying deep learning model development with TensorFlow backend.
+		\item \texttt{statsmodels} (v0.13.5) for time series modeling using ARIMA and statistical analysis.
+		\item \texttt{streamlit} for developing an interactive and user-friendly web-based interface.
+		\item \texttt{plotly} for interactive and dynamic visualizations.
+		\item \texttt{joblib} for model serialization and efficient object persistence.
+		\item \texttt{requests} for making HTTP requests, useful for external data integration.
+	\end{itemize}
+\end{itemize}
+
+\section{Hardware and System Requirements}
+
+This project is lightweight and runs smoothly on basic modern hardware. Here's what you need to set it up and run it comfortably—even at home or school.
+
+\begin{itemize}
+	\item \textbf{Computer or Laptop:} Any standard PC or laptop, preferably less than 7 years old.
+	\item \textbf{Mouse and Keyboard:} For navigating and typing.
+	\item \textbf{Monitor/Screen:} Minimum resolution 1024×768.
+	\item \textbf{Processor:} At least a dual-core CPU (Intel or AMD).
+	\item \textbf{RAM:} Minimum 4 GB (8 GB recommended).
+	\item \textbf{Disk Space:} Approximately 20–100 MB needed for dataset, project files, and temporary files.
+	\item \textbf{Operating System:} Windows 10/11, macOS, or Linux.
+	\item \textbf{Internet Access:} Required for downloading dependencies and running the Streamlit app (e.g., connect to a WiFi like \texttt{HomeWiFi123}).
+	\item \textbf{Browser:} Chrome, Firefox, Edge, or Safari to view results.
+	\item \textbf{Python:} Version 3.7 or above. Python 3.8 or 3.9 is ideal for compatibility.
+	\item \textbf{Development Tools:} Jupyter Notebook or JupyterLab, and Streamlit installed.
+	\item \textbf{Optional – GPU:} Helps speed up model training, but not mandatory.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[node distance=1.5cm and 2.5cm, every node/.style={font=\small}]
+		\tikzstyle{device} = [rectangle, draw=blue!60, fill=blue!10, rounded corners, minimum width=3cm, minimum height=1cm, text centered, text width=3cm]
+		
+		\node (comp) [device] {Computer/Laptop};
+		\node (monitor) [device, above left=of comp] {Monitor/Screen};
+		\node (mouse) [device, below left=of comp] {Mouse};
+		\node (keyboard) [device, below right=of comp] {Keyboard};
+		\node (internet) [device, right=of comp] {Internet (WiFi)};
+		\node (storage) [device, below=of comp] {Storage (20–100 MB)};
+		
+		\draw[->, thick] (monitor) -- (comp);
+		\draw[->, thick] (mouse) -- (comp);
+		\draw[->, thick] (keyboard) -- (comp);
+		\draw[<->, thick] (internet) -- (comp);
+		\draw[->, thick] (storage) -- (comp);
+		
+		\node[align=center, font=\bfseries, above=1.5cm of comp] {Basic Hardware Setup};
+	\end{tikzpicture}
+	\caption{Hardware setup needed for running the hurricane prediction project.}
+\end{figure}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+\doxysection{datamining.\+py File Reference}
+\hypertarget{datamining_8py}{}\label{datamining_8py}\index{datamining.py@{datamining.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacedatamining}{datamining}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacedatamining_ac4bfdc9441cabe250a68a06e6eabafc0}{datamining.\+forecast\+\_\+arima}} (data, order=(2, 1, 2), steps=5)
+\begin{DoxyCompactList}\small\item\em Forecast future wind speeds using an ARIMA model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacedatamining_a70575dc6376358f54c98704506850920}{datamining.\+forecast\+\_\+lstm}} (data, model\+\_\+path=\textquotesingle{}models/lstm\+\_\+model.\+h5\textquotesingle{}, scaler\+\_\+path=\textquotesingle{}models/lstm\+\_\+scaler.\+pkl\textquotesingle{}, steps=5, seq\+\_\+len=10)
+\begin{DoxyCompactList}\small\item\em Forecast future wind speeds using a pre-\/trained LSTM model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacedatamining_a7abfb39966ca9f92f8468d0947940307}{datamining.\+dates}} = pd.\+date\+\_\+range(start=\textquotesingle{}2023-\/01-\/01\textquotesingle{}, periods=20)
+\begin{DoxyCompactList}\small\item\em Generates a synthetic dataset of dates and wind speeds. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{namespacedatamining_add8566e2cc907f69394184e2c2d19145}{datamining.\+wind\+\_\+speeds}} = \mbox{[}45, 48, 52, 50, 55, 60, 58, 62, 65, 70, 68, 66, 64, 60, 58, 55, 50, 48, 45, 42\mbox{]}
+\item 
+\mbox{\hyperlink{namespacedatamining_ae9ee227b611c66158cc392204399e7d6}{datamining.\+df}} = pd.\+Data\+Frame(\{\textquotesingle{}date\textquotesingle{}\+: \mbox{\hyperlink{namespacedatamining_a7abfb39966ca9f92f8468d0947940307}{dates}}, \textquotesingle{}wind\+\_\+speed\textquotesingle{}\+: \mbox{\hyperlink{namespacedatamining_add8566e2cc907f69394184e2c2d19145}{wind\+\_\+speeds}}\})
+\item 
+\mbox{\hyperlink{namespacedatamining_a1d0478295bfcfe52fbc08e901c5d3cb0}{datamining.\+arima\+\_\+results}} = \mbox{\hyperlink{namespacedatamining_ac4bfdc9441cabe250a68a06e6eabafc0}{forecast\+\_\+arima}}(\mbox{\hyperlink{namespacedatamining_ae9ee227b611c66158cc392204399e7d6}{df}})
+\item 
+\mbox{\hyperlink{namespacedatamining_a4c610eb4b06ed05b59783e6ea120c38f}{datamining.\+lstm\+\_\+results}} = \mbox{\hyperlink{namespacedatamining_a70575dc6376358f54c98704506850920}{forecast\+\_\+lstm}}(\mbox{\hyperlink{namespacedatamining_ae9ee227b611c66158cc392204399e7d6}{df}})
+\item 
+\mbox{\hyperlink{namespacedatamining_ae399e73dd67b311de32e54741e38be04}{datamining.\+figsize}}
+\begin{DoxyCompactList}\small\item\em Visualizes historical wind speeds and forecasts from ARIMA and LSTM. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacedatamining_a8e8f07e3363cf7553133736de1f61f17}{datamining.\+label}}
+\item 
+\mbox{\hyperlink{namespacedatamining_a125d294ab834753b229b78afca43c05a}{datamining.\+marker}}
+\item 
+\mbox{\hyperlink{namespacedatamining_a4e0ae67d62bc6de7904dfb1f375b29f2}{datamining.\+rotation}}
+\end{DoxyCompactItemize}

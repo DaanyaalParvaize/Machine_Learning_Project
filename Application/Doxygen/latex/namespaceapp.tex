@@ -1,0 +1,392 @@
+\doxysection{app Namespace Reference}
+\hypertarget{namespaceapp}{}\label{namespaceapp}\index{app@{app}}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceapp_a2c5b508829b4995a003ebbea7efab85e}{page\+\_\+title}}
+\item 
+\mbox{\hyperlink{namespaceapp_adcd4161b2b197e0cf698a7ae8ca84488}{page\+\_\+icon}}
+\item 
+\mbox{\hyperlink{namespaceapp_a32ab50610df58ba90f40d85d72ba822d}{layout}}
+\item 
+\mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}} = load\+\_\+config()
+\item 
+\mbox{\hyperlink{namespaceapp_a4a922ffcacf9f0c524d858cafd3aa38e}{model\+\_\+type}} = \mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}}\mbox{[}"{}model"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceapp_a97bdb13d7957840ceca71b0a885928b1}{exist\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7}{uploaded\+\_\+file}} = st.\+file\+\_\+uploader("{}📄 Upload your CSV file"{}, type=\mbox{[}"{}csv"{}\mbox{]})
+\item 
+\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}} = st.\+slider("{}⏱️ Forecast steps"{}, 1, 30, 7)
+\item 
+\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}} = pd.\+read\+\_\+csv(\mbox{\hyperlink{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7}{uploaded\+\_\+file}}, na\+\_\+values=\mbox{[}"{}NA"{}, "{}N/A"{}, "{}"{}\mbox{]})
+\item 
+\mbox{\hyperlink{namespaceapp_aaa4be6bb1710f8efef80b4ecd281826c}{wind\+\_\+col}} = None
+\item 
+\mbox{\hyperlink{namespaceapp_aed9590489516c13cffd4827d6df765ae}{errors}}
+\item 
+\mbox{\hyperlink{namespaceapp_af3e33e0be9d8f0c4fcdf069a3da2c99b}{missing\+\_\+count}} = \mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}.isna().sum()
+\item 
+\mbox{\hyperlink{namespaceapp_aebc9d5076481742ae3c73867c496ab14}{z\+\_\+scores}} = np.\+abs(stats.\+zscore(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}))
+\item 
+int \mbox{\hyperlink{namespaceapp_ac3e1512aec6b216a78e16f89e8d96560}{outliers}} = \mbox{\hyperlink{namespaceapp_aebc9d5076481742ae3c73867c496ab14}{z\+\_\+scores}} $>$ 3
+\item 
+int \mbox{\hyperlink{namespaceapp_a18ff90b34087c07f0d5df5f3112ea655}{num\+\_\+outliers}} = outliers.\+sum()
+\item 
+\mbox{\hyperlink{namespaceapp_a98e7f0a16b6a3c5f8c443516bceb489a}{date\+\_\+col}} = None
+\item 
+\mbox{\hyperlink{namespaceapp_a4185a5493fde2796d40f92dcb818b650}{fig\+\_\+hist}}
+\item 
+\mbox{\hyperlink{namespaceapp_a725ef8c77d5ee9193fc3c16969e6f7a3}{ax\+\_\+hist}}
+\item 
+\mbox{\hyperlink{namespaceapp_ab9bdd78e8a7605f82fdddf41bd56499a}{figsize}}
+\item 
+\mbox{\hyperlink{namespaceapp_a61d300bbfa7ecfc1ea9e7338c605e97a}{label}}
+\item 
+\mbox{\hyperlink{namespaceapp_ad0cf223146febd3cb70414b0f7aa039f}{locator}} = Auto\+Date\+Locator()
+\item 
+\mbox{\hyperlink{namespaceapp_ac841856531f5b80af0013a45534ec7ed}{formatter}} = Date\+Formatter(\textquotesingle{}\%Y-\/\%m-\/\%d\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespaceapp_a012a73e5a9bf74c3e6cb6fd62688291b}{rotation}}
+\item 
+\mbox{\hyperlink{namespaceapp_a7b9e0b0cc6065ee18cbfe32729682bb3}{ha}}
+\item 
+\mbox{\hyperlink{namespaceapp_ad6b42385115e0e4827cbb3a09502ad1f}{model}} = pickle.\+load(f)
+\item 
+\mbox{\hyperlink{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4}{forecast}} = model.\+forecast(steps=\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}})
+\item 
+\mbox{\hyperlink{namespaceapp_aafa599585a6a41d920cf6ce424df02a1}{dates}} = pd.\+date\+\_\+range(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}date\textquotesingle{}\mbox{]}.iloc\mbox{[}-\/1\mbox{]} + pd.\+Timedelta(days=1), periods=\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}})
+\item 
+\mbox{\hyperlink{namespaceapp_a538222c0504e469e4b1bba8707c03583}{results}} = pd.\+Data\+Frame(\{\textquotesingle{}date\textquotesingle{}\+: \mbox{\hyperlink{namespaceapp_aafa599585a6a41d920cf6ce424df02a1}{dates}}, \textquotesingle{}Forecast\textquotesingle{}\+: \mbox{\hyperlink{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4}{forecast}}\})
+\item 
+\mbox{\hyperlink{namespaceapp_a01ab245f135fa8506cc389fb6e6b1a9e}{scaler}} = pickle.\+load(f)
+\item 
+\mbox{\hyperlink{namespaceapp_aeefa66ec49f484cae8b043138345c919}{seq\+\_\+len}} = \mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}}\mbox{[}\textquotesingle{}lstm\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}sequence\+\_\+length\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8}{scaled}} = scaler.\+transform(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}.values.\+reshape(-\/1, 1))
+\item 
+\mbox{\hyperlink{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f}{history}} = \mbox{\hyperlink{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8}{scaled}}\mbox{[}-\/seq\+\_\+len\+:\mbox{]}.flatten()
+\item 
+list \mbox{\hyperlink{namespaceapp_a4e1065d92aa7e5c8b53b5bf688f7ebed}{predictions}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8}{x}} = np.\+array(\mbox{\hyperlink{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f}{history}}\mbox{[}-\/seq\+\_\+len\+:\mbox{]}).reshape(1, \mbox{\hyperlink{namespaceapp_aeefa66ec49f484cae8b043138345c919}{seq\+\_\+len}}, 1)
+\item 
+\mbox{\hyperlink{namespaceapp_a29d0f933091b4426241890cd6de1095a}{pred}} = model.\+predict(\mbox{\hyperlink{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8}{x}}, verbose=0)
+\item 
+\mbox{\hyperlink{namespaceapp_a5b614fd41bb93b678f64bab0dd9d712f}{fig}}
+\item 
+\mbox{\hyperlink{namespaceapp_a1357ef913a81b19724a0cc4ea0cc9e07}{ax}}
+\item 
+\mbox{\hyperlink{namespaceapp_a9cdc675ace6c739b4daf98c89eb80a20}{marker}}
+\item 
+\mbox{\hyperlink{namespaceapp_ad0e2dba083a3011b0076d67bba00dd3e}{color}}
+\item 
+\mbox{\hyperlink{namespaceapp_a7a411ea567ac1ca0c5c461278144a7e1}{col1}}
+\item 
+\mbox{\hyperlink{namespaceapp_a5a5fda4e66a5b10cce19391f477e1298}{col2}}
+\item 
+\mbox{\hyperlink{namespaceapp_a18372e9fea5be6aa796c6c80529a3cc8}{csv}} = results.\+to\+\_\+csv(index=False).encode(\textquotesingle{}utf-\/8\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespaceapp_aac971a7ce28912f76a3248f427514f9d}{data}}
+\item 
+\mbox{\hyperlink{namespaceapp_a4923bd90236272961b9d694f9141d7c7}{file\+\_\+name}}
+\item 
+\mbox{\hyperlink{namespaceapp_a905b735b3c06a871c71e7abebe969a24}{mime}}
+\item 
+\mbox{\hyperlink{namespaceapp_af49eb2dcd5b984a39c9780cfc1ba2095}{buf}} = io.\+Bytes\+IO()
+\item 
+\mbox{\hyperlink{namespaceapp_a7cd83bd8e40fb13ae9a8f304d1bf07c0}{format}}
+\item 
+\mbox{\hyperlink{namespaceapp_a61c9fbcab0f782c35d1b3f96fccd9b2c}{dpi}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceapp_a1357ef913a81b19724a0cc4ea0cc9e07}\index{app@{app}!ax@{ax}}
+\index{ax@{ax}!app@{app}}
+\doxysubsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily \label{namespaceapp_a1357ef913a81b19724a0cc4ea0cc9e07} 
+app.\+ax}
+
+\Hypertarget{namespaceapp_a725ef8c77d5ee9193fc3c16969e6f7a3}\index{app@{app}!ax\_hist@{ax\_hist}}
+\index{ax\_hist@{ax\_hist}!app@{app}}
+\doxysubsubsection{\texorpdfstring{ax\_hist}{ax\_hist}}
+{\footnotesize\ttfamily \label{namespaceapp_a725ef8c77d5ee9193fc3c16969e6f7a3} 
+app.\+ax\+\_\+hist}
+
+\Hypertarget{namespaceapp_af49eb2dcd5b984a39c9780cfc1ba2095}\index{app@{app}!buf@{buf}}
+\index{buf@{buf}!app@{app}}
+\doxysubsubsection{\texorpdfstring{buf}{buf}}
+{\footnotesize\ttfamily \label{namespaceapp_af49eb2dcd5b984a39c9780cfc1ba2095} 
+app.\+buf = io.\+Bytes\+IO()}
+
+\Hypertarget{namespaceapp_a7a411ea567ac1ca0c5c461278144a7e1}\index{app@{app}!col1@{col1}}
+\index{col1@{col1}!app@{app}}
+\doxysubsubsection{\texorpdfstring{col1}{col1}}
+{\footnotesize\ttfamily \label{namespaceapp_a7a411ea567ac1ca0c5c461278144a7e1} 
+app.\+col1}
+
+\Hypertarget{namespaceapp_a5a5fda4e66a5b10cce19391f477e1298}\index{app@{app}!col2@{col2}}
+\index{col2@{col2}!app@{app}}
+\doxysubsubsection{\texorpdfstring{col2}{col2}}
+{\footnotesize\ttfamily \label{namespaceapp_a5a5fda4e66a5b10cce19391f477e1298} 
+app.\+col2}
+
+\Hypertarget{namespaceapp_ad0e2dba083a3011b0076d67bba00dd3e}\index{app@{app}!color@{color}}
+\index{color@{color}!app@{app}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \label{namespaceapp_ad0e2dba083a3011b0076d67bba00dd3e} 
+app.\+color}
+
+\Hypertarget{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}\index{app@{app}!config@{config}}
+\index{config@{config}!app@{app}}
+\doxysubsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily \label{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e} 
+app.\+config = load\+\_\+config()}
+
+\Hypertarget{namespaceapp_a18372e9fea5be6aa796c6c80529a3cc8}\index{app@{app}!csv@{csv}}
+\index{csv@{csv}!app@{app}}
+\doxysubsubsection{\texorpdfstring{csv}{csv}}
+{\footnotesize\ttfamily \label{namespaceapp_a18372e9fea5be6aa796c6c80529a3cc8} 
+app.\+csv = results.\+to\+\_\+csv(index=False).encode(\textquotesingle{}utf-\/8\textquotesingle{})}
+
+\Hypertarget{namespaceapp_aac971a7ce28912f76a3248f427514f9d}\index{app@{app}!data@{data}}
+\index{data@{data}!app@{app}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{namespaceapp_aac971a7ce28912f76a3248f427514f9d} 
+app.\+data}
+
+\Hypertarget{namespaceapp_a98e7f0a16b6a3c5f8c443516bceb489a}\index{app@{app}!date\_col@{date\_col}}
+\index{date\_col@{date\_col}!app@{app}}
+\doxysubsubsection{\texorpdfstring{date\_col}{date\_col}}
+{\footnotesize\ttfamily \label{namespaceapp_a98e7f0a16b6a3c5f8c443516bceb489a} 
+str app.\+date\+\_\+col = None}
+
+\Hypertarget{namespaceapp_aafa599585a6a41d920cf6ce424df02a1}\index{app@{app}!dates@{dates}}
+\index{dates@{dates}!app@{app}}
+\doxysubsubsection{\texorpdfstring{dates}{dates}}
+{\footnotesize\ttfamily \label{namespaceapp_aafa599585a6a41d920cf6ce424df02a1} 
+app.\+dates = pd.\+date\+\_\+range(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}date\textquotesingle{}\mbox{]}.iloc\mbox{[}-\/1\mbox{]} + pd.\+Timedelta(days=1), periods=\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}})}
+
+\Hypertarget{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}\index{app@{app}!df@{df}}
+\index{df@{df}!app@{app}}
+\doxysubsubsection{\texorpdfstring{df}{df}}
+{\footnotesize\ttfamily \label{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf} 
+app.\+df = pd.\+read\+\_\+csv(\mbox{\hyperlink{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7}{uploaded\+\_\+file}}, na\+\_\+values=\mbox{[}"{}NA"{}, "{}N/A"{}, "{}"{}\mbox{]})}
+
+\Hypertarget{namespaceapp_a61c9fbcab0f782c35d1b3f96fccd9b2c}\index{app@{app}!dpi@{dpi}}
+\index{dpi@{dpi}!app@{app}}
+\doxysubsubsection{\texorpdfstring{dpi}{dpi}}
+{\footnotesize\ttfamily \label{namespaceapp_a61c9fbcab0f782c35d1b3f96fccd9b2c} 
+app.\+dpi}
+
+\Hypertarget{namespaceapp_aed9590489516c13cffd4827d6df765ae}\index{app@{app}!errors@{errors}}
+\index{errors@{errors}!app@{app}}
+\doxysubsubsection{\texorpdfstring{errors}{errors}}
+{\footnotesize\ttfamily \label{namespaceapp_aed9590489516c13cffd4827d6df765ae} 
+app.\+errors}
+
+\Hypertarget{namespaceapp_a97bdb13d7957840ceca71b0a885928b1}\index{app@{app}!exist\_ok@{exist\_ok}}
+\index{exist\_ok@{exist\_ok}!app@{app}}
+\doxysubsubsection{\texorpdfstring{exist\_ok}{exist\_ok}}
+{\footnotesize\ttfamily \label{namespaceapp_a97bdb13d7957840ceca71b0a885928b1} 
+app.\+exist\+\_\+ok}
+
+\Hypertarget{namespaceapp_a5b614fd41bb93b678f64bab0dd9d712f}\index{app@{app}!fig@{fig}}
+\index{fig@{fig}!app@{app}}
+\doxysubsubsection{\texorpdfstring{fig}{fig}}
+{\footnotesize\ttfamily \label{namespaceapp_a5b614fd41bb93b678f64bab0dd9d712f} 
+app.\+fig}
+
+\Hypertarget{namespaceapp_a4185a5493fde2796d40f92dcb818b650}\index{app@{app}!fig\_hist@{fig\_hist}}
+\index{fig\_hist@{fig\_hist}!app@{app}}
+\doxysubsubsection{\texorpdfstring{fig\_hist}{fig\_hist}}
+{\footnotesize\ttfamily \label{namespaceapp_a4185a5493fde2796d40f92dcb818b650} 
+app.\+fig\+\_\+hist}
+
+\Hypertarget{namespaceapp_ab9bdd78e8a7605f82fdddf41bd56499a}\index{app@{app}!figsize@{figsize}}
+\index{figsize@{figsize}!app@{app}}
+\doxysubsubsection{\texorpdfstring{figsize}{figsize}}
+{\footnotesize\ttfamily \label{namespaceapp_ab9bdd78e8a7605f82fdddf41bd56499a} 
+app.\+figsize}
+
+\Hypertarget{namespaceapp_a4923bd90236272961b9d694f9141d7c7}\index{app@{app}!file\_name@{file\_name}}
+\index{file\_name@{file\_name}!app@{app}}
+\doxysubsubsection{\texorpdfstring{file\_name}{file\_name}}
+{\footnotesize\ttfamily \label{namespaceapp_a4923bd90236272961b9d694f9141d7c7} 
+app.\+file\+\_\+name}
+
+\Hypertarget{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4}\index{app@{app}!forecast@{forecast}}
+\index{forecast@{forecast}!app@{app}}
+\doxysubsubsection{\texorpdfstring{forecast}{forecast}}
+{\footnotesize\ttfamily \label{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4} 
+app.\+forecast = model.\+forecast(steps=\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}})}
+
+\Hypertarget{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}\index{app@{app}!forecast\_steps@{forecast\_steps}}
+\index{forecast\_steps@{forecast\_steps}!app@{app}}
+\doxysubsubsection{\texorpdfstring{forecast\_steps}{forecast\_steps}}
+{\footnotesize\ttfamily \label{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93} 
+app.\+forecast\+\_\+steps = st.\+slider("{}⏱️ Forecast steps"{}, 1, 30, 7)}
+
+\Hypertarget{namespaceapp_a7cd83bd8e40fb13ae9a8f304d1bf07c0}\index{app@{app}!format@{format}}
+\index{format@{format}!app@{app}}
+\doxysubsubsection{\texorpdfstring{format}{format}}
+{\footnotesize\ttfamily \label{namespaceapp_a7cd83bd8e40fb13ae9a8f304d1bf07c0} 
+app.\+format}
+
+\Hypertarget{namespaceapp_ac841856531f5b80af0013a45534ec7ed}\index{app@{app}!formatter@{formatter}}
+\index{formatter@{formatter}!app@{app}}
+\doxysubsubsection{\texorpdfstring{formatter}{formatter}}
+{\footnotesize\ttfamily \label{namespaceapp_ac841856531f5b80af0013a45534ec7ed} 
+app.\+formatter = Date\+Formatter(\textquotesingle{}\%Y-\/\%m-\/\%d\textquotesingle{})}
+
+\Hypertarget{namespaceapp_a7b9e0b0cc6065ee18cbfe32729682bb3}\index{app@{app}!ha@{ha}}
+\index{ha@{ha}!app@{app}}
+\doxysubsubsection{\texorpdfstring{ha}{ha}}
+{\footnotesize\ttfamily \label{namespaceapp_a7b9e0b0cc6065ee18cbfe32729682bb3} 
+app.\+ha}
+
+\Hypertarget{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f}\index{app@{app}!history@{history}}
+\index{history@{history}!app@{app}}
+\doxysubsubsection{\texorpdfstring{history}{history}}
+{\footnotesize\ttfamily \label{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f} 
+app.\+history = \mbox{\hyperlink{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8}{scaled}}\mbox{[}-\/seq\+\_\+len\+:\mbox{]}.flatten()}
+
+\Hypertarget{namespaceapp_a61d300bbfa7ecfc1ea9e7338c605e97a}\index{app@{app}!label@{label}}
+\index{label@{label}!app@{app}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily \label{namespaceapp_a61d300bbfa7ecfc1ea9e7338c605e97a} 
+app.\+label}
+
+\Hypertarget{namespaceapp_a32ab50610df58ba90f40d85d72ba822d}\index{app@{app}!layout@{layout}}
+\index{layout@{layout}!app@{app}}
+\doxysubsubsection{\texorpdfstring{layout}{layout}}
+{\footnotesize\ttfamily \label{namespaceapp_a32ab50610df58ba90f40d85d72ba822d} 
+app.\+layout}
+
+\Hypertarget{namespaceapp_ad0cf223146febd3cb70414b0f7aa039f}\index{app@{app}!locator@{locator}}
+\index{locator@{locator}!app@{app}}
+\doxysubsubsection{\texorpdfstring{locator}{locator}}
+{\footnotesize\ttfamily \label{namespaceapp_ad0cf223146febd3cb70414b0f7aa039f} 
+app.\+locator = Auto\+Date\+Locator()}
+
+\Hypertarget{namespaceapp_a9cdc675ace6c739b4daf98c89eb80a20}\index{app@{app}!marker@{marker}}
+\index{marker@{marker}!app@{app}}
+\doxysubsubsection{\texorpdfstring{marker}{marker}}
+{\footnotesize\ttfamily \label{namespaceapp_a9cdc675ace6c739b4daf98c89eb80a20} 
+app.\+marker}
+
+\Hypertarget{namespaceapp_a905b735b3c06a871c71e7abebe969a24}\index{app@{app}!mime@{mime}}
+\index{mime@{mime}!app@{app}}
+\doxysubsubsection{\texorpdfstring{mime}{mime}}
+{\footnotesize\ttfamily \label{namespaceapp_a905b735b3c06a871c71e7abebe969a24} 
+app.\+mime}
+
+\Hypertarget{namespaceapp_af3e33e0be9d8f0c4fcdf069a3da2c99b}\index{app@{app}!missing\_count@{missing\_count}}
+\index{missing\_count@{missing\_count}!app@{app}}
+\doxysubsubsection{\texorpdfstring{missing\_count}{missing\_count}}
+{\footnotesize\ttfamily \label{namespaceapp_af3e33e0be9d8f0c4fcdf069a3da2c99b} 
+app.\+missing\+\_\+count = \mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}.isna().sum()}
+
+\Hypertarget{namespaceapp_ad6b42385115e0e4827cbb3a09502ad1f}\index{app@{app}!model@{model}}
+\index{model@{model}!app@{app}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily \label{namespaceapp_ad6b42385115e0e4827cbb3a09502ad1f} 
+app.\+model = pickle.\+load(f)}
+
+\Hypertarget{namespaceapp_a4a922ffcacf9f0c524d858cafd3aa38e}\index{app@{app}!model\_type@{model\_type}}
+\index{model\_type@{model\_type}!app@{app}}
+\doxysubsubsection{\texorpdfstring{model\_type}{model\_type}}
+{\footnotesize\ttfamily \label{namespaceapp_a4a922ffcacf9f0c524d858cafd3aa38e} 
+app.\+model\+\_\+type = \mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}}\mbox{[}"{}model"{}\mbox{]}}
+
+\Hypertarget{namespaceapp_a18ff90b34087c07f0d5df5f3112ea655}\index{app@{app}!num\_outliers@{num\_outliers}}
+\index{num\_outliers@{num\_outliers}!app@{app}}
+\doxysubsubsection{\texorpdfstring{num\_outliers}{num\_outliers}}
+{\footnotesize\ttfamily \label{namespaceapp_a18ff90b34087c07f0d5df5f3112ea655} 
+int app.\+num\+\_\+outliers = outliers.\+sum()}
+
+\Hypertarget{namespaceapp_ac3e1512aec6b216a78e16f89e8d96560}\index{app@{app}!outliers@{outliers}}
+\index{outliers@{outliers}!app@{app}}
+\doxysubsubsection{\texorpdfstring{outliers}{outliers}}
+{\footnotesize\ttfamily \label{namespaceapp_ac3e1512aec6b216a78e16f89e8d96560} 
+int app.\+outliers = \mbox{\hyperlink{namespaceapp_aebc9d5076481742ae3c73867c496ab14}{z\+\_\+scores}} $>$ 3}
+
+\Hypertarget{namespaceapp_adcd4161b2b197e0cf698a7ae8ca84488}\index{app@{app}!page\_icon@{page\_icon}}
+\index{page\_icon@{page\_icon}!app@{app}}
+\doxysubsubsection{\texorpdfstring{page\_icon}{page\_icon}}
+{\footnotesize\ttfamily \label{namespaceapp_adcd4161b2b197e0cf698a7ae8ca84488} 
+app.\+page\+\_\+icon}
+
+\Hypertarget{namespaceapp_a2c5b508829b4995a003ebbea7efab85e}\index{app@{app}!page\_title@{page\_title}}
+\index{page\_title@{page\_title}!app@{app}}
+\doxysubsubsection{\texorpdfstring{page\_title}{page\_title}}
+{\footnotesize\ttfamily \label{namespaceapp_a2c5b508829b4995a003ebbea7efab85e} 
+app.\+page\+\_\+title}
+
+\Hypertarget{namespaceapp_a29d0f933091b4426241890cd6de1095a}\index{app@{app}!pred@{pred}}
+\index{pred@{pred}!app@{app}}
+\doxysubsubsection{\texorpdfstring{pred}{pred}}
+{\footnotesize\ttfamily \label{namespaceapp_a29d0f933091b4426241890cd6de1095a} 
+app.\+pred = model.\+predict(\mbox{\hyperlink{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8}{x}}, verbose=0)}
+
+\Hypertarget{namespaceapp_a4e1065d92aa7e5c8b53b5bf688f7ebed}\index{app@{app}!predictions@{predictions}}
+\index{predictions@{predictions}!app@{app}}
+\doxysubsubsection{\texorpdfstring{predictions}{predictions}}
+{\footnotesize\ttfamily \label{namespaceapp_a4e1065d92aa7e5c8b53b5bf688f7ebed} 
+list app.\+predictions = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{namespaceapp_a538222c0504e469e4b1bba8707c03583}\index{app@{app}!results@{results}}
+\index{results@{results}!app@{app}}
+\doxysubsubsection{\texorpdfstring{results}{results}}
+{\footnotesize\ttfamily \label{namespaceapp_a538222c0504e469e4b1bba8707c03583} 
+app.\+results = pd.\+Data\+Frame(\{\textquotesingle{}date\textquotesingle{}\+: \mbox{\hyperlink{namespaceapp_aafa599585a6a41d920cf6ce424df02a1}{dates}}, \textquotesingle{}Forecast\textquotesingle{}\+: \mbox{\hyperlink{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4}{forecast}}\})}
+
+\Hypertarget{namespaceapp_a012a73e5a9bf74c3e6cb6fd62688291b}\index{app@{app}!rotation@{rotation}}
+\index{rotation@{rotation}!app@{app}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily \label{namespaceapp_a012a73e5a9bf74c3e6cb6fd62688291b} 
+app.\+rotation}
+
+\Hypertarget{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8}\index{app@{app}!scaled@{scaled}}
+\index{scaled@{scaled}!app@{app}}
+\doxysubsubsection{\texorpdfstring{scaled}{scaled}}
+{\footnotesize\ttfamily \label{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8} 
+app.\+scaled = scaler.\+transform(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}.values.\+reshape(-\/1, 1))}
+
+\Hypertarget{namespaceapp_a01ab245f135fa8506cc389fb6e6b1a9e}\index{app@{app}!scaler@{scaler}}
+\index{scaler@{scaler}!app@{app}}
+\doxysubsubsection{\texorpdfstring{scaler}{scaler}}
+{\footnotesize\ttfamily \label{namespaceapp_a01ab245f135fa8506cc389fb6e6b1a9e} 
+app.\+scaler = pickle.\+load(f)}
+
+\Hypertarget{namespaceapp_aeefa66ec49f484cae8b043138345c919}\index{app@{app}!seq\_len@{seq\_len}}
+\index{seq\_len@{seq\_len}!app@{app}}
+\doxysubsubsection{\texorpdfstring{seq\_len}{seq\_len}}
+{\footnotesize\ttfamily \label{namespaceapp_aeefa66ec49f484cae8b043138345c919} 
+app.\+seq\+\_\+len = \mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}}\mbox{[}\textquotesingle{}lstm\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}sequence\+\_\+length\textquotesingle{}\mbox{]}}
+
+\Hypertarget{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7}\index{app@{app}!uploaded\_file@{uploaded\_file}}
+\index{uploaded\_file@{uploaded\_file}!app@{app}}
+\doxysubsubsection{\texorpdfstring{uploaded\_file}{uploaded\_file}}
+{\footnotesize\ttfamily \label{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7} 
+app.\+uploaded\+\_\+file = st.\+file\+\_\+uploader("{}📄 Upload your CSV file"{}, type=\mbox{[}"{}csv"{}\mbox{]})}
+
+\Hypertarget{namespaceapp_aaa4be6bb1710f8efef80b4ecd281826c}\index{app@{app}!wind\_col@{wind\_col}}
+\index{wind\_col@{wind\_col}!app@{app}}
+\doxysubsubsection{\texorpdfstring{wind\_col}{wind\_col}}
+{\footnotesize\ttfamily \label{namespaceapp_aaa4be6bb1710f8efef80b4ecd281826c} 
+app.\+wind\+\_\+col = None}
+
+\Hypertarget{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8}\index{app@{app}!x@{x}}
+\index{x@{x}!app@{app}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8} 
+app.\+x = np.\+array(\mbox{\hyperlink{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f}{history}}\mbox{[}-\/seq\+\_\+len\+:\mbox{]}).reshape(1, \mbox{\hyperlink{namespaceapp_aeefa66ec49f484cae8b043138345c919}{seq\+\_\+len}}, 1)}
+
+\Hypertarget{namespaceapp_aebc9d5076481742ae3c73867c496ab14}\index{app@{app}!z\_scores@{z\_scores}}
+\index{z\_scores@{z\_scores}!app@{app}}
+\doxysubsubsection{\texorpdfstring{z\_scores}{z\_scores}}
+{\footnotesize\ttfamily \label{namespaceapp_aebc9d5076481742ae3c73867c496ab14} 
+app.\+z\+\_\+scores = np.\+abs(stats.\+zscore(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}))}
+

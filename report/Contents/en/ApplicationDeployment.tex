@@ -1,0 +1,373 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Daanyaal Parvaize$
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: BA25-02-Time-Series/report/Contents/en/ApplicationDeployment.tex
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Deployment}
+
+\section{Application Description}
+
+The Hurricane Intensity Prediction System is a user-friendly forecasting application designed to predict future wind speeds based on historical hurricane data. Built using Python and Streamlit, the system integrates statistical and deep learning models—ARIMA and LSTM—to provide flexible, accurate time series predictions.
+
+The primary goal of the application is to assist users in preparing for hurricane-related risks by enabling easy, on-demand forecasting. Users can upload their own datasets in CSV format, choose the forecast duration, and instantly receive visual and tabular results showing the projected wind speeds.
+
+The application emphasizes modularity and separation of concerns by providing two interfaces:
+
+\begin{itemize}
+	\item A developer interface (\texttt{developer.py}) that allows technical users to train models, configure parameters, and save settings.
+	\item A deployment interface (\texttt{app.py}) that is designed for general users to interact with the system without needing any programming knowledge.
+\end{itemize}
+
+Through this structured design, the system enables real-world deployment of machine learning models while abstracting away complexity for non-technical stakeholders. Whether used in disaster preparedness, research, or educational contexts, the Hurricane Intensity Predictor offers a highly interactive and insightful experience powered by data science.
+
+
+\subsection{Structure}
+
+The deployment of the Hurricane Intensity Prediction System is designed with a clear separation of responsibilities to ensure maintainability, usability, and robustness. The application is structured into two primary modules:
+
+\begin{itemize}
+	\item \texttt{app.py} — This is the main interface presented to the end users. It is responsible for handling file uploads, cleaning user-provided data, selecting the appropriate model for prediction, and displaying the forecast output along with relevant visualizations.
+	\item \texttt{developer.py} — Although primarily a development tool, this script plays a supportive role in deployment by generating and saving trained models, as well as maintaining the global configuration used during runtime. It allows developers to select hyperparameters and train models which are later accessed by the deployment interface.
+\end{itemize}
+
+\subsection{Idea}
+
+The core idea behind the system is to provide a simple, guided, and interactive forecasting experience to non-technical users, while hiding all complexity related to machine learning, data cleaning, and configuration management. Developers handle model training and parameter tuning once using \texttt{developer.py}. The trained models and settings are saved and later used by \texttt{app.py} to serve predictions. This approach ensures that users do not require machine learning knowledge to use the system effectively, making it both scalable and user-friendly.
+
+\subsection{Application Flow Chart}
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.8}{
+		\begin{tikzpicture}[
+			node distance=1.2cm and 2.5cm,
+			block/.style={rectangle, draw=blue!60, fill=blue!5, very thick, minimum height=1.2cm, text centered, rounded corners},
+			line/.style={draw, thick, -latex'}
+			]
+			
+			% Nodes
+			\node[block] (start) {Start Application (\texttt{app.py})};
+			\node[block, below=of start] (upload) {User Uploads CSV File};
+			\node[block, below=of upload] (checkcols) {Check for Date and Wind Speed Columns};
+			\node[block, below=of checkcols] (clean) {Data Cleaning and Interpolation};
+			\node[block, below=of clean] (config) {Load Model Configuration (\texttt{config2.json})};
+			\node[block, below=of config] (load) {Load Trained Model (ARIMA / LSTM)};
+			\node[block, below=of load] (predict) {Run Forecast Based on Model Type};
+			\node[block, below=of predict] (visual) {Display Forecast with Plots and Downloads};
+			\node[block, below=of visual] (end) {End};
+			
+			% Arrows
+			\foreach \i/\j in {start/upload, upload/checkcols, checkcols/clean, clean/config, config/load, load/predict, predict/visual, visual/end}
+			\draw[line] (\i) -- (\j);
+			
+		\end{tikzpicture}
+	}
+	\caption{Forecasting Workflow in Deployment Mode}
+\end{figure}
+
+
+\subsection{Machine Learning Pipeline (Deployment View)}
+
+In contrast to the development pipeline, which involves intensive model building and experimentation, the deployment pipeline is streamlined for efficient and reliable prediction delivery. Its primary goal is to provide end-users with an intuitive interface to generate forecasts from their own data without dealing with the complexities behind the scenes.
+
+The deployment pipeline consists of the following key steps:
+
+\begin{enumerate}
+	\item \textbf{Input File Upload:} 
+	Users begin by uploading a CSV file containing the relevant hurricane data. This file must include at least two columns: wind speed measurements and corresponding dates. The CSV format is chosen for its simplicity and widespread support across platforms. To ensure smooth processing, the application expects the file to follow a standardized structure, though minor deviations can be handled in preprocessing.
+	
+	\item \textbf{Data Preprocessing:}
+	Once the file is uploaded, the system initiates a series of preprocessing steps to prepare the data for forecasting:
+	\begin{itemize}
+		\item \emph{Column Verification and Standardization:} The application checks for the presence of essential columns, such as \texttt{wind\_speed} and \texttt{date}, and renames them if necessary to match the internal schema.
+		\item \emph{Handling Missing Values:} Missing or corrupted data points can significantly degrade forecasting accuracy. To address this, the pipeline employs forward and backward interpolation techniques to fill gaps, preserving temporal consistency.
+		\item \emph{Datetime Indexing:} The date column is converted into a datetime index, which is critical for time series models like ARIMA and LSTM that rely on sequential temporal information.
+	\end{itemize}
+	
+	\item \textbf{Configuration Handling:}
+	Model selection and parameterization are managed through a configuration file named \texttt{config2.json}. This file, maintained by the development team, encapsulates the choice of forecasting model (e.g., ARIMA or LSTM) and associated hyperparameters. By externalizing configuration, the deployment app decouples user operations from model training complexities, ensuring that only tested and validated models are used during prediction.
+	
+	\item \textbf{Model Loading:}
+	Depending on the selected model specified in the configuration, the system loads the pre-trained models as follows:
+	\begin{itemize}
+		\item \emph{ARIMA Model:} A serialized \texttt{.pkl} file representing the trained ARIMA model is loaded using Python's \texttt{pickle} module. ARIMA models leverage autoregressive and moving average components to capture time-dependent patterns.
+		\item \emph{LSTM Model:} For deep learning, the LSTM model weights are loaded from an \texttt{.h5} file (HDF5 format), accompanied by a scaler object stored as a \texttt{.pkl} file. The scaler ensures input features are normalized consistently with training, which is essential for neural network performance.
+	\end{itemize}
+	
+	\item \textbf{Prediction:}
+	With the model loaded and data preprocessed, the forecasting step executes. Users can specify the forecasting horizon (number of future days) via an interactive slider. The model then generates predicted wind speed values for the specified timeframe, applying learned temporal dependencies to produce accurate forecasts.
+	
+	\item \textbf{Output:}
+	Prediction results are presented in multiple formats to accommodate different user preferences:
+	\begin{itemize}
+		\item \emph{Tabular View:} A table displays the predicted wind speeds alongside corresponding dates, facilitating quick inspection.
+		\item \emph{Graphical Visualization:} Line plots visualize both historical data and forecasted values, highlighting trends and confidence intervals.
+		\item \emph{Download Options:} Users can download the prediction tables as CSV files and the plots as PNG images, enabling offline analysis or integration with other reporting tools.
+	\end{itemize}
+\end{enumerate}
+
+This deployment pipeline structure ensures a seamless transition from raw input data to actionable hurricane intensity forecasts. By isolating the deployment concerns from the training and validation processes, the system optimizes for reliability and usability, allowing stakeholders such as meteorologists, disaster management professionals, and insurers to leverage predictive insights with minimal technical overhead.
+
+
+\subsection{Machine Learning Pipeline (Deployment View)}
+
+\begin{figure}[H]
+	\centering
+	\scalebox{0.85}{
+		\begin{tikzpicture}[
+			node distance=1.4cm and 2.8cm,
+			box/.style={
+				rectangle,
+				draw=blue!50!black,
+				fill=blue!10,
+				minimum width=3.8cm,
+				minimum height=1.4cm,
+				text centered,
+				font=\small,
+				rounded corners,
+				align=center
+			},
+			arrow/.style={
+				->, thick, draw=blue!60!black
+			}
+			]
+			
+			% First row, left to right (3 boxes)
+			\node[box] (upload) {1. File Upload\\ \scriptsize CSV with wind speed + date};
+			\node[box, right=of upload] (preprocess) {2. Preprocessing\\ \scriptsize Column fix, missing data, datetime};
+			\node[box, right=of preprocess] (config) {3. Config Handling\\ \scriptsize Load \texttt{config2.json}};
+			
+			% One step down (vertical)
+			\node[box, below=2cm of config] (loadmodel) {4. Model Loading\\ \scriptsize ARIMA or LSTM};
+			
+			% Then three boxes going left
+			\node[box, left=of loadmodel] (predict) {5. Forecast\\ \scriptsize Predict wind speed};
+			\node[box, left=of predict] (output) {6. Output\\ \scriptsize Plot + CSV/PNG};
+			% Add a 7th block if you want to keep the pattern going (optional)
+			% \node[box, left=of output] (extra) {7. Extra Step\\ \scriptsize Description};
+			
+			% Arrows first row left to right
+			\draw[arrow] (upload) -- (preprocess);
+			\draw[arrow] (preprocess) -- (config);
+			
+			% Arrow down from 3rd to 4th box
+			\draw[arrow] (config) -- (loadmodel);
+			
+			% Arrows from 4th down to 5th left
+			\draw[arrow] (loadmodel) -- (predict);
+			\draw[arrow] (predict) -- (output);
+			% If you add a 7th block, uncomment:
+			% \draw[arrow] (output) -- (extra);
+			
+		\end{tikzpicture}
+	}
+	\caption{Deployment View: Machine Learning Prediction Pipeline}
+\end{figure}
+
+
+
+
+\section{Program Structure and Components}
+
+\subsection{Program Readability}
+
+The deployment code is written with clarity in mind. Important code blocks are enclosed in well-structured try-except statements to handle errors gracefully. Code sections are divided into logical blocks for input handling, cleaning, model logic, and output display. User feedback is given through Streamlit widgets like \texttt{st.warning()}, \texttt{st.success()}, and \texttt{st.error()} to ensure transparency and a smooth user experience.
+
+\subsection{Structure and Modules}
+
+\begin{itemize}
+	\item \textbf{Main Files:}
+	\begin{itemize}
+		\item \texttt{app.py} — The primary script used in deployment. This file is launched on the server and handles user input and predictions.
+		\item \texttt{developer.py} — Prepares and saves configuration and models to be used by \texttt{app.py}. Without running this script at least once, \texttt{app.py} will not function as expected.
+		\item \texttt{model\_utils.py} — A shared helper file containing utility functions for loading data, saving models, reading config, and training ARIMA.
+	\end{itemize}
+	\item \textbf{Supporting Files and Folders:}
+	\begin{itemize}
+		\item \texttt{config2.json} — Holds model type (ARIMA or LSTM) and relevant hyperparameters. Automatically updated by \texttt{developer.py}.
+		\item \texttt{models/} — Directory where trained model files are saved and read during runtime.
+		\item \texttt{data/} — Folder used to store uploaded or training CSVs.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Parameter Handling}
+
+The application manages its forecasting model parameters through the external configuration file \texttt{config2.json}, which centralizes all necessary settings for model execution. This separation of configuration from core code enhances maintainability, reproducibility, and scalability of the system. As highlighted by Sculley et al. (2015), proper management of configurations and parameters is a crucial practice to reduce hidden technical debt and complexity in machine learning systems \cite{sculley2015hidden}.
+
+
+The parameters specified in the configuration include:
+
+\begin{itemize}
+	\item \textbf{ARIMA:} Consists of the autoregressive order \texttt{p}, degree of differencing \texttt{d}, moving average order \texttt{q}, and a \texttt{use} flag that indicates whether the ARIMA model should be employed.
+	\item \textbf{LSTM:} Contains deep learning parameters such as the number of training \texttt{epochs}, \texttt{batch\_size}, \texttt{sequence\_length} for input sequences, along with a \texttt{use} flag to enable or disable the LSTM model.
+\end{itemize}
+
+The \texttt{developer.py} script offers a graphical user interface (GUI) for developers or advanced users to conveniently modify these parameters. Changes made through this interface are saved back into \texttt{config2.json} using the \texttt{save\_config()} function, ensuring that subsequent predictions utilize the updated configuration.
+
+\vspace{0.3cm}
+\noindent
+\textbf{In simpler terms:} 
+
+\begin{quote}
+	The program keeps all the important settings for the forecasting models in one file called \texttt{config2.json}. This file tells the program things like which model to use and how to set it up — for example, how many times the model should train or how much past data it should look at.
+	
+	A special script called \texttt{developer.py} lets users change these settings easily through buttons and fields (a GUI), instead of editing complicated code. When the user saves their changes, the new settings are written back to the \texttt{config2.json} file so the program uses them the next time it runs.
+\end{quote}
+
+\vspace{0.6cm}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		box/.style={
+			rectangle, draw=blue!70!black, fill=blue!10, rounded corners, 
+			minimum width=5cm, minimum height=1.2cm, text centered, font=\small,
+			align=center  % <--- This enables line breaks
+		},
+		arrow/.style={->, thick, blue!70!black}
+		]
+		
+		% Nodes
+		\node[box] (config) {\texttt{config2.json}\\ \footnotesize Central configuration file};
+		\node[box, above=2cm of config] (gui) {\texttt{developer.py} GUI\\ \footnotesize Modify and save parameters};
+		\node[box, right=4cm of config] (app) {Prediction Application\\ \footnotesize Loads config for forecasting};
+		
+		% Arrows
+		\draw[arrow] (gui) -- (config) node[midway,left,xshift=-5pt] {\footnotesize save\_config()};
+		\draw[arrow] (config) -- (app) node[midway,below,yshift=-5pt] {\footnotesize read config};
+		
+	\end{tikzpicture}
+	\caption{Parameter management flow between the GUI, configuration file, and prediction app}
+\end{figure}
+
+
+
+\subsection{Error Handling}
+
+Robust error and exception handling is essential to ensure the application remains stable and user-friendly during deployment. The system proactively checks for and manages common issues that may arise, including errors in input data, missing files, and runtime exceptions. Effective error handling significantly enhances software reliability and maintainability, as discussed by de Sousa et al. (2020) in their study on the evolution of exception handling anti-patterns in large-scale software projects \cite{deSousa2020}, below is how we handled it in our application/software:
+
+
+\begin{itemize}
+	\item Ensuring that all required columns, such as \texttt{date} and \texttt{wind\_speed}, exist in the uploaded data and are of the correct type. If columns are missing or incorrectly named, the program prompts the user to upload a valid file.
+	\item Detecting missing or corrupted model files and providing clear, helpful error messages to guide the user to resolve the issue, such as suggesting reloading or contacting support.
+	\item Handling data irregularities, such as \texttt{NaN} values or errors during datetime conversion, by applying data cleaning methods like interpolation or removing problematic rows when possible.
+
+\end{itemize}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|p{5cm}|p{4cm}|p{4cm}|}
+		\hline
+		\textbf{Step} & \textbf{Description} & \textbf{Yes Outcome (Next Step)} & \textbf{No Outcome (Next Step)} \\
+		\hline
+		1 & Start: Uploaded Data & Required columns present and correct? & -- \\
+		\hline
+		2 & Required columns present and correct? (Decision) & Model files present and intact? & Prompt user: Upload valid file with correct columns \\
+		\hline
+		3 & Model files present and intact? (Decision) & Missing values or datetime errors? & Show error: Reload model files or contact support \\
+		\hline
+		4 & Missing values or datetime errors? (Decision) & Attempt data cleaning (interpolation/removal) & Data ready for prediction \\
+		\hline
+		5 & Attempt data cleaning (interpolation/removal) & Cleaning successful? & Prompt user: Upload cleaner data (if cleaning fails) \\
+		\hline
+		6 & Cleaning successful? (Decision) & Data ready for prediction & Prompt user: Upload cleaner data \\
+		\hline
+		7 & Data ready for prediction & -- & -- \\
+		\hline
+	\end{tabular}
+	\caption{Basic Error Handling Flowchart with Data Checks and Cleaning }
+\end{table}
+
+\vspace{0.3cm}
+\noindent
+\textbf{In a Nutshell:}
+
+\begin{quote}
+	The program watches out for common mistakes or problems that might happen when users upload data or when it runs. If possible, it tries to fix issues automatically—like filling missing data or asking users to upload correct files. If it cannot fix the problem, it clearly shows an error message on the screen, so users know what went wrong and what they need to do next.
+\end{quote}
+
+\subsection{Message Handling}
+
+Effective communication between the interface and the user is essential for a smooth workflow. The system provides contextual messages at different stages to inform users about the current status, guide their actions, or notify them of any issues encountered.
+
+The following message types are used in the interface:
+
+\begin{itemize}
+	\item \texttt{st.info()} is used to display informational messages that offer tips or general guidance to the user. These messages help clarify what the user can expect or suggest recommended next steps without indicating any problem.
+	
+	\item \texttt{st.warning()} serves to alert users about recoverable issues, such as missing values or potential data inconsistencies. While these warnings do not prevent the process from continuing, they indicate that the user should review the input or take corrective action to improve results.
+	
+	\item \texttt{st.error()} signals critical errors that halt the workflow, such as missing model files or corrupted data. These unrecoverable errors require user intervention to resolve before the process can proceed.
+	
+	\item \texttt{st.success()} confirms the successful completion of specific actions, like a successful file upload or model load. These messages provide positive feedback and reassure users that the system is functioning correctly.
+\end{itemize}
+
+By utilizing these message types appropriately, the application ensures transparency and guides users effectively through the data processing and prediction workflow.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1cm,
+		box/.style={rectangle, draw, minimum width=8cm, minimum height=1cm, text centered, font=\small},
+		arrow/.style={->, thick}
+		]
+		
+		% Nodes stacked vertically
+		\node[box] (system) {System Event or Status};
+		\node[box, below=of system] (info) {\texttt{st.info()}: Informational messages (tips, guidance)};
+		\node[box, below=of info] (warning) {\texttt{st.warning()}: Recoverable issues (missing values, inconsistencies)};
+		\node[box, below=of warning] (error) {\texttt{st.error()}: Critical errors (halt workflow)};
+		\node[box, below=of error] (success) {\texttt{st.success()}: Successful actions (file upload, model load)};
+		
+		% Arrows downwards
+		\draw[arrow] (system) -- (info);
+		\draw[arrow] (info) -- (warning);
+		\draw[arrow] (warning) -- (error);
+		\draw[arrow] (error) -- (success);
+		
+	\end{tikzpicture}
+	\caption{Message Handling Flow in Deployment Interface}
+\end{figure}
+
+
+
+\section{Nomenclature in Deployment}
+
+\subsection{Folder Names}
+\begin{itemize}
+	\item \texttt{models} — Directory storing pre-trained ARIMA and LSTM model files used during prediction in deployment.
+	\item \texttt{data} — Location for uploaded datasets by users and sample data used for testing within the deployment environment.
+\end{itemize}
+
+\subsection{File Names}
+\begin{itemize}
+	\item \texttt{app.py} — The main user-facing deployment script that handles data uploads, triggers prediction workflows, displays results, and manages user interactions.
+	\item \texttt{developer.py} — Script intended for developers to configure, retrain, or update forecasting models and related parameters before deployment.
+	\item \texttt{model\_utils.py} — Utility module containing shared helper functions for loading data, models, and preprocessing tasks used by both \texttt{app.py} and \texttt{developer.py}.
+	\item \texttt{config2.json} — Central configuration file storing parameters for the  selected model type  read by deployment scripts at runtime.
+\end{itemize}
+
+\subsection{Module and Function Names}
+\begin{itemize}
+	\item \texttt{load\_storm\_data()} — Responsible for loading and preprocessing storm data files, including handling missing or invalid entries during deployment.
+	\item \texttt{train\_arima\_model()} and \texttt{save\_arima\_model()} — Used in \texttt{developer.py} for model training and persistence; trained models are then used in deployment by \texttt{app.py}.
+	\item \texttt{save\_lstm\_model()} and \texttt{load\_lstm\_model()} — Functions to save and load LSTM model weights and associated scalers, enabling seamless use during prediction in deployment.
+	\item \texttt{load\_config()} and \texttt{save\_config()} — Manage reading and updating deployment configuration parameters that govern model selection and forecast settings.
+\end{itemize}
+
+\subsection{Key Variable Names }
+\begin{itemize}
+	\item \texttt{uploaded\_file} — Represents the CSV file object uploaded by the user through the \texttt{app.py} interface.
+	\item \texttt{df} — The raw input DataFrame created from the uploaded data, which undergoes validation and preprocessing in \texttt{app.py}.
+	\item \texttt{forecast\_steps} — Integer value indicating how many future days the model should predict, typically controlled by a user slider in \texttt{app.py}.
+	\item \texttt{wind\_col} and \texttt{date\_col} — Column names dynamically inferred or selected by the deployment app to identify wind speed and date/time data.
+	\item \texttt{model\_type} — String variable loaded from \texttt{config2.json} that specifies whether ARIMA or LSTM forecasting is used in the current deployment session.
+	\item \texttt{forecast} and \texttt{results} — Data structures (arrays or DataFrames) containing the predicted values generated by the loaded models and displayed to the user.
+\end{itemize}

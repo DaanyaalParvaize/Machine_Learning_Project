@@ -1,0 +1,44 @@
+\acswitchoff 
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Model Selection Between ARIMA and LSTM}}{4}{figure.caption.6}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Advantages of ARIMA and LSTM for hurricane wind speed prediction.}}{5}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Structure of the Report}}{7}{figure.caption.8}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Dummy Output Of Code}}{50}{figure.caption.34}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Vertical Workflow: Hurricane Intensity Prediction using ARIMA}}{53}{figure.caption.38}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Vertical KDD Process as Applied in the Project}}{57}{figure.caption.39}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Machine Learning Pipeline for Time-Series Forecasting}}{59}{figure.caption.40}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Important Columns for Hurricane Intensity Prediction}}{64}{figure.caption.42}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Forecast vs. Actual Wind Speeds}}{81}{figure.caption.43}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Color-coded visualization of the hurricane wind speed forecasting process}}{82}{figure.caption.44}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {11.1}{\ignorespaces Validation checks during configuration parsing}}{103}{figure.caption.77}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {12.1}{\ignorespaces Interaction between developer configuration and application interface}}{109}{figure.caption.78}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {14.1}{\ignorespaces Visualization of Test Output Results}}{117}{figure.caption.99}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {15.1}{\ignorespaces Forecasting Workflow in Deployment Mode}}{124}{figure.caption.105}%
+\contentsline {figure}{\numberline {15.2}{\ignorespaces Deployment View: Machine Learning Prediction Pipeline}}{126}{figure.caption.106}%
+\contentsline {figure}{\numberline {15.3}{\ignorespaces Parameter management flow between the GUI, configuration file, and prediction app}}{128}{figure.caption.107}%
+\contentsline {figure}{\numberline {15.4}{\ignorespaces Message Handling Flow in Deployment Interface}}{131}{figure.caption.109}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {16.1}{\ignorespaces Visualization of Test Output Results}}{135}{figure.caption.110}%
+\contentsline {figure}{\numberline {16.2}{\ignorespaces Automation Guide Flowchart}}{140}{figure.caption.111}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {17.1}{\ignorespaces Model Forecasting Pipeline}}{142}{figure.caption.112}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {18.1}{\ignorespaces Lenovo LOQ Essential Gen 9}}{144}{figure.caption.114}%
+\contentsline {figure}{\numberline {18.2}{\ignorespaces SanDisk 1TB SSD}}{145}{figure.caption.115}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }

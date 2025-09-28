@@ -1,0 +1,178 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Keerti Belmane $
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: D:/BA_PROJECT/BA25-02-Time-Series/report/Contents/en/DevtoDeploy.tex $
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Development to Deployment}
+
+\section{Overview}
+This section describes the interaction between two primary Python scripts used in the deployment of forecasting models: 
+
+\begin{itemize}
+	\item \texttt{developer.py} — responsible for setting model parameters and selecting which forecasting model to use.
+	\item \texttt{app.py} — fetches these settings from a shared configuration and executes the selected model to generate predictions.
+\end{itemize}
+
+This separation allows developers to configure model behavior independently of the user-facing application, enabling smoother updates and better maintenance.
+
+\subsection{Tools Used in Development to Deployment}
+
+To ensure seamless interaction between development and deployment stages, the following tools and libraries are employed:
+
+\begin{itemize}
+	\item \textbf{Python 3.x} --- The core programming language used for both model training and deployment logic.
+	\item \textbf{JSON} --- A lightweight data-interchange format used to store and exchange model configurations between scripts.
+	\item \textbf{Pickle} --- A standard Python library for serializing and deserializing ARIMA models.
+	\item \textbf{HDF5 (via Keras)} --- The Hierarchical Data Format used to store trained LSTM models in a compact and portable format.
+	\item \textbf{Keras (with TensorFlow backend)} --- A deep learning library used for building, training, and deploying LSTM models.
+	\item \textbf{Matplotlib/Seaborn (optional)} --- For plotting model forecasts or visualizing input/output trends.
+	
+\end{itemize}
+
+\subsection{Data Structure Files}
+
+This subsection outlines the structure and contents of key files that enable consistent communication between development and deployment modules.
+
+\begin{itemize}
+	\item \texttt{model\_config.json}:
+	\begin{itemize}
+		\item Stores metadata about the selected forecasting model (e.g., ARIMA or LSTM).
+		\item Contains hyperparameters like \texttt{p}, \texttt{d}, \texttt{q} for ARIMA, or layer details for LSTM.
+		\item Ensures that \texttt{app.py} can interpret and load the correct model without manual changes.
+	\end{itemize}
+	
+	\item \texttt{arima\_model.pkl}:
+	\begin{itemize}
+		\item A binary file created using Python’s \texttt{pickle} module.
+		\item Stores the trained ARIMA model object, which includes model parameters and state.
+		\item Enables fast loading and inference during deployment.
+	\end{itemize}
+	
+	\item \texttt{lstm\_model.h5}:
+	\begin{itemize}
+		\item HDF5 format file created using Keras.
+		\item Stores both model architecture and trained weights for the LSTM neural network.
+		\item Allows easy reuse without needing to retrain the model.
+	\end{itemize}
+\end{itemize}
+
+These files reside in a shared \texttt{model\_exchange/} folder, allowing separation between developer control and application execution. Each file plays a specific role in ensuring reproducibility, modularity, and automation of the deployment workflow.
+
+
+These tools collectively support modular development, scalable deployment, and maintainability of forecasting systems.
+
+
+\subsection{Data Flow and File Structure}
+The workflow begins with the developer specifying the desired model and its parameters inside \texttt{developer.py}. This configuration is then serialized and saved in a standardized format (\texttt{JSON}) within a shared directory. The user interface script, \texttt{app.py}, reads this configuration at runtime to load the appropriate model and apply it to user input data.
+
+The directory structure used for this model exchange is as follows:
+
+\lstdefinestyle{tree}{
+	backgroundcolor=\color{gray!5},
+	basicstyle=\ttfamily\small,
+	frame=single,
+	breaklines=true
+}
+
+\begin{lstlisting}[style=tree, caption={Model Exchange Folder Structure}]
+	model_exchange/
+	model_config.json   # Contains chosen model and parameters
+	arima_model.pkl     # ARIMA saved model
+	lstm_model.h5       # LSTM saved model
+\end{lstlisting}
+
+Here, \texttt{model\_config.json} stores the model selection and parameters, while \texttt{arima\_model.pkl} and \texttt{lstm\_model.h5} are serialized versions of the trained models ready for inference.
+
+\subsection{TikZ Diagram of Workflow}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=1.5cm, every node/.style={draw, fill=blue!10, rounded corners, align=center}]
+		\node (dev) {developer.py\\(Selects model, sets parameters)};
+		\node (conf) [below=of dev] {model\_config.json};
+		\node (app) [below=of conf] {app.py\\(Reads config, runs model)};
+		\node (input) [right=4cm of app] {User Input Data};
+		\node (output) [below=of app] {Prediction Output};
+		
+		\draw[->] (dev) -- (conf);
+		\draw[->] (conf) -- (app);
+		\draw[->] (input) -- (app);
+		\draw[->] (app) -- (output);
+	\end{tikzpicture}
+	\caption{Interaction between developer configuration and application interface}
+\end{figure}
+
+This diagram illustrates the flow: the developer writes configuration → saved to JSON → application reads config and user input → application runs model → outputs predictions.
+
+\subsection{Supported File Formats}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|l|}
+		\hline
+		\textbf{Filename} & \textbf{Format} & \textbf{Description} \\
+		\hline
+		model\_config.json & JSON & Stores selected model type and its parameters \\
+		lstm\_model.h5     & HDF5 & Serialized LSTM neural network model \\
+		arima\_model.pkl   & Pickle & Serialized ARIMA model \\
+		\hline
+	\end{tabular}
+	\caption{Explanation of configuration and model files}
+\end{table}
+
+\subsection{Python Code Snippets}
+
+\subsubsection*{developer.py - Saving Model Choice and Parameters}
+\begin{lstlisting}[language=Python, frame=single, breaklines=true]
+	import json
+	
+	# Define the model and parameters
+	model_config = {
+		"model": "ARIMA",
+		"params": {
+			"p": 1,
+			"d": 1,
+			"q": 1
+		}
+	}
+	
+	# Save configuration to JSON file
+	with open("model_exchange/model_config.json", "w") as f:
+	json.dump(model_config, f)
+\end{lstlisting}
+
+This script allows the developer to select the model type and specify its hyperparameters, which are then stored in a JSON file for use by the application.
+
+\subsubsection*{app.py - Fetching and Using Configurations}
+\begin{lstlisting}[language=Python, frame=single, breaklines=true]
+	import json
+	
+	# Load the configuration file
+	with open("model_exchange/model_config.json", "r") as f:
+		config = json.load(f)
+	
+	if config["model"] == "ARIMA":
+	# Load the ARIMA model and perform forecasting
+		import pickle
+		with open("model_exchange/arima_model.pkl", "rb") as f:
+			model = pickle.load(f)
+			forecast = model.forecast(steps=5)
+			print(forecast)
+	
+	elif config["model"] == "LSTM":
+	# Load the LSTM model and perform prediction
+		from keras.models import load_model
+			model = load_model("model_exchange/lstm_model.h5")
+			# Assume input_data is preprocessed appropriately
+			prediction = model.predict(input_data)
+			print(prediction)
+\end{lstlisting}
+
+This script is executed by the application. It reads the configuration JSON, loads the corresponding saved model (ARIMA or LSTM), performs the prediction on user input, and outputs the result.

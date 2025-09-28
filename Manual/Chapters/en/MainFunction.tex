@@ -1,0 +1,91 @@
+%%%%%%%%%%%%
+%
+% $Autor: Wings $
+% $Datum: 2019-03-05 08:03:15Z $
+% $Pfad: MainFunction.tex $
+% $Version: 4250 $
+% !TeX spellcheck = en_GB/de_DE
+% !TeX encoding = utf8
+% !TeX root = manual 
+% !TeX TXS-program:bibliography = txs:///biber
+%
+%%%%%%%%%%%%
+
+\chapter{\TRANS{Hauptfunktion}{Main Function}}
+
+In this section, we describe the key functionalities and workflow of the Hurricane Intensity Prediction System from both the developer and user perspectives.
+
+The main functions of the system are summarized in Table~\ref{tab:main_functions}.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|p{8cm}|}
+		\hline
+		\textbf{Functionality} & \textbf{Description} \\
+		\hline
+		Data Preprocessing & Load and clean the NOAA Atlantic Hurricane Dataset or user-provided data to ensure compatibility with the models. \\
+		\hline
+		Model Selection & Developer selects and configures ARIMA and LSTM models for hurricane intensity prediction. \\
+		\hline
+		Training (Developer) & Models are trained on historical hurricane data using optimal parameters set by the developer. Trained models are saved in the \texttt{models/} directory. \\
+		\hline
+		Prediction (User) & User uploads new hurricane data via the Streamlit app. The system loads the pre-trained models and generates predictions automatically. \\
+		\hline
+		Visualization & The application automatically visualizes prediction results for the user within the web interface. \\
+		\hline
+		Evaluation (Developer) & Developer can compare predicted values with actual values to assess and improve model performance. \\
+		\hline
+	\end{tabular}
+	\caption{Main Functions of the Hurricane Intensity Prediction System}
+	\label{tab:main_functions}
+\end{table}
+
+\section*{Workflow Overview}
+
+The following diagram illustrates the workflow for both developers and users:
+
+\begin{center}
+	\begin{tikzpicture}[node distance=2.5cm, every node/.style={font=\small}]
+		% Developer side
+		\node (dev) [draw, rectangle, fill=blue!10, minimum width=3cm] {Developer Workflow};
+		\node (preprocess) [draw, rectangle, below of=dev, fill=gray!10] {Data Preprocessing};
+		\node (select) [draw, rectangle, below of=preprocess, fill=gray!10] {Model Selection \& Parameter Setting};
+		\node (train) [draw, rectangle, below of=select, fill=gray!10] {Model Training};
+		\node (save) [draw, rectangle, below of=train, fill=gray!10] {Save Trained Models (\texttt{models/})};
+		
+		% User side
+		\node (user) [draw, rectangle, right=5cm of dev, fill=green!10, minimum width=3cm] {User Workflow};
+		\node (upload) [draw, rectangle, below of=user, fill=gray!10] {Upload Data (Streamlit App)};
+		\node (predict) [draw, rectangle, below of=upload, fill=gray!10] {Load Trained Models \& Predict};
+		\node (visualize) [draw, rectangle, below of=predict, fill=gray!10] {Automatic Visualization};
+		\node (download) [draw, rectangle, below of=visualize, fill=gray!10] {Download Predictions};
+		
+		% Arrows for developer
+		\draw[->, thick] (dev) -- (preprocess);
+		\draw[->, thick] (preprocess) -- (select);
+		\draw[->, thick] (select) -- (train);
+		\draw[->, thick] (train) -- (save);
+		
+		% Arrows for user
+		\draw[->, thick] (user) -- (upload);
+		\draw[->, thick] (upload) -- (predict);
+		\draw[->, thick] (predict) -- (visualize);
+		\draw[->, thick] (visualize) -- (download);
+		
+		% Connection between developer and user
+		\draw[->, thick, dashed] (save.east) -- ++(1,0) -- ++(0,5.5) -- (predict.west);
+		
+		% Labels
+		\node[above=0.2cm of dev] {\textbf{Developer}};
+		\node[above=0.2cm of user] {\textbf{User}};
+	\end{tikzpicture}
+\end{center}
+
+\noindent
+\textbf{Legend:} \\
+\textbf{Developer:} Responsible for data preprocessing, model selection, training, and saving models. \\
+\textbf{User:} Interacts with the application via Streamlit, uploads data, and receives predictions and visualizations using pre-trained models.
+
+
+
+

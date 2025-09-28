@@ -1,0 +1,23 @@
+\acswitchoff 
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Hardware setup needed for running the hurricane prediction project.}}{4}{figure.1.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Installing the Required Python libraries}}{7}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Streamlit Command}}{8}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Uploading the File}}{8}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Workflow for Running Preprocessing, Prediction, and Visualization}}{9}{figure.3.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Setup Workflow for Hurricane Intensity Prediction System}}{13}{figure.4.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Functionality Overview and File Interactions}}{17}{figure.6.1}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Sketch of the User Interface for the Hurricane Intensity Prediction App}}{18}{figure.6.2}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Parallel Maintenance Workflows for Customers and Developers}}{22}{figure.8.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Troubleshooting Workflow for the Hurricane Intensity Prediction System}}{23}{figure.9.1}%
+\addvspace {10\p@ }
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

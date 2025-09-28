@@ -1,0 +1,92 @@
+%%%%%%%%%%%%
+%
+% $Autor: Wings $
+% $Datum: 2019-03-05 08:03:15Z $
+% $Pfad: Maintenance.tex $
+% $Version: 4250 $
+% !TeX spellcheck = en_GB/de_DE
+% !TeX encoding = utf8
+% !TeX root = manual 
+% !TeX TXS-program:bibliography = txs:///biber
+%
+%%%%%%%%%%%%
+
+\chapter{Maintenance}
+
+This chapter provides maintenance guidelines for both users (customers) and developers to ensure the Hurricane Intensity Prediction System remains reliable and effective.
+
+\section*{For Customers}
+
+As a user, you can help keep the application running smoothly by following these steps:
+\begin{itemize}
+	\item \textbf{Keep Your Data Organized:} Use accurate, well-formatted data files for predictions. Store your datasets securely and back them up regularly.
+	\item \textbf{Update the Application:} If a new version or updated models are provided by the developer, follow the instructions to update your files.
+	\item \textbf{Monitor Results:} Regularly review prediction outputs. If you notice unusual results, double-check your input data and consult the troubleshooting section.
+	\item \textbf{Report Issues:} If you encounter technical problems or errors, report them to the developer or support team with as much detail as possible.
+	\item \textbf{Follow Security Practices:} Do not share sensitive data or model files with unauthorized individuals. Store your files in secure locations.
+	\item \textbf{Consult the Manual:} Refer to the user manual for troubleshooting tips, FAQs, and guidance on using the application.
+\end{itemize}
+
+\section*{For Developers}
+
+Developers are responsible for the technical upkeep and improvements of the system:
+\begin{itemize}
+	\item \textbf{Update Dependencies:} Regularly update the \texttt{requirements.txt} file and test the application after any changes to dependencies.
+	\item \textbf{Retrain and Update Models:} When new hurricane data is available, retrain the ARIMA and LSTM models and update the \texttt{models/} directory for users.
+	\item \textbf{Maintain Data Quality:} Validate, clean, and archive datasets. Use version control for datasets and code.
+	\item \textbf{Refactor and Document Code:} Keep the code modular, remove obsolete code, and update documentation to reflect any changes.
+	\item \textbf{Ensure Security:} Protect sensitive data and model files. Use environment variables for credentials and restrict access as needed.
+	\item \textbf{Test Thoroughly:} Maintain automated tests and regularly test the application on various platforms to ensure stability.
+	\item \textbf{Support Users:} Respond to user reports, update the user manual as needed, and provide clear instructions for updates or new features.
+\end{itemize}
+
+\textbf{Note:} Customers should only perform maintenance steps described in the "For Customers" section. Technical maintenance and updates should be handled by the developer or system administrator.
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1.5cm,
+		every node/.style={draw, rounded corners, minimum width=5.2cm, minimum height=0.9cm, align=left, font=\small}
+		]
+		% Customer track
+		\node[fill=blue!10] (custstart) {Customer Maintenance Start};
+		\node[below=of custstart, fill=gray!10] (custdata) {Keep Data Organized};
+		\node[below=of custdata, fill=gray!10] (custupdate) {Update App/Models if Provided};
+		\node[below=of custupdate, fill=gray!10] (custmonitor) {Monitor Results};
+		\node[below=of custmonitor, fill=gray!10] (custreport) {Report Issues};
+		\node[below=of custreport, fill=gray!10] (custsecurity) {Follow Security Practices};
+		\node[below=of custsecurity, fill=green!10] (custend) {Consult Manual as Needed};
+		
+		% Developer track (closer to customer track)
+		\node[right=3.5cm of custstart, fill=red!10] (devstart) {Developer Maintenance Start};
+		\node[below=of devstart, fill=gray!10] (devdep) {Update Dependencies};
+		\node[below=of devdep, fill=gray!10] (devmodel) {Retrain/Update Models};
+		\node[below=of devmodel, fill=gray!10] (devdata) {Maintain Data Quality};
+		\node[below=of devdata, fill=gray!10] (devcode) {Refactor/Document Code};
+		\node[below=of devcode, fill=gray!10] (devsecurity) {Ensure Security};
+		\node[below=of devsecurity, fill=gray!10] (devtest) {Test Thoroughly};
+		\node[below=of devtest, fill=green!10] (devsupport) {Support Users};
+		
+		% Arrows for customer
+		\draw[->, thick] (custstart) -- (custdata);
+		\draw[->, thick] (custdata) -- (custupdate);
+		\draw[->, thick] (custupdate) -- (custmonitor);
+		\draw[->, thick] (custmonitor) -- (custreport);
+		\draw[->, thick] (custreport) -- (custsecurity);
+		\draw[->, thick] (custsecurity) -- (custend);
+		
+		% Arrows for developer
+		\draw[->, thick] (devstart) -- (devdep);
+		\draw[->, thick] (devdep) -- (devmodel);
+		\draw[->, thick] (devmodel) -- (devdata);
+		\draw[->, thick] (devdata) -- (devcode);
+		\draw[->, thick] (devcode) -- (devsecurity);
+		\draw[->, thick] (devsecurity) -- (devtest);
+		\draw[->, thick] (devtest) -- (devsupport);
+		
+		% Labels above tracks
+		\node[above=0.1cm of custstart, font=\bfseries\small, text=blue!50!black] {Customer Maintenance};
+		\node[above=0.1cm of devstart, font=\bfseries\small, text=red!70!black] {Developer Maintenance};
+	\end{tikzpicture}
+	\caption{Parallel Maintenance Workflows for Customers and Developers}
+\end{figure}

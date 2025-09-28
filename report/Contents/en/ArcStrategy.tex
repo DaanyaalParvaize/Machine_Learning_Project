@@ -1,0 +1,178 @@
+%%%
+%
+% $Autor: Wings $
+% $Datum: 2021-05-14 $
+% $Pfad: GitLab/CornerBlending $
+% $Dateiname: ArcStrategy
+% $Version: 4620 $
+%
+% !TeX spellcheck = de_GB
+%
+%%%
+
+
+
+
+
+
+
+
+
+	
+	\chapter{Domain Knowledge}
+	
+
+
+\section{Application}
+Hurricane intensity forecasting plays a critical role in natural disaster preparedness, insurance risk estimation, and infrastructure resilience planning. Our project focuses on using time series forecasting, specifically ARIMA models, to predict the maximum wind speed of Atlantic hurricanes. Accurate predictions can help governments, NGOs, and local communities to prepare resources and evacuations in time, thereby saving lives and reducing economic losses.
+
+\section{Problem}
+Our group aimed to address the challenging task of hurricane intensity prediction using the NOAA Atlantic Hurricane Database (HURDAT2), sourced from Kaggle. This task presents multiple real-world challenges:
+
+\subsection{Complex Natural Factors}
+Hurricane strength depends on numerous interacting environmental elements such as wind shear, sea surface temperature, and atmospheric interactions. Even minor fluctuations in these factors can significantly alter storm intensity \cite{emanuel2003tropical, kaplan2003large}.
+
+\subsection{Imperfect Data}
+Data collection over oceans is inherently difficult. Inaccuracies in initial values such as wind speed or temperature can lead to substantial forecasting errors, especially for predictions beyond 24–48 hours.
+
+\subsection{Track vs. Intensity Prediction}
+While hurricane track forecasting has improved significantly in recent decades, intensity prediction still lags behind. Models show an average error of around 15 mph per day, which poses risks for emergency planning and disaster mitigation \cite{de2019evaluation}.
+
+\subsection{Rapid Intensification Events}
+Some storms, such as Hurricane Maria and Hurricane Dorian, have undergone rapid intensification, where wind speeds increased dramatically in a short time. These events are extremely difficult to predict and can catch communities unprepared \cite{kaplan2003large}.
+
+\subsection{ARIMA Limitations}
+Although ARIMA models are proficient at identifying trends and seasonality in time series data, they do not account for the physical processes driving hurricane dynamics. This makes it challenging to predict sudden changes in intensity, especially for rapidly intensifying storms.
+
+\section{Data Acquisition}
+We used the NOAA Atlantic Hurricane Database from Kaggle, part of NOAA’s HURDAT2 archive, which includes hurricane records from 1975 to 2021 \cite{noaa2021hurdat2, kaggle2021hurricane}. This dataset provides six-hour interval records and includes:
+
+\begin{itemize}
+	\item Date and time of each storm observation
+	\item Storm ID and name
+	\item Latitude and longitude
+	\item Maximum sustained wind speed (in knots)
+	\item Minimum central pressure (in millibars)
+\end{itemize}
+
+We performed preprocessing to validate the dataset structure, format, and completeness before model building. Given its widespread use in meteorological research, this dataset was deemed a reliable source for our forecasting project.
+
+\section{Data Quantity}
+The dataset offers sufficient granularity and scale for ARIMA modeling:
+
+\begin{itemize}
+	\item Total Records: 10,681
+	\item Time Period: 1975–2021
+	\item Frequency: Observations every 6 hours
+	\item File Size: 2.14 MB
+	\item Attributes: 13 columns per record
+\end{itemize}
+\begin{tikzpicture}[
+	table/.style={
+		matrix of nodes,
+		nodes={
+			rectangle,
+			draw=blue!70,
+			fill=blue!10,
+			minimum height=0.8cm,
+			text width=6.5cm,
+			align=left,
+			font=\small,
+			anchor=center,
+			rounded corners
+		},
+		row sep=0.15cm,
+		column sep=0.5cm,
+		nodes in empty cells
+	}
+	]
+	
+	\matrix[table] (tbl) {
+		\textbf{Property} & \textbf{Value} \\
+		Total Records     & 10,681          \\
+		Time Period       & 1975--2021      \\
+		Frequency         & Observations every 6 hours \\
+		File Size         & 2.14 MB         \\
+		Attributes        & 13 columns per record \\
+	};
+	
+\end{tikzpicture}
+
+
+Each storm contains multiple observations, enabling fine-resolution time series modeling and trend detection.
+
+\section{Data Quality}
+The dataset is curated by NOAA, a globally respected meteorological institution. Despite its trustworthiness, we encountered several data quality issues:
+
+\subsection{Missing Values}
+\begin{itemize}
+	\item Minimum Pressure: 891 missing entries
+	\item Maximum Wind Speed and Storm Name: 3 missing entries each
+\end{itemize}
+
+\subsection{Formatting Issues}
+\begin{itemize}
+	\item Latitude and longitude were stored as strings (e.g., “28.5N”), requiring conversion to float with direction.
+	\item Date and time were combined into a proper datetime object for time-based indexing.
+\end{itemize}
+
+\section{Data Relevance}
+The dataset is highly relevant to our forecasting goal:
+
+\begin{itemize}
+	\item \textbf{Max Wind (kt)}: Target variable for intensity prediction.
+	\item \textbf{Date/Time}: Enables time-indexed modeling.
+	\item \textbf{Latitude/Longitude}: Useful for potential spatial clustering or future geospatial analysis.
+	\item \textbf{Min Pressure}: Acts as a secondary validation metric.
+\end{itemize}
+
+\begin{tikzpicture}[
+	node distance=0.8cm and 2cm,
+	box/.style={rectangle, draw=blue!70, fill=blue!10, thick, minimum width=2.5cm, minimum height=0.8cm, align=center, rounded corners, font=\small},
+	arrow/.style={thick,->,>=Stealth}
+	]
+	
+	% Central node
+	\node[box, fill=orange!20] (dataset) {Dataset \\ \small (Hurricane Data)};
+	
+	% Surrounding nodes
+	\node[box, above left=of dataset] (maxwind) {\textbf{Max Wind (kt)} \\ Target variable \\ for intensity prediction};
+	
+	\node[box, above right=of dataset] (datetime) {\textbf{Date/Time} \\ Enables time-indexed \\ modeling};
+	
+	\node[box, below left=of dataset] (latlong) {\textbf{Latitude/Longitude} \\ Useful for spatial \\ clustering};
+	
+	\node[box, below right=of dataset] (pressure) {\textbf{Min Pressure} \\ Secondary validation \\ metric};
+	
+	% Arrows from dataset to attributes
+	\draw[arrow] (dataset) -- (maxwind);
+	\draw[arrow] (dataset) -- (datetime);
+	\draw[arrow] (dataset) -- (latlong);
+	\draw[arrow] (dataset) -- (pressure);
+	
+\end{tikzpicture}
+
+
+\section{Outliers}
+Outliers were present in wind speed and pressure variables:
+
+\begin{itemize}
+	\item Wind speeds ranged from about 20 knots to over 160 knots.
+	\item Pressure readings showed unusually low or high values.
+\end{itemize}
+
+We flagged and examined extreme values to assess whether they were valid meteorological events or data entry errors.
+
+\section{Anomalies}
+In addition to statistical outliers, we found anomalies such as:
+
+\begin{itemize}
+	\item Negative or zero wind speeds (improbable values)
+	\item Temporal anomalies like repeated timestamps
+\end{itemize}
+
+All such values were cleaned or removed based on validation rules. The resulting cleaned dataset was then fed into the ARIMA model.
+
+\section{Summary}
+To summarize, this chapter outlines the technical and environmental challenges associated with hurricane intensity prediction. Despite the richness and quality of the NOAA dataset, it still contains real-world imperfections, which must be addressed to build effective models. These considerations underscore why hurricane forecasting remains a critical yet difficult domain in time series prediction.
+

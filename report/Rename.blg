@@ -1,0 +1,88 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Rename.aux
+The style file: biblatex.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: Rename-blx.bib
+Database file #2: ../Documents/literature.bib
+Repeated entry---line 249 of file ../Documents/literature.bib
+ : @book{BoxEtAl2015
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 269 of file ../Documents/literature.bib
+ : @article{HochreiterSchmidhuber1997
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 291 of file ../Documents/literature.bib
+ : @book{Emanuel2005
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 309 of file ../Documents/literature.bib
+ : @book{HyndmanAthanasopoulos2021
+ :                                ,
+I'm skipping whatever remains of this entry
+Database file #3: ../Documents/MyLiterature.bib
+Warning--I didn't find a database entry for "mckinney2011pandas"
+Warning--I didn't find a database entry for "seabold2010statsmodels"
+Warning--I didn't find a database entry for "harris2020numpy"
+Warning--I didn't find a database entry for "pedregosa2011scikitlearn"
+Warning--I didn't find a database entry for "SAS2023"
+Biblatex version: 3.20
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 17 entries,
+            6402 wiz_defined-function locations,
+            1328 strings with 12352 characters,
+and the built_in function-call counts, 149567 in all, are:
+= -- 12261
+> -- 2228
+< -- 851
++ -- 4266
+- -- 810
+* -- 10529
+:= -- 16676
+add.period$ -- 0
+call.type$ -- 17
+change.case$ -- 16
+chr.to.int$ -- 44
+cite$ -- 32
+duplicate$ -- 15550
+empty$ -- 12762
+format.name$ -- 1257
+if$ -- 30556
+int.to.chr$ -- 0
+int.to.str$ -- 50
+missing$ -- 0
+newline$ -- 620
+num.names$ -- 1072
+pop$ -- 6018
+preamble$ -- 1
+purify$ -- 619
+quote$ -- 0
+skip$ -- 4334
+stack$ -- 0
+substring$ -- 22229
+swap$ -- 2957
+text.length$ -- 569
+text.prefix$ -- 23
+top$ -- 1
+type$ -- 565
+warning$ -- 0
+while$ -- 2050
+width$ -- 0
+write$ -- 604
+(There were 4 error messages)

@@ -1,0 +1,200 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Keerti Belmane $
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: D:/BA_PROJECT/BA25-02-Time-Series/report/Contents/en/DomainTools.tex $
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Development Environment}
+
+\section{Python Version}
+
+\begin{itemize}
+	\item \textbf{Version:} Python 3.9
+	\item \textbf{Reason:} This version was selected due to its compatibility with essential libraries such as \texttt{TensorFlow} and \texttt{statsmodels}. Python 3.10+ is not recommended because of potential incompatibilities.
+\end{itemize}
+
+\section{Description}
+
+Python is a versatile, high-level programming language widely used in data science and machine learning. In this project, Python serves as the core platform for implementing time series models (ARIMA and LSTM), handling data preprocessing, and enabling visualization through a web interface.
+
+\section{Installation}
+
+\subsection*{Windows}
+
+\begin{enumerate}
+	\item Download the installer: \url{https://www.python.org/downloads/release/python-390/}
+	\item Run the installer and check \textbf{``Add Python to PATH''}.
+	\item Choose \textbf{``Customize installation''} and select pip, IDLE, and other tools.
+	\item Complete the installation.
+\end{enumerate}
+
+\subsection*{macOS}
+
+\begin{itemize}
+	\item Use the official installer from: \url{https://www.python.org}
+\end{itemize}
+
+\subsection*{Linux (Debian/Ubuntu)}
+
+\begin{verbatim}
+	sudo apt update
+	sudo apt install python3.9 python3.9-venv python3.9-dev
+\end{verbatim}
+
+\section{Configuration}
+
+After installation, follow these steps to configure the environment:
+
+\begin{enumerate}
+	\item \textbf{Verify Installation:}
+	\begin{verbatim}
+		python3.9 --version
+	\end{verbatim}
+	
+	\item \textbf{Install pip (if not available):}
+	\begin{verbatim}
+		sudo apt install python3-pip
+	\end{verbatim}
+	
+	\item \textbf{Create a Virtual Environment:}
+	\begin{verbatim}
+		python3.9 -m venv venv
+	\end{verbatim}
+	
+	\item \textbf{Activate the Environment:}
+	\begin{itemize}
+		\item On Linux/macOS:
+		\begin{verbatim}
+			source venv/bin/activate
+		\end{verbatim}
+		\item On Windows:
+		\begin{verbatim}
+			venv\Scripts\activate
+		\end{verbatim}
+	\end{itemize}
+	
+	\item \textbf{Upgrade pip (Recommended):}
+	\begin{verbatim}
+		pip install --upgrade pip
+	\end{verbatim}
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1.5cm,
+		box/.style={
+			rectangle, 
+			draw=#1, thick, 
+			fill=#1!30, 
+			rounded corners,
+			minimum width=5cm, 
+			minimum height=1.4cm, 
+			align=center,
+			font=\sffamily\bfseries
+		},
+		arrow/.style={-{Latex[length=3mm]}, thick, color=#1}
+		]
+		
+		% Nodes (top to bottom)
+		\node[box=blue!70!black] (input) {Input \\ (Historical Hurricane Data)};
+		\node[box=cyan!70!black, below=of input] (preprocess) {Data Preprocessing};
+		\node[box=orange!80!black, below=of preprocess] (train) {Train-Test Split};
+		\node[box=red!80!black, below=of train] (model) {ARIMA Model \\ (Training)};
+		\node[box=violet!80!black, below=of model] (predict) {Forecasting \\ (Future Intensity)};
+		\node[box=green!70!black, below=of predict] (evaluate) {Evaluation \\ (RMSE, MAE)};
+		\node[box=teal!80!black, below=of evaluate] (output) {Output \\ (Predicted Intensities)};
+		
+		% Arrows (top to bottom)
+		\draw[arrow=blue!70!black] (input) -- (preprocess);
+		\draw[arrow=cyan!70!black] (preprocess) -- (train);
+		\draw[arrow=orange!80!black] (train) -- (model);
+		\draw[arrow=red!80!black] (model) -- (predict);
+		\draw[arrow=violet!80!black] (predict) -- (evaluate);
+		\draw[arrow=green!70!black] (evaluate) -- (output);
+		
+	\end{tikzpicture}
+	\caption{Vertical Workflow: Hurricane Intensity Prediction using ARIMA}
+\end{figure}
+
+
+	
+
+
+
+
+\section{First Steps}
+
+To set up your environment for this project:
+
+\begin{itemize}
+	\item \textbf{Install necessary libraries:}
+	\begin{verbatim}
+		pip install pandas numpy matplotlib 
+		scikit-learn tensorflow keras statsmodels streamlit
+	\end{verbatim}
+	
+	
+	\item \textbf{Confirm the setup:}
+	\begin{verbatim}
+		python
+		>>> import numpy, pandas, tensorflow, streamlit
+		>>> print("Environment ready!")
+	\end{verbatim}
+\end{itemize}
+
+
+
+
+\begin{center}
+	\begin{tikzpicture}[
+		node distance=1.1cm and 0cm,
+		every node/.style={font=\small},
+		box/.style={
+			rectangle, draw=#1, thick, rounded corners,
+			minimum width=10cm, minimum height=1.5cm, text width=9.5cm, align=left,
+			fill=#1!20, drop shadow={shadow xshift=0.3ex,shadow yshift=-0.3ex}
+		},
+		arrow/.style={-{Latex[length=3mm]}, thick, color=#1}
+		]
+		
+		% Step 1: Install libraries
+		\node[box=orange] (install) {\textbf{Install necessary libraries:}\\[0.2em]
+			\ttfamily pip install pandas numpy matplotlib scikit-learn tensorflow keras statsmodels streamlit
+		};
+		
+		% Step 2: Confirm setup
+		\node[box=teal, below=of install] (confirm) {\textbf{Confirm the setup:}\\[0.2em]
+			\ttfamily python\\
+			\ttfamily >>> import numpy, pandas, tensorflow, streamlit\\
+			\ttfamily >>> print("Environment ready!")
+		};
+		
+		% Arrow from install to confirm
+		\draw[arrow=orange] (install.south) -- ++(0,-0.3) -| (confirm.north);
+		
+	\end{tikzpicture}
+\end{center}
+
+	
+
+
+\section{Hello World Program}
+
+Create a file named \texttt{hello.py} and add the following code:
+
+\begin{verbatim}
+	print("Hello, World!")
+\end{verbatim}
+
+Run it using:
+
+\begin{verbatim}
+	python hello.py
+\end{verbatim}

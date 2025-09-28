@@ -1,0 +1,219 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Wings $
+% $Datum: 2020-07-24 09:05:07Z $
+% $Pfad: GDV/Vortraege/latex - Ausarbeitung/Kapitel/Einleitung.tex $
+% $Version: 4732 $
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+
+\section{Problem Description: Hurricane Wind Speed Prediction Using Time Series Models}
+
+\subsection{Background}
+Accurate prediction of hurricane intensity, especially wind speed, is essential for early warning systems, disaster response, insurance risk modeling, and minimizing human and economic losses. As climate volatility increases, so does the importance of tools capable of forecasting wind speed based on prior data patterns.
+
+\subsection{Problem Statement}
+Traditional models such as the WFL-EMM (Weight Feature Learning–Extensible Markov Model) incorporate genetic algorithms for feature weighting and probabilistic Markov chains to predict storm transitions \cite{su2011hurricane}. While effective in theory, these models are often computationally expensive, hard to tune, and impractical in resource-constrained real-world applications.
+
+There is thus a pressing need for a \textbf{simpler, scalable, and interpretable} approach that can accurately predict wind speeds using only historical wind speed data, without excessive preprocessing or domain-specific configuration.
+
+\subsection{Literature Overview}
+Box et al. \cite{box2015time} laid the groundwork for statistical forecasting with the ARIMA model, which has been widely adopted for time series applications due to its ability to capture trends and autocorrelations. On the other hand, Zhang et al. \cite{zhang2001forecasting} reviewed the strengths of neural networks in nonlinear forecasting, highlighting their adaptability but also noting limitations in interpretability and training complexity.
+
+Shi et al. \cite{shi2015convolutional} extended recurrent architectures using Convolutional LSTM for weather forecasting, illustrating that LSTM models outperform traditional methods in capturing spatio-temporal dependencies. Kordmahalleh et al. \cite{kordmahalleh2016hurricane} applied sparse recurrent neural networks to hurricane trajectory prediction, demonstrating success with minimal feature engineering. Additionally, Lakshmanan et al. \cite{lakshmanan2007wdss} developed WDSS-II, a system integrating machine learning with weather radar for operational decision support.
+
+Despite these advancements, there remains a gap in producing models that balance accuracy, interpretability, and computational feasibility for wind speed forecasting.
+
+\subsection{Challenges}
+Based on literature, key challenges in hurricane wind prediction include:
+
+\begin{itemize}
+	\item \textbf{Data complexity:} Wind speed patterns are highly nonlinear and affected by chaotic atmospheric dynamics \cite{zhang2001forecasting}.
+	\item \textbf{Model scalability:} Advanced hybrid models often require significant computational power and hyperparameter tuning \cite{su2011hurricane}.
+	\item \textbf{Deployment feasibility:} Complex architectures such as CNN-LSTM hybrids can be difficult to deploy on embedded or cloud-edge devices \cite{shi2015convolutional}.
+	\item \textbf{Interpretability:} Many machine learning models (e.g., LSTM) are black boxes, limiting their adoption in mission-critical systems \cite{box2015time}.
+\end{itemize}
+
+\subsection{Proposed Solution}
+To address these issues, this project evaluates and implements one of two distinct time series forecasting approaches:
+
+\begin{itemize}
+	\item \textbf{ARIMA (AutoRegressive Integrated Moving Average)} — used for linear trend modeling and interpretable forecasting \cite{box2015time}.
+	\item \textbf{LSTM (Long Short-Term Memory)} — applied for capturing nonlinear dependencies and long-term memory in time series data \cite{zhang2001forecasting}.
+\end{itemize}
+
+While both models are explored in the report from a theoretical and practical standpoint, the final implementation is based on only one of these approaches — selected based on the project's technical constraints, interpretability goals, and dataset characteristics.
+
+This flexibility allows the system to be extended in the future with hybrid or comparative modes, but currently, the deployment pipeline uses either ARIMA or LSTM, not both simultaneously.
+
+\subsection{Model Selection Guide}
+
+Choosing between ARIMA and LSTM can feel confusing, but it’s just like picking the right tool for the job. Here's a simple way to think about it:
+
+\begin{itemize}
+	\item If your data shows a clear trend or seasonality and you want to understand how the prediction is made, use \textbf{ARIMA}. Think of it like using a calculator: fast, explainable, and efficient.
+	\item If your data is messy, complicated, and has patterns that aren’t easy to spot, use \textbf{LSTM}. It’s like using a smart app that learns on its own – powerful but harder to interpret.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{In short:}
+\begin{itemize}
+	\item Want simplicity and control? $\rightarrow$ \textbf{ARIMA}
+	\item Want power and flexibility? $\rightarrow$ \textbf{LSTM}
+\end{itemize}
+
+
+\vspace{0.5cm}
+
+
+
+
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[
+			node distance=1.7cm and 3.5cm, % increased horizontal distance
+			every node/.style={font=\sffamily},
+			decision/.style={diamond, draw=blue!70, fill=blue!20, aspect=2, inner sep=3pt, thick, text width=3.5cm, align=center},
+			process/.style={rectangle, draw=orange!70, fill=orange!20, thick, rounded corners, minimum width=3.2cm, minimum height=1cm, align=center, font=\bfseries},
+			startstop/.style={ellipse, draw=gray!70, fill=gray!30, thick, minimum width=2.5cm, minimum height=1cm, align=center, font=\bfseries},
+			arrow/.style={-Stealth, thick, blue!80}
+			]
+			
+			% Nodes
+			\node[startstop] (start) {Start};
+			\node[decision, below=of start] (linear) {Linear data?};
+			\node[process, below left=of linear] (arima) {Use ARIMA};
+			\node[decision, below right=of linear] (complex) {Large / complex?};
+			\node[process, below=of complex] (lstm) {Use LSTM};
+			\node[process, right=3.5cm of arima] (default) {Use ARIMA};
+			
+			% Arrows with labels
+			\draw[arrow] (start) -- (linear);
+			\draw[arrow] (linear) -- node[left, xshift=-3pt, black] {Yes} (arima);
+			\draw[arrow] (linear) -- node[right, xshift=3pt, black] {No} (complex);
+			\draw[arrow] (complex) -- node[right, xshift=3pt, black] {Yes} (lstm);
+			\draw[arrow] (complex) -- node[below, black] {No} (default);
+			
+		\end{tikzpicture}
+		\caption{ Model Selection Between ARIMA and LSTM}
+		\label{fig:simple-colored-model-selection}
+	\end{figure}
+	
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Advantages}
+\begin{itemize}
+	\item \textbf{Interpretability:} ARIMA provides understandable model parameters.
+	\item \textbf{Adaptability:} Both models work across various datasets with minimal preprocessing.
+	\item \textbf{Nonlinear capability:} LSTM captures complex temporal dependencies often missed by linear models.
+	\item \textbf{Simplicity and scalability:} The combination allows for rapid prototyping and practical deployment.
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[
+		advantage/.style={rectangle, draw=blue!60, fill=blue!10, thick, rounded corners, text width=4cm, align=center, minimum height=1cm},
+		model/.style={rectangle, draw=black, fill=gray!10, thick, rounded corners, minimum width=2.5cm, minimum height=1cm},
+		arrow/.style={->, thick}
+		]
+		
+		% Model nodes
+		\node[model] (arima) at (-4, 0) {\textbf{ARIMA}};
+		\node[model] (lstm) at (4, 0) {\textbf{LSTM}};
+		
+		% ARIMA advantages
+		\node[advantage, above=1.5cm of arima] (interpret) {\textbf{Interpretability}\\Understandable model parameters};
+		\node[advantage, below=1.5cm of arima] (adapt) {\textbf{Adaptability}\\Works across various datasets};
+		
+		% LSTM advantages
+		\node[advantage, above=1.5cm of lstm] (nonlinear) {\textbf{Nonlinear Capability}\\Models complex temporal dependencies};
+		\node[advantage, below=1.5cm of lstm] (simple) {\textbf{Simplicity \& Scalability}\\Good for prototyping and deployment};
+		
+		% Arrows from models to advantages
+		\draw[arrow] (arima.north) -- (interpret.south);
+		\draw[arrow] (arima.south) -- (adapt.north);
+		\draw[arrow] (lstm.north) -- (nonlinear.south);
+		\draw[arrow] (lstm.south) -- (simple.north);
+	\end{tikzpicture}
+	\caption{Advantages of ARIMA and LSTM for hurricane wind speed prediction.}
+	\label{fig:arima-lstm-advantages}
+\end{figure}
+
+\subsection{Report Structure}
+
+This report is organized into a series of chapters and sections that comprehensively cover the various stages of the project. It starts with the foundational topics, including the introduction, domain knowledge, and essential modules. This is followed by discussions on data mining techniques and domain-specific tools relevant to the project.
+
+The core methodology and data-related chapters detail the technical approach and data processing workflows. Later sections focus on evaluation and monitoring to measure and ensure the system’s performance.
+
+The report then describes the deployment workflow, covering the transition from development to production, alongside the testing procedures that guarantee system reliability and robustness.
+
+Finally, an \textbf{Application Appendix} is provided, containing key supporting materials such as the Bill of Materials, Software Bill of Materials, the \texttt{requirements.txt} file, and a detailed list of packages and tools used throughout the project. This appendix supports reproducibility and ongoing maintenance efforts.
+
+
+
+
+\begin{figure}[htbp]
+	\centering
+	\caption{Structure of the Report}
+	\label{fig:report-structure}
+	
+	\begin{tikzpicture}[
+		node distance=0.5cm,
+		box/.style={
+			rectangle, 
+			rounded corners, 
+			minimum width=7cm, 
+			minimum height=1cm, 
+			align=center, 
+			text=white,
+			font=\sffamily\bfseries,
+			fill=#1
+		},
+		arrow/.style={-{Stealth[length=3mm]}, thick, black}
+		]
+		
+		% Nodes (color name passed as argument to box style)
+		\node[box=red!70] (intro) {Introduction};
+		\node[box=orange!70, below=of intro] (domain) {Domain Knowledge};
+		\node[box=green!70, below=of domain] (modules) {Important Modules};
+		\node[box=cyan!70, below=of modules] (datamining) {Data Mining};
+		\node[box=purple!70, below=of datamining] (domaintools) {Domain Tools};
+		\node[box=brown!70, below=of domaintools] (methodology) {Methodology};
+		\node[box=teal!70, below=of methodology] (appdevdata) {Application Development Data};
+		\node[box=violet!70, below=of appdevdata] (database) {Database};
+		\node[box=magenta!70, below=of database] (datatransform) {Data Transformation};
+		\node[box=olive!70, below=of datatransform] (docdev) {Documentation for Developers};
+		\node[box=gray!70, below=of docdev] (evaluation) {Evaluation};
+		\node[box=cyan!50!black, below=of evaluation] (devtodeploy) {Development to Deployment};
+		\node[box=blue!80, below=of devtodeploy] (appdeploy) {Application Deployment};
+		\node[box=teal!80, below=of appdeploy] (testing) {Testing};
+		
+		% Arrows connecting nodes vertically
+		\draw[arrow] (intro) -- (domain);
+		\draw[arrow] (domain) -- (modules);
+		\draw[arrow] (modules) -- (datamining);
+		\draw[arrow] (datamining) -- (domaintools);
+		\draw[arrow] (domaintools) -- (methodology);
+		\draw[arrow] (methodology) -- (appdevdata);
+		\draw[arrow] (appdevdata) -- (database);
+		\draw[arrow] (database) -- (datatransform);
+		\draw[arrow] (datatransform) -- (docdev);
+		\draw[arrow] (docdev) -- (evaluation);
+		\draw[arrow] (evaluation) -- (devtodeploy);
+		\draw[arrow] (devtodeploy) -- (appdeploy);
+		\draw[arrow] (appdeploy) -- (testing);
+		
+	\end{tikzpicture}
+\end{figure}

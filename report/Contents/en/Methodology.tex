@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Daanyaal Parvaize, Kreetika Mohanta, Keerti Belmane$
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: BA25-02-Time-Series/report/Contents/en/Methodology.tex
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\chapter{Methodolgy}
+
+\section{Standards}
+This section outlines the methodologies employed in the hurricane intensity prediction system, focusing on the Cross-Industry Standard Process for Data Mining (CRISP-DM), Knowledge Discovery in Databases (KDD) process, machine learning (ML) pipeline, and other relevant approaches. The justification for these methodologies ensures alignment with the project's objectives and the implementation details in \texttt{app.py}, \texttt{developer.py}, \texttt{model\_utils.py}, and \texttt{train\_models.ipynb}.
+
+\subsection{CRISP-DM}
+\textbf{Overview}: The CRISP-DM framework guides the data mining process through six iterative phases: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, and Deployment \cite{ChapmanEtAl2000}. 
+\begin{itemize}
+	\item \textbf{Application in Project}: 
+	\begin{itemize}
+		\item \textit{Business Understanding}: Defined the goal of forecasting hurricane wind speeds to enhance disaster preparedness, as implemented in \texttt{app.py}'s user interface.
+		\item \textit{Data Understanding}: Analyzed historical wind speed data (CSV inputs), identifying temporal patterns and missing values, as processed in \texttt{model\_utils.py: load\_storm\_data}.
+		\item \textit{Data Preparation}: Cleaned data via forward/backward filling and chronological sorting (\texttt{model\_utils.py}), with scaling for LSTM (\texttt{train\_models.ipynb}).
+		\item \textit{Modeling}: Developed ARIMA and LSTM models, configured via \texttt{config2.json}, with training in \texttt{train\_models.ipynb} and forecasting in \texttt{app.py}.
+		\item \textit{Evaluation}: Assessed model performance using mean squared error (MSE) for LSTM and stationarity checks for ARIMA, visualized in \texttt{developer.py}.
+		\item \textit{Deployment}: Delivered forecasts as CSV files and plots (\texttt{forecast\_results.csv}, \texttt{forecast\_plot.png}) via \texttt{app.py}.
+	\end{itemize}
+	\item \textbf{Relevance}: CRISP-DM's iterative structure supports the project's need for flexible model tuning and data preprocessing, ensuring robust forecasting.
+\end{itemize}
+
+\subsection{KDD Process}
+\textbf{Overview}: The Knowledge Discovery in Databases (KDD) process involves data selection, preprocessing, transformation, data mining, and interpretation/evaluation \cite{FayyadEtAl1996}.
+\begin{itemize}
+	\item \textbf{Application in Project}: 
+	\begin{itemize}
+		\item \textit{Data Selection}: Chose wind speed and date columns from CSV inputs (\texttt{model\_utils.py}).
+		\item \textit{Preprocessing}: Handled missing values and ensured numeric data types (\texttt{model\_utils.py}).
+		\item \textit{Transformation}: Scaled data for LSTM using \texttt{MinMaxScaler} and created sequences (\texttt{train\_models.ipynb}).
+		\item \textit{Data Mining}: Applied ARIMA and LSTM algorithms to extract temporal patterns (\texttt{model\_utils.py}, \texttt{developer.py}).
+		\item \textit{Interpretation/Evaluation}: Visualized forecasts and evaluated MSE, with results saved in \texttt{app.py}.
+	\end{itemize}
+	\item \textbf{Relevance}: KDD emphasizes knowledge extraction, complementing the project's focus on deriving actionable insights from wind speed data.
+\end{itemize}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1.3cm,
+		every node/.style={font=\small},
+		process/.style={rectangle, draw=blue!60, fill=blue!10, thick, minimum width=5.5cm, minimum height=1cm, align=center},
+		file/.style={rectangle, draw=gray!70, fill=gray!10, font=\ttfamily, minimum width=5cm, text centered},
+		arrow/.style={->, thick, >=latex}
+		]
+		
+		% Nodes
+		\node[process] (selection) {Data Selection};
+		\node[file, below=0.2cm of selection] (file1) {model\_utils.py};
+		
+		\node[process, below=1.1cm of file1] (preprocessing) {Preprocessing};
+		\node[file, below=0.2cm of preprocessing] (file2) {model\_utils.py};
+		
+		\node[process, below=1.1cm of file2] (transformation) {Transformation};
+		\node[file, below=0.2cm of transformation] (file3) {train\_models.ipynb};
+		
+		\node[process, below=1.1cm of file3] (mining) {Data Mining};
+		\node[file, below=0.2cm of mining] (file4) {model\_utils.py, developer.py};
+		
+		\node[process, below=1.1cm of file4] (evaluation) {Interpretation \& Evaluation};
+		\node[file, below=0.2cm of evaluation] (file5) {app.py};
+		
+		% Arrows
+		\draw[arrow] (selection) -- (file1);
+		\draw[arrow] (file1) -- (preprocessing);
+		\draw[arrow] (preprocessing) -- (file2);
+		\draw[arrow] (file2) -- (transformation);
+		\draw[arrow] (transformation) -- (file3);
+		\draw[arrow] (file3) -- (mining);
+		\draw[arrow] (mining) -- (file4);
+		\draw[arrow] (file4) -- (evaluation);
+		\draw[arrow] (evaluation) -- (file5);
+		
+	\end{tikzpicture}
+	\caption{Vertical KDD Process as Applied in the Project}
+	\label{fig:kdd_process_vertical}
+\end{figure}
+
+
+
+\subsection{ML Pipeline}
+\textbf{Overview}: The ML pipeline encapsulates data ingestion, preprocessing, model training, evaluation, and deployment, tailored for time-series forecasting.
+
+{\setlength{\itemsep}{0.2em} % reduce space between items
+	\begin{itemize}
+		\item \textbf{Components}:
+		{\setlength{\itemsep}{0.2em} % reduce nested spacing too
+			\begin{itemize}
+				\item \textit{Data Ingestion}: Loaded CSV files via \texttt{pandas} in \texttt{model\_utils.py: load\_storm\_data}.
+				\item \textit{Preprocessing}: Cleaned data (missing value imputation, sorting) and scaled for LSTM (\texttt{train\_models.ipynb}).
+				\item \textit{Model Training}: Trained ARIMA with \texttt{statsmodels} (\texttt{model\_utils.py}) and LSTM with TensorFlow/Keras (\texttt{train\_models.ipynb}), using hyperparameters from \texttt{config2.json}.
+				\item \textit{Evaluation}: Computed MSE for LSTM and checked ARIMA stationarity, with results plotted in \texttt{developer.py}.
+				\item \textit{Deployment}: Generated forecasts, saved as CSV and PNG files, and provided via \texttt{app.py}'s interface.
+		\end{itemize}}
+		
+		\item \textbf{Implementation}: The pipeline is operationalized in \texttt{train\_models.ipynb} for training and \texttt{app.py} for forecasting, with \texttt{developer.py} enabling hyperparameter tuning.
+		\item \textbf{Relevance}: The pipeline ensures systematic processing, aligning with the project's need for reproducible and scalable forecasting.
+\end{itemize}}
+
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1.6cm and 0cm,
+		every node/.style={align=center, font=\sffamily, text width=6cm, minimum height=1.2cm},
+		box/.style={draw, rounded corners=10pt, minimum width=6cm, fill=#1!15},
+		arrow/.style={->, thick}
+		]
+		
+		% Define colors
+		\definecolor{ingest}{HTML}{1f77b4}      % blue
+		\definecolor{preproc}{HTML}{ff7f0e}     % orange
+		\definecolor{train}{HTML}{2ca02c}       % green
+		\definecolor{eval}{HTML}{d62728}        % red
+		\definecolor{deploy}{HTML}{9467bd}      % purple
+		
+		% Nodes
+		\node[box=ingest] (ingestion) {\textbf{Data Ingestion}\\Load CSV with \texttt{pandas}\\(\texttt{load\_storm\_data})};
+		\node[box=preproc, below=of ingestion] (preprocessing) {\textbf{Preprocessing}\\Clean and scale data for LSTM\\(\texttt{train\_models.ipynb})};
+		\node[box=train, below=of preprocessing] (training) {\textbf{Model Training}\\ARIMA (\texttt{statsmodels}) and LSTM (Keras)\\Config from \texttt{config2.json}};
+		\node[box=eval, below=of training] (evaluation) {\textbf{Evaluation}\\MSE for LSTM, stationarity for ARIMA\\(\texttt{developer.py})};
+		\node[box=deploy, below=of evaluation] (deployment) {\textbf{Deployment}\\Forecasts saved as CSV, PNG\\Displayed via \texttt{app.py}};
+		
+		% Arrows
+		\draw[arrow] (ingestion) -- (preprocessing);
+		\draw[arrow] (preprocessing) -- (training);
+		\draw[arrow] (training) -- (evaluation);
+		\draw[arrow] (evaluation) -- (deployment);
+		
+	\end{tikzpicture}
+	\caption{Machine Learning Pipeline for Time-Series Forecasting}
+\end{figure}
+
+
+\subsection{Other Methodologies}
+\textbf{Overview}: Additional methodologies considered include SEMMA (Sample, Explore, Modify, Model, Assess) and agile data science approaches.
+\begin{itemize}
+	\item \textbf{SEMMA}: Focuses on sampling data, exploring patterns, modifying data, modeling, and assessing results \cite{SAS2023}. It aligns with the project's data exploration in \texttt{model\_utils.py} and modeling in \texttt{train\_models.ipynb}, but CRISP-DM was preferred for its deployment focus.
+	\item \textbf{Agile Data Science}: Emphasizes iterative development and collaboration \cite{RussellJurney2017}. Applied in \texttt{developer.py}'s interactive tuning interface, enhancing model adaptability.
+	\item \textbf{Relevance}: These complement CRISP-DM by supporting exploratory analysis and iterative refinement, critical for handling chaotic hurricane data.
+\end{itemize}
+
+\subsection{Justification}
+\textbf{Rationale}: CRISP-DM was selected as the primary methodology due to its comprehensive, iterative framework, which aligns with the project's need for robust data preparation, modeling, and deployment, as evidenced in \texttt{app.py} and \texttt{model\_utils.py}. Its domain-agnostic nature suits meteorology, where data preprocessing (e.g., handling missing values in \texttt{model\_utils.py}) and model evaluation (e.g., MSE in \texttt{developer.py}) are critical \cite{WirthBramer2000}. KDD provides a complementary perspective, emphasizing knowledge extraction, which supports the project's goal of deriving actionable forecasts. The ML pipeline ensures systematic implementation, integrating preprocessing and modeling steps from \texttt{train\_models.ipynb} and \texttt{app.py}. SEMMA and agile approaches enhance exploratory and iterative aspects, but CRISP-DM's deployment phase better supports delivering forecasts via \texttt{forecast\_results.csv} and \texttt{forecast\_plot.png}. This combination ensures a rigorous, reproducible, and practical approach to hurricane intensity prediction, addressing the chaotic nature of meteorological data and the need for disaster preparedness \cite{Emanuel2005}.

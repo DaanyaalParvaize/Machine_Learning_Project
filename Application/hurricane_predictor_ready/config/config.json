@@ -1,0 +1,12 @@
+{
+    "arima": {
+        "p": 2,
+        "d": 1,
+        "q": 2,
+        "use": true
+    },
+    "lstm": {
+        "epochs": 10,
+        "batch_size": 32
+    }
+}

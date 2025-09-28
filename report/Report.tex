@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Daanyaal Parvaize, Kreetika Mohanta, Keerti Belmane$
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: BA25-02-Time-Series/report/report.tex
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper]{scrbook}
+\def\isEnglish{1}
+
+\include{General/Packages}
+\include{General/commands}
+\include{General/tikzdefs}
+\input{General/acronyms}
+\input{General/Hyphenations}
+
+\addbibresource{../Documents/literature.bib}
+\addbibresource{../Documents/MyLiterature.bib}
+
+% Optional: suppress blank even pages from cleardoublepage
+\let\cleardoublepage\clearpage
+
+\begin{document}
+	
+	\InputLanguage{Contents/}{Titlepage}
+	
+	\pagenumbering{roman}
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\listofcodes
+	
+	\addcontentsline{toc}{chapter}{Acronyms}
+	\printacronyms
+	
+	\InputLanguage{Contents/}{Symbols}
+	\printnomenclature
+	
+	\pagenumbering{arabic}
+	
+	% Chapters
+	\InputLanguage{Contents/}{Introduction}
+	\InputLanguage{Contents/}{DomainKnowledge}
+	\InputLanguage{Contents/}{Important Modules}
+	\InputLanguage{Contents/}{DataMining}
+	\InputLanguage{Contents/}{DomainTools}
+	\InputLanguage{Contents/}{Methodology}
+	\InputLanguage{Contents/}{AppDevData}
+	\InputLanguage{Contents/}{Database}
+	\InputLanguage{Contents/}{Datatransformation}
+	\InputLanguage{Contents/}{DocumentationDeveloper}
+	\InputLanguage{Contents/}{DevtoDeploy}
+	\InputLanguage{Contents/}{Evaluation}
+	\InputLanguage{Contents/}{Monitoring}
+	\InputLanguage{Contents/}{ApplicationDeployment}
+	\InputLanguage{Contents/}{Test}
+	\InputLanguage{Contents/}{Technical}
+	\InputLanguage{Contents/}{ApplicationAppendix}
+	\InputLanguage{Contents/}{Improvement}
+	
+	% Appendix
+	\appendix
+	\InputLanguage{Contents/}{Appendix}
+	
+	% Bibliography
+	\addcontentsline{toc}{chapter}{\TRANS{Literaturverzeichnis}{Bibliography}}
+	\printbibliography
+	
+	% Optional Index (if used)
+	%\renewcommand{\indexname}{\TRANS{Stichwortverzeichnis}{Index}}
+	%\addcontentsline{toc}{chapter}{\TRANS{Stichwortverzeichnis}{Index}}
+	\printindex
+	
+\end{document}

@@ -1,0 +1,99 @@
+%%%%%%%%%%%%
+%
+% $Autor: Wings $
+% $Datum: 2019-03-05 08:03:15Z $
+% $Pfad: Functions.tex $
+% $Version: 4250 $
+% !TeX spellcheck = en_GB/de_DE
+% !TeX encoding = utf8
+% !TeX root = manual 
+% !TeX TXS-program:bibliography = txs:///biber
+%
+%%%%%%%%%%%%
+
+\chapter{Functions}
+
+This chapter explains what each main file and component in the Hurricane Intensity Prediction System does. Understanding the role of each file will help you know how the system works and how to use it effectively.
+
+\section*{File Responsibilities}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|p{10cm}|}
+		\hline
+		\textbf{File/Folder} & \textbf{Description} \\
+		\hline
+		\texttt{app.py} & The main user interface. Launches the Streamlit web app, lets users upload their data, loads pre-trained models, generates predictions, and visualizes the results. \\
+		\hline
+		\texttt{developer.py} & Used by the developer to set model parameters, select the best model (ARIMA or LSTM), and initiate model training and saving. \\
+		\hline
+		\texttt{models\_train.py} & Contains the logic for training ARIMA and LSTM models using the NOAA dataset and developer-specified parameters. Called by \texttt{developer.py}. \\
+		\hline
+		\texttt{util.py} & Provides utility functions for data preprocessing, saving/loading models, and managing files. \\
+		\hline
+		\texttt{models/} & Directory where all trained model files (ARIMA/LSTM) are stored for later use by the application. \\
+		\hline
+		\texttt{requirements.txt} & Lists all Python dependencies needed to run the project. \\
+		\hline
+		\texttt{data/} & Directory for storing datasets used for training or prediction. \\
+		\hline
+	\end{tabular}
+	\caption{Main Files and Their Functions}
+	\label{tab:file_functions}
+\end{table}
+
+\section*{Functional Workflow}
+
+The figure below illustrates the flow of data and control between the main components of the system, from both the developer and user perspectives.
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[node distance=1.7cm, every node/.style={rectangle, draw, minimum width=4.5cm, minimum height=0.9cm, align=center}]
+		% Developer side
+		\node (noaa) {NOAA Dataset};
+		\node (dev) [below of=noaa, fill=blue!10] {developer.py};
+		\node (train) [below of=dev] {models\_train.py};
+		\node (util) [below of=train] {util.py};
+		\node (models) [below of=util, fill=gray!10] {models/ (Saved Models)};
+		
+		% User side
+		\node (userdata) [right=6cm of noaa] {User Data Upload};
+		\node (app) [below of=userdata, fill=green!10] {app.py};
+		\node (loadmodels) [below of=app] {Load Trained Models};
+		\node (predict) [below of=loadmodels] {Generate Predictions};
+		\node (visualize) [below of=predict] {Visualize \& Download Results};
+		
+		% Arrows Developer
+		\draw[->, thick] (noaa) -- (dev);
+		\draw[->, thick] (dev) -- (train);
+		\draw[->, thick] (train) -- (util);
+		\draw[->, thick] (util) -- (models);
+		
+		% Arrows User
+		\draw[->, thick] (userdata) -- (app);
+		\draw[->, thick] (app) -- (loadmodels);
+		\draw[->, thick] (loadmodels) -- (predict);
+		\draw[->, thick] (predict) -- (visualize);
+		
+		% Connection between developer and user
+		\draw[->, thick, dashed] (models.east) -- ++(1.2,0) -- ++(0,5.7) -- (loadmodels.west);
+		
+		% Labels
+		\node[above=0.2cm of noaa] {\textbf{Developer Workflow}};
+		\node[above=0.2cm of userdata] {\textbf{User Workflow}};
+	\end{tikzpicture}
+	\caption{Functionality Overview and File Interactions}
+\end{figure}
+
+\noindent
+\textbf{Legend:} \\
+\textbf{Developer:} Prepares and trains models, which are saved for user predictions. \\
+\textbf{User:} Uploads data, receives predictions and visualizations using pre-trained models.
+
+
+
+
+
+
+
+

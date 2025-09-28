@@ -1,0 +1,106 @@
+\doxysection{app.\+py File Reference}
+\hypertarget{app_8py}{}\label{app_8py}\index{app.py@{app.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceapp}{app}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceapp_a2c5b508829b4995a003ebbea7efab85e}{app.\+page\+\_\+title}}
+\item 
+\mbox{\hyperlink{namespaceapp_adcd4161b2b197e0cf698a7ae8ca84488}{app.\+page\+\_\+icon}}
+\item 
+\mbox{\hyperlink{namespaceapp_a32ab50610df58ba90f40d85d72ba822d}{app.\+layout}}
+\item 
+\mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{app.\+config}} = load\+\_\+config()
+\item 
+\mbox{\hyperlink{namespaceapp_a4a922ffcacf9f0c524d858cafd3aa38e}{app.\+model\+\_\+type}} = \mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}}\mbox{[}"{}model"{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceapp_a97bdb13d7957840ceca71b0a885928b1}{app.\+exist\+\_\+ok}}
+\item 
+\mbox{\hyperlink{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7}{app.\+uploaded\+\_\+file}} = st.\+file\+\_\+uploader("{}📄 Upload your CSV file"{}, type=\mbox{[}"{}csv"{}\mbox{]})
+\item 
+\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{app.\+forecast\+\_\+steps}} = st.\+slider("{}⏱️ Forecast steps"{}, 1, 30, 7)
+\item 
+\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{app.\+df}} = pd.\+read\+\_\+csv(\mbox{\hyperlink{namespaceapp_a961e76fb8ef025010a52b2203a6a9ce7}{uploaded\+\_\+file}}, na\+\_\+values=\mbox{[}"{}NA"{}, "{}N/A"{}, "{}"{}\mbox{]})
+\item 
+\mbox{\hyperlink{namespaceapp_aaa4be6bb1710f8efef80b4ecd281826c}{app.\+wind\+\_\+col}} = None
+\item 
+\mbox{\hyperlink{namespaceapp_aed9590489516c13cffd4827d6df765ae}{app.\+errors}}
+\item 
+\mbox{\hyperlink{namespaceapp_af3e33e0be9d8f0c4fcdf069a3da2c99b}{app.\+missing\+\_\+count}} = \mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}.isna().sum()
+\item 
+\mbox{\hyperlink{namespaceapp_aebc9d5076481742ae3c73867c496ab14}{app.\+z\+\_\+scores}} = np.\+abs(stats.\+zscore(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}))
+\item 
+int \mbox{\hyperlink{namespaceapp_ac3e1512aec6b216a78e16f89e8d96560}{app.\+outliers}} = \mbox{\hyperlink{namespaceapp_aebc9d5076481742ae3c73867c496ab14}{z\+\_\+scores}} $>$ 3
+\item 
+int \mbox{\hyperlink{namespaceapp_a18ff90b34087c07f0d5df5f3112ea655}{app.\+num\+\_\+outliers}} = outliers.\+sum()
+\item 
+\mbox{\hyperlink{namespaceapp_a98e7f0a16b6a3c5f8c443516bceb489a}{app.\+date\+\_\+col}} = None
+\item 
+\mbox{\hyperlink{namespaceapp_a4185a5493fde2796d40f92dcb818b650}{app.\+fig\+\_\+hist}}
+\item 
+\mbox{\hyperlink{namespaceapp_a725ef8c77d5ee9193fc3c16969e6f7a3}{app.\+ax\+\_\+hist}}
+\item 
+\mbox{\hyperlink{namespaceapp_ab9bdd78e8a7605f82fdddf41bd56499a}{app.\+figsize}}
+\item 
+\mbox{\hyperlink{namespaceapp_a61d300bbfa7ecfc1ea9e7338c605e97a}{app.\+label}}
+\item 
+\mbox{\hyperlink{namespaceapp_ad0cf223146febd3cb70414b0f7aa039f}{app.\+locator}} = Auto\+Date\+Locator()
+\item 
+\mbox{\hyperlink{namespaceapp_ac841856531f5b80af0013a45534ec7ed}{app.\+formatter}} = Date\+Formatter(\textquotesingle{}\%Y-\/\%m-\/\%d\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespaceapp_a012a73e5a9bf74c3e6cb6fd62688291b}{app.\+rotation}}
+\item 
+\mbox{\hyperlink{namespaceapp_a7b9e0b0cc6065ee18cbfe32729682bb3}{app.\+ha}}
+\item 
+\mbox{\hyperlink{namespaceapp_ad6b42385115e0e4827cbb3a09502ad1f}{app.\+model}} = pickle.\+load(f)
+\item 
+\mbox{\hyperlink{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4}{app.\+forecast}} = model.\+forecast(steps=\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}})
+\item 
+\mbox{\hyperlink{namespaceapp_aafa599585a6a41d920cf6ce424df02a1}{app.\+dates}} = pd.\+date\+\_\+range(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}date\textquotesingle{}\mbox{]}.iloc\mbox{[}-\/1\mbox{]} + pd.\+Timedelta(days=1), periods=\mbox{\hyperlink{namespaceapp_ae1335c2fd79ded71136802ebddcd1b93}{forecast\+\_\+steps}})
+\item 
+\mbox{\hyperlink{namespaceapp_a538222c0504e469e4b1bba8707c03583}{app.\+results}} = pd.\+Data\+Frame(\{\textquotesingle{}date\textquotesingle{}\+: \mbox{\hyperlink{namespaceapp_aafa599585a6a41d920cf6ce424df02a1}{dates}}, \textquotesingle{}Forecast\textquotesingle{}\+: \mbox{\hyperlink{namespaceapp_a77a2888aa657aa5aebc4f2ea57d9fdb4}{forecast}}\})
+\item 
+\mbox{\hyperlink{namespaceapp_a01ab245f135fa8506cc389fb6e6b1a9e}{app.\+scaler}} = pickle.\+load(f)
+\item 
+\mbox{\hyperlink{namespaceapp_aeefa66ec49f484cae8b043138345c919}{app.\+seq\+\_\+len}} = \mbox{\hyperlink{namespaceapp_a04ca3b9969e7ba24ec81a54b4133285e}{config}}\mbox{[}\textquotesingle{}lstm\textquotesingle{}\mbox{]}\mbox{[}\textquotesingle{}sequence\+\_\+length\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8}{app.\+scaled}} = scaler.\+transform(\mbox{\hyperlink{namespaceapp_ae307828ab8a4a6dbbb46700b64c1f1bf}{df}}\mbox{[}\textquotesingle{}wind\+\_\+speed\textquotesingle{}\mbox{]}.values.\+reshape(-\/1, 1))
+\item 
+\mbox{\hyperlink{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f}{app.\+history}} = \mbox{\hyperlink{namespaceapp_a6500134c0d7a8adfd7d09480615bf4d8}{scaled}}\mbox{[}-\/seq\+\_\+len\+:\mbox{]}.flatten()
+\item 
+list \mbox{\hyperlink{namespaceapp_a4e1065d92aa7e5c8b53b5bf688f7ebed}{app.\+predictions}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8}{app.\+x}} = np.\+array(\mbox{\hyperlink{namespaceapp_a1c1a807aa5f9ca7cc9831a8b6eb56f4f}{history}}\mbox{[}-\/seq\+\_\+len\+:\mbox{]}).reshape(1, \mbox{\hyperlink{namespaceapp_aeefa66ec49f484cae8b043138345c919}{seq\+\_\+len}}, 1)
+\item 
+\mbox{\hyperlink{namespaceapp_a29d0f933091b4426241890cd6de1095a}{app.\+pred}} = model.\+predict(\mbox{\hyperlink{namespaceapp_a317ac56fdcfc4eb3cb88af0137671fa8}{x}}, verbose=0)
+\item 
+\mbox{\hyperlink{namespaceapp_a5b614fd41bb93b678f64bab0dd9d712f}{app.\+fig}}
+\item 
+\mbox{\hyperlink{namespaceapp_a1357ef913a81b19724a0cc4ea0cc9e07}{app.\+ax}}
+\item 
+\mbox{\hyperlink{namespaceapp_a9cdc675ace6c739b4daf98c89eb80a20}{app.\+marker}}
+\item 
+\mbox{\hyperlink{namespaceapp_ad0e2dba083a3011b0076d67bba00dd3e}{app.\+color}}
+\item 
+\mbox{\hyperlink{namespaceapp_a7a411ea567ac1ca0c5c461278144a7e1}{app.\+col1}}
+\item 
+\mbox{\hyperlink{namespaceapp_a5a5fda4e66a5b10cce19391f477e1298}{app.\+col2}}
+\item 
+\mbox{\hyperlink{namespaceapp_a18372e9fea5be6aa796c6c80529a3cc8}{app.\+csv}} = results.\+to\+\_\+csv(index=False).encode(\textquotesingle{}utf-\/8\textquotesingle{})
+\item 
+\mbox{\hyperlink{namespaceapp_aac971a7ce28912f76a3248f427514f9d}{app.\+data}}
+\item 
+\mbox{\hyperlink{namespaceapp_a4923bd90236272961b9d694f9141d7c7}{app.\+file\+\_\+name}}
+\item 
+\mbox{\hyperlink{namespaceapp_a905b735b3c06a871c71e7abebe969a24}{app.\+mime}}
+\item 
+\mbox{\hyperlink{namespaceapp_af49eb2dcd5b984a39c9780cfc1ba2095}{app.\+buf}} = io.\+Bytes\+IO()
+\item 
+\mbox{\hyperlink{namespaceapp_a7cd83bd8e40fb13ae9a8f304d1bf07c0}{app.\+format}}
+\item 
+\mbox{\hyperlink{namespaceapp_a61c9fbcab0f782c35d1b3f96fccd9b2c}{app.\+dpi}}
+\end{DoxyCompactItemize}

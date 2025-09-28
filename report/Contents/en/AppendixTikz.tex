@@ -1,0 +1,30 @@
+
+%%%%%%
+%
+% $Autor: Wings $
+% $Datum: 2020-01-18 11:15:45Z $
+% $Pfad: WuSt/Skript/Produktspezifikation/powerpoint/ImageProcessing.tex $
+% $Version: 4620 $
+%
+%%%%%%
+
+\chapter{AppDev-Data}
+
+
+\section{Application Data}
+This section describes the data utilized by the hurricane intensity prediction application, as implemented in \texttt{app.py}, \texttt{developer.py}, \texttt{model\_utils.py}, and \texttt{train\_models.ipynb}, focusing on its structure, size, format, anomalies, and origin.
+
+\subsection{Structure}
+The data is a univariate time-series comprising wind speed measurements and associated timestamps, organized as a tabular dataset with two columns: \texttt{date} (timestamp) and \texttt{wind\_speed} (numeric value in mph), processed in \texttt{model\_utils.py: load\_storm\_data}.
+
+\subsection{Size}
+The dataset typically contains 10 to 1000 observations, with a minimum of 10 required for ARIMA and 11 (sequence length + 1) for LSTM, as validated in \texttt{app.py}. File sizes range from a few KB to several MB, depending on the number of records.
+
+\subsection{Format}
+Data is stored in CSV format, with \texttt{date} in ISO 8601 (e.g., \texttt{2023-01-01}) or parseable formats (e.g., \texttt{YYYY-MM-DD}) and \texttt{wind\_speed} as floating-point or integer values, loaded via \texttt{pandas} in \texttt{model\_utils.py}.
+
+\subsection{Anomalies}
+Potential anomalies include missing values, non-numeric entries, or duplicate timestamps, addressed in \texttt{model\_utils.py} through forward/backward filling for missing data, coercion of non-numeric values to NaN, and chronological sorting to resolve duplicates.
+
+\subsection{Origin}
+The data originates from user-uploaded CSV files containing historical hurricane wind speed records, input via \texttt{app.py}'s interface, with preprocessing and validation handled in \texttt{model\_utils.py} and \texttt{train\_models.ipynb}.

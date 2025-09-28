@@ -1,0 +1,11 @@
+streamlit
+pandas
+numpy
+joblib
+keras
+tensorflow
+statsmodels==0.13.5
+scikit-learn
+matplotlib
+plotly
+requests

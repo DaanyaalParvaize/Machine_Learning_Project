@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Autor: Keerti Belmane $
+% $Datum: 2025-06-11 20:48:02Z $
+% $Pfad: D:/BA_PROJECT/BA25-02-Time-Series/report/Contents/en/Improvement.tex $
+% $Version: 4621 $
+%
+% !TeX encoding = utf8
+% !TeX root = Rename
+%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Given documentation}
+
+\section{Use of Best Practice Document}
+In developing our project, Hurricane Intensity Prediction Using ARIMA Model, we followed a structured best practices framework to ensure clarity, reproducibility, and maintainability. This included setting up a logically organized directory layout and applying uniform naming conventions (e.g., hurricane\_data.csv, README.md, requirements.txt) for all files. We configured essential tools such as Git for version control, and LaTeX for preparing clean documentation.\\
+Our approach began with a thorough literature review focusing on time series forecasting models, particularly the ARIMA model, informed by academic papers, technical blogs, and authoritative sources. We created a project timeline defining milestones, deliverables, and roles to ensure consistent progress and adherence to documentation standards.\\
+All written materials—including reports, charts, and tables—were prepared with attention to detail, ensuring proper labeling and citation. This rigor reflected the standards set forth in the best practice guidelines.\\
+Version control practices were strictly followed by maintaining detailed Git commit histories, enabling full traceability of experiments and data preprocessing steps. Documentation was synchronized with code updates, making it possible to trace each figure and result directly back to the source code.
+
+\section{Same Notation}
+
+	\begin{tikzpicture}
+		\matrix (m) [matrix of nodes,
+		nodes in empty cells,
+		nodes={draw, minimum width=7cm, minimum height=8mm, align=center},
+		column sep=0pt, row sep=0pt,
+		row 1/.style={nodes={fill=gray!30, font=\bfseries}},
+		column 1/.style={nodes={text width=5cm, anchor=center}},
+		column 2/.style={nodes={text width=10cm, anchor=center}}
+		]{
+			Notation & Meaning \\ 
+			ARIMA & Auto-Regressive Integrated Moving Average \\
+			CSV & Comma-Separated Values \\
+			RMSE & Root Mean Squared Error \\
+		};
+	\end{tikzpicture}
+
+
+
+\section{Supplements}
+In addition to the best practices document, we referenced several additional resources to support our work:
+\begin{itemize}
+	\item Official documentation and tutorials on the ARIMA model, particularly from statistical libraries such as statsmodels.
+	\item Blogs and community guides for Python environment setup and data analysis workflows.
+	\item Metadata and discussions from the NOAA hurricane dataset page on Kaggle, which clarified data coverage and handling of missing values.
+\end{itemize}
+
+\chapter{Improvements}
+
+This section discusses possible future improvements to enhance the hurricane prediction system. Some are minor enhancements, while others are major upgrades that can improve accuracy, usability, and performance.
+
+\section{Minor Changes}
+
+These are small but effective updates that can be applied easily to make the system better.
+
+\subsection{List of Minor Changes}
+\begin{itemize}
+	\item Add tool tips and help texts in the user interface to guide users.
+	\item Improve file name handling to prevent errors when saving results.
+	\item Add more color options and themes to the forecast plots.
+	\item Include unit tests for each function to check correctness.
+	\item Add better error messages for wrong file types or missing data.
+\end{itemize}
+
+\section{Major Improvements}
+
+These are significant upgrades that may require more development effort but have the potential to substantially improve the system.
+
+\subsection{Documentation of the Major Improvements}
+
+\begin{enumerate}
+	\item \textbf{Model Expansion} \\
+	Future versions can include additional models such as Prophet, XGBoost, and ensemble methods. Prophet handles seasonality well, XGBoost is known for speed and accuracy, and ensemble models can boost robustness. \cite{MDPI2024Ensemble}
+	
+	\item \textbf{Data Augmentation} \\
+	Currently, the model only uses wind speed. Including additional features such as pressure, humidity, storm category, and sea surface temperature may improve prediction accuracy. \cite{Emanuel2005}
+	
+	\item \textbf{Hyperparameter Tuning} \\
+	Instead of setting parameters manually, automated techniques like Grid Search or Bayesian Optimization can be used to find optimal settings efficiently.
+	
+	\item \textbf{Visualization Enhancements} \\
+	Replace static forecast plots with interactive dashboards using tools like Streamlit, Dash, or Plotly. This would allow users to zoom, filter dates, and compare storm tracks.
+	
+	\item \textbf{Mobile-Friendly Version} \\
+	Design a Progressive Web App (PWA) or simplified mobile interface for field teams and emergency responders to access predictions on mobile devices.
+	
+	\item \textbf{Alert System Integration} \\
+	Integrate an alerting system that sends notifications (via email or SMS) when a severe storm is predicted. This supports emergency preparedness and disaster response. \cite{FEMAIPAWS}
+\end{enumerate}

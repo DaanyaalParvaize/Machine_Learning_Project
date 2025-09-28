@@ -1,0 +1,627 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{anyt/global//global/global/global}
+  \entry{abadi2016tensorflow}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{10}{}{%
+      {{hash=AM}{%
+         family={Abadi},
+         familyi={A\bibinitperiod},
+         given={Martin},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=BP}{%
+         family={Barham},
+         familyi={B\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Jianmin},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CZ}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Zhifeng},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Davis},
+         familyi={D\bibinitperiod},
+         given={Andy},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DJ}{%
+         family={Dean},
+         familyi={D\bibinitperiod},
+         given={Jeffrey},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DM}{%
+         family={Devin},
+         familyi={D\bibinitperiod},
+         given={Matthieu},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Ghemawat},
+         familyi={G\bibinitperiod},
+         given={Sanjay},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=IG}{%
+         family={Irving},
+         familyi={I\bibinitperiod},
+         given={Geoffrey},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=IM}{%
+         family={Isard},
+         familyi={I\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AM+1}
+    \strng{fullhash}{AMBPCJCZDADJDMGSIGIM+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Aba+16}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{TensorFlow: A System for Large-Scale Machine Learning}
+    \verb{url}
+    \verb https://arxiv.org/abs/1605.08695
+    \endverb
+    \field{journaltitle}{arXiv preprint arXiv:1605.08695}
+    \field{year}{2016}
+  \endentry
+
+  \entry{BoxEtAl2015}{book}{}{}
+    \name{author}{3}{}{%
+      {{hash=BGEP}{%
+         family={Box},
+         familyi={B\bibinitperiod},
+         given={George E.\bibnamedelima P.},
+         giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim
+  P\bibinitperiod},
+      }}%
+      {{hash=JGM}{%
+         family={Jenkins},
+         familyi={J\bibinitperiod},
+         given={Gwilym\bibnamedelima M.},
+         giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=RGC}{%
+         family={Reinsel},
+         familyi={R\bibinitperiod},
+         given={Gregory\bibnamedelima C.},
+         giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley}%
+    }
+    \strng{namehash}{BGEPJGMRGC1}
+    \strng{fullhash}{BGEPJGMRGC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BJR15}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{edition}{5th}
+    \field{isbn}{9781118675021}
+    \field{title}{Time Series Analysis: Forecasting and Control}
+    \list{location}{1}{%
+      {Hoboken, NJ}%
+    }
+    \field{year}{2015}
+  \endentry
+
+  \entry{ChapmanEtAl2000}{report}{}{}
+    \name{author}{7}{}{%
+      {{hash=CP}{%
+         family={Chapman},
+         familyi={C\bibinitperiod},
+         given={Pete},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CJ}{%
+         family={Clinton},
+         familyi={C\bibinitperiod},
+         given={Julian},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=KR}{%
+         family={Kerber},
+         familyi={K\bibinitperiod},
+         given={Randy},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=KT}{%
+         family={Khabaza},
+         familyi={K\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=RT}{%
+         family={Reinartz},
+         familyi={R\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=SC}{%
+         family={Shearer},
+         familyi={S\bibinitperiod},
+         given={Colin},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=WR}{%
+         family={Wirth},
+         familyi={W\bibinitperiod},
+         given={Rüdiger},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CP+1}
+    \strng{fullhash}{CPCJKRKTRTSCWR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Cha+00}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{CRISP-DM 1.0: Step-by-step data mining guide}
+    \verb{url}
+    \verb https://www.the-modeling-agency.com/crisp-dm.pdf
+    \endverb
+    \list{institution}{1}{%
+      {CRISP-DM Consortium}%
+    }
+    \field{type}{techreport}
+    \field{year}{2000}
+  \endentry
+
+  \entry{de2019evaluation}{article}{}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{2}{}{%
+      {{hash=DM}{%
+         family={DeMaria},
+         familyi={D\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KJA}{%
+         family={Knaff},
+         familyi={K\bibinitperiod},
+         given={John\bibnamedelima A},
+         giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Meteorological Society}%
+    }
+    \strng{namehash}{DMKJA+1}
+    \strng{fullhash}{DMKJA+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{DK+19}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{number}{10}
+    \field{pages}{3621\bibrangedash 3637}
+    \field{title}{Evaluation of Hurricane Intensity Forecast Models}
+    \field{volume}{147}
+    \field{journaltitle}{Monthly Weather Review}
+    \field{year}{2019}
+  \endentry
+
+  \entry{emanuel2003tropical}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=EK}{%
+         family={Emanuel},
+         familyi={E\bibinitperiod},
+         given={Kerry},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Annual Reviews}%
+    }
+    \strng{namehash}{EK1}
+    \strng{fullhash}{EK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Ema03}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{number}{1}
+    \field{pages}{75\bibrangedash 104}
+    \field{title}{Tropical cyclones}
+    \field{volume}{31}
+    \field{journaltitle}{Annual Review of Earth and Planetary Sciences}
+    \field{year}{2003}
+  \endentry
+
+  \entry{Emanuel2005}{book}{}{}
+    \name{author}{1}{}{%
+      {{hash=EK}{%
+         family={Emanuel},
+         familyi={E\bibinitperiod},
+         given={Kerry},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Oxford University Press}%
+    }
+    \strng{namehash}{EK1}
+    \strng{fullhash}{EK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Ema05}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{isbn}{9780195149418}
+    \field{title}{Divine Wind: The History and Science of Hurricanes}
+    \list{location}{1}{%
+      {New York}%
+    }
+    \field{year}{2005}
+  \endentry
+
+  \entry{FayyadEtAl1996}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=FU}{%
+         family={Fayyad},
+         familyi={F\bibinitperiod},
+         given={Usama},
+         giveni={U\bibinitperiod},
+      }}%
+      {{hash=PSG}{%
+         family={Piatetsky-Shapiro},
+         familyi={P\bibinithyphendelim S\bibinitperiod},
+         given={Gregory},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=SP}{%
+         family={Smyth},
+         familyi={S\bibinitperiod},
+         given={Padhraic},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FUPSGSP1}
+    \strng{fullhash}{FUPSGSP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{FPSS96}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \verb{doi}
+    \verb 10.1609/aimag.v17i3.1230
+    \endverb
+    \field{number}{3}
+    \field{pages}{37\bibrangedash 54}
+    \field{title}{From Data Mining to Knowledge Discovery in Databases}
+    \field{volume}{17}
+    \field{journaltitle}{AI Magazine}
+    \field{year}{1996}
+  \endentry
+
+  \entry{HyndmanAthanasopoulos2021}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=HRJ}{%
+         family={Hyndman},
+         familyi={H\bibinitperiod},
+         given={Rob\bibnamedelima J.},
+         giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=AG}{%
+         family={Athanasopoulos},
+         familyi={A\bibinitperiod},
+         given={George},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {OTexts}%
+    }
+    \strng{namehash}{HRJAG1}
+    \strng{fullhash}{HRJAG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{HA21}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{edition}{3rd}
+    \field{title}{Forecasting: Principles and Practice}
+    \field{year}{2021}
+  \endentry
+
+  \entry{HochreiterSchmidhuber1997}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Hochreiter},
+         familyi={H\bibinitperiod},
+         given={Sepp},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Schmidhuber},
+         familyi={S\bibinitperiod},
+         given={Jürgen},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{HSSJ1}
+    \strng{fullhash}{HSSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{HS97}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \verb{doi}
+    \verb 10.1162/neco.1997.9.8.1735
+    \endverb
+    \field{number}{8}
+    \field{pages}{1735\bibrangedash 1780}
+    \field{title}{Long Short-Term Memory}
+    \field{volume}{9}
+    \field{journaltitle}{Neural Computation}
+    \field{year}{1997}
+  \endentry
+
+  \entry{hunter2007matplotlib}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=HJD}{%
+         family={Hunter},
+         familyi={H\bibinitperiod},
+         given={John\bibnamedelima D.},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HJD1}
+    \strng{fullhash}{HJD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Hun07}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \verb{doi}
+    \verb 10.1109/MCSE.2007.55
+    \endverb
+    \field{number}{3}
+    \field{pages}{90\bibrangedash 95}
+    \field{title}{Matplotlib: A 2D Graphics Environment}
+    \verb{url}
+    \verb https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4160265
+    \endverb
+    \field{volume}{9}
+    \field{journaltitle}{Computing in Science \& Engineering}
+    \field{year}{2007}
+  \endentry
+
+  \entry{kaplan2003large}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=KJ}{%
+         family={Kaplan},
+         familyi={K\bibinitperiod},
+         given={Joel},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=DM}{%
+         family={DeMaria},
+         familyi={D\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Association for the Advancement of Science}%
+    }
+    \strng{namehash}{KJDM1}
+    \strng{fullhash}{KJDM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{KD03}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{number}{5529}
+    \field{pages}{474\bibrangedash 479}
+    \field{title}{Large increases in the number of intense Atlantic hurricanes
+  during the past four decades}
+    \field{volume}{293}
+    \field{journaltitle}{Science}
+    \field{year}{2003}
+  \endentry
+
+  \entry{kaggle2021hurricane}{misc}{}{}
+    \name{author}{1}{}{%
+      {{hash=K}{%
+         family={Kaggle},
+         familyi={K\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{K1}
+    \strng{fullhash}{K1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Kag21}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{note}{Available at: \url{https://www.kaggle.com/datasets/}}
+    \field{title}{Atlantic Hurricane Dataset (1975–2021)}
+    \field{year}{2021}
+  \endentry
+
+  \entry{noaa2021hurdat2}{misc}{}{}
+    \name{author}{2}{}{%
+      {{hash=ON}{%
+         family={Oceanic},
+         familyi={O\bibinitperiod},
+         given={National},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=NAA}{%
+         family={(NOAA)},
+         familyi={N\bibinitperiod},
+         given={Atmospheric\bibnamedelima Administration},
+         giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ONNAA1}
+    \strng{fullhash}{ONNAA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{ON21}
+    \field{sortinit}{O}
+    \field{sortinithash}{O}
+    \field{note}{Available at: \url{https://www.nhc.noaa.gov/data/}}
+    \field{title}{HURDAT2: Atlantic Hurricane Database}
+    \field{year}{2021}
+  \endentry
+
+  \entry{RussellJurney2017}{book}{}{}
+    \name{author}{2}{}{%
+      {{hash=RMA}{%
+         family={Russell},
+         familyi={R\bibinitperiod},
+         given={Matthew\bibnamedelima A.},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=JJ}{%
+         family={Jurney},
+         familyi={J\bibinitperiod},
+         given={Joshua},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {O'Reilly Media}%
+    }
+    \strng{namehash}{RMAJJ1}
+    \strng{fullhash}{RMAJJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{RJ17}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{isbn}{9781491960110}
+    \field{title}{Agile Data Science 2.0: Building Full-Stack Data Analytics
+  Applications with Spark}
+    \list{location}{1}{%
+      {Sebastopol, CA}%
+    }
+    \field{year}{2017}
+  \endentry
+
+  \entry{su2011hurricane}{inproceedings}{}{}
+    \name{author}{4}{}{%
+      {{hash=SY}{%
+         family={Su},
+         familyi={S\bibinitperiod},
+         given={Yu},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=CS}{%
+         family={Chelluboina},
+         familyi={C\bibinitperiod},
+         given={Sudheer},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=HM}{%
+         family={Hahsler},
+         familyi={H\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=DMH}{%
+         family={Dunham},
+         familyi={D\bibinitperiod},
+         given={Margaret\bibnamedelima H.},
+         giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{SY+1}
+    \strng{fullhash}{SYCSHMDMH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Su+11}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{booktitle}{Proceedings of the International Conference on Data
+  Mining (ICDM)}
+    \field{note}{Available at:
+  \url{https://s2.smu.edu/~mhd/7331f10/IntensityPrediction.pdf} [Accessed:
+  2025-06-05]}
+    \field{title}{A New Data Mining Model for Hurricane Intensity Prediction}
+    \list{location}{1}{%
+      {Dallas, Texas}%
+    }
+    \list{institution}{2}{%
+      {Department of Computer Science}%
+      {Engineering, Southern Methodist University}%
+    }
+    \field{year}{2011}
+  \endentry
+
+  \entry{WirthBramer2000}{inproceedings}{}{}
+    \name{author}{2}{}{%
+      {{hash=WR}{%
+         family={Wirth},
+         familyi={W\bibinitperiod},
+         given={Rüdiger},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Bramer},
+         familyi={B\bibinitperiod},
+         given={Max},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WRBM1}
+    \strng{fullhash}{WRBM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{WB00}
+    \field{sortinit}{W}
+    \field{sortinithash}{W}
+    \field{booktitle}{Proceedings of the Fourth International Conference on the
+  Practical Application of Knowledge Discovery and Data Mining}
+    \field{pages}{29\bibrangedash 39}
+    \field{title}{CRISP-DM: Towards a Standard Process Model for Data Mining}
+    \list{location}{1}{%
+      {Manchester, UK}%
+    }
+    \field{year}{2000}
+  \endentry
+\enddatalist
+\endinput

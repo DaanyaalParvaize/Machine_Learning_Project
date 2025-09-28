@@ -1,0 +1,32 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Background on hurricane prediction}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Importance of accurate intensity forecasting}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Overview of ARIMA modeling approach}{2}{}%
+\contentsline {section}{\numberline {2}Data Overview}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Dataset description and source}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Key variables and their significance}{2}{}%
+\contentsline {subsection}{\numberline {2.3}Data quality assessment}{2}{}%
+\contentsline {section}{\numberline {3}Methodology}{2}{}%
+\contentsline {subsection}{\numberline {3.1}ARIMA model explanation}{2}{}%
+\contentsline {subsection}{\numberline {3.2}Data preprocessing steps}{3}{}%
+\contentsline {subsection}{\numberline {3.3}Model parameter tuning}{3}{}%
+\contentsline {section}{\numberline {4}Exploratory Data Analysis}{3}{}%
+\contentsline {subsection}{\numberline {4.1}Time series decomposition}{3}{}%
+\contentsline {subsection}{\numberline {4.2}Pressure-wind correlation analysis}{3}{}%
+\contentsline {subsection}{\numberline {4.3}Temporal patterns in hurricane development}{3}{}%
+\contentsline {section}{\numberline {5}Model Development}{3}{}%
+\contentsline {subsection}{\numberline {5.1}ARIMA implementation}{3}{}%
+\contentsline {subsection}{\numberline {5.2}Parameter optimization}{3}{}%
+\contentsline {subsection}{\numberline {5.3}Validation using walk-forward testing}{3}{}%
+\contentsline {section}{\numberline {6}Results and Evaluation}{3}{}%
+\contentsline {subsection}{\numberline {6.1}Model performance metrics (MAE/RMSE)}{3}{}%
+\contentsline {subsection}{\numberline {6.2}Residual analysis}{3}{}%
+\contentsline {subsection}{\numberline {6.3}Comparison with baseline predictions}{4}{}%
+\contentsline {section}{\numberline {7}Discussion}{4}{}%
+\contentsline {subsection}{\numberline {7.1}Interpretation of results}{4}{}%
+\contentsline {subsection}{\numberline {7.2}Impact analysis of pressure changes on intensity}{4}{}%
+\contentsline {subsection}{\numberline {7.3}Early warning threshold identification}{4}{}%
+\contentsline {section}{\numberline {8}Conclusion and Future Work}{4}{}%
+\contentsline {subsection}{\numberline {8.1}Summary of findings}{4}{}%
+\contentsline {subsection}{\numberline {8.2}Limitations of the current approach}{4}{}%
+\contentsline {subsection}{\numberline {8.3}Potential improvements and extensions}{4}{}%

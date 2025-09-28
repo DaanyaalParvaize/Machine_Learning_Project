@@ -1,0 +1,23 @@
+var NAVTREEINDEX0 =
+{
+"datamining_8py.html":[1,0,0],
+"files.html":[1,0],
+"index.html":[],
+"namespacedatamining.html":[0,0,0],
+"namespacedatamining.html#a125d294ab834753b229b78afca43c05a":[0,0,0,8],
+"namespacedatamining.html#a1d0478295bfcfe52fbc08e901c5d3cb0":[0,0,0,2],
+"namespacedatamining.html#a4c610eb4b06ed05b59783e6ea120c38f":[0,0,0,7],
+"namespacedatamining.html#a4e0ae67d62bc6de7904dfb1f375b29f2":[0,0,0,9],
+"namespacedatamining.html#a70575dc6376358f54c98704506850920":[0,0,0,1],
+"namespacedatamining.html#a7abfb39966ca9f92f8468d0947940307":[0,0,0,3],
+"namespacedatamining.html#a8e8f07e3363cf7553133736de1f61f17":[0,0,0,6],
+"namespacedatamining.html#ac4bfdc9441cabe250a68a06e6eabafc0":[0,0,0,0],
+"namespacedatamining.html#add8566e2cc907f69394184e2c2d19145":[0,0,0,10],
+"namespacedatamining.html#ae399e73dd67b311de32e54741e38be04":[0,0,0,5],
+"namespacedatamining.html#ae9ee227b611c66158cc392204399e7d6":[0,0,0,4],
+"namespacemembers.html":[0,1,0],
+"namespacemembers_func.html":[0,1,1],
+"namespacemembers_vars.html":[0,1,2],
+"namespaces.html":[0,0],
+"pages.html":[]
+};
